@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.easy2book.R
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -21,12 +24,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//       btnActivity.setOnClickListener {
-//          setContentView(R.layout.fragment_activity)
-//       }
+//        val navController = Navigation.findNavController(this, R.id.fragment)
+//        NavigationUI.setupWithNavController(navView, navController)
+//
+//        val txtTitle = findViewById<TextView>(R.id.txtTitle)
+//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+//            txtTitle.text = destination.label
+//        }
     }
 
     override fun onClick(v: View?) {
+//        btnActivity.setOnClickListener {
+//          setContentView(R.layout.fragment_activity)
+//      }
     }
 
 }

@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/txtTransportTitle"
-        android:text="Home"
+        android:text="Transport"
         android:textStyle="bold|normal"
         android:textSize="30sp"
         android:textColor="@color/btnColour"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/txtTransportTitle"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="150dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:columnCount="2"
@@ -38,7 +38,7 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="8dp"
-            android:cardElevation="8dp"
+            app:cardElevation="8dp"
             app:cardCornerRadius="10dp"
             android:backgroundTint="@color/textColor"
             android:clickable="true">
@@ -75,7 +75,7 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="8dp"
-            android:cardElevation="8dp"
+            app:cardElevation="8dp"
             app:cardCornerRadius="10dp"
             android:backgroundTint="@color/textColor"
             android:clickable="true">

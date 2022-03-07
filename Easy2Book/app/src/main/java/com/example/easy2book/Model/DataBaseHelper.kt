@@ -110,7 +110,6 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     }
 
     fun getAllUsers(): ArrayList<User> {
-
         val userList = ArrayList<User>()
         val db: SQLiteDatabase = this.readableDatabase
         val sqlStatement = "SELECT * FROM $UserTableName"
@@ -132,154 +131,33 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         return userList
     }
-}
 
-//    fun getAllQuestions(): ArrayList<Question> {
-//        val questionList = ArrayList<Question>()
+    fun addUser(user : User) : Boolean {
+
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv: ContentValues = ContentValues()
+
+        cv.put(UserColumn_Username, user.Username)
+        cv.put(UserColumn_Password, user.Password)
+        cv.put(UserColumn_Email, user.Email)
+
+        val success  =  db.insert(UserTableName, null, cv)
+
+        db.close()
+        return success != -1L
+
+    }
+
+//    fun loginValid(un: String, pw: String): Boolean {
 //        val db: SQLiteDatabase = this.readableDatabase
-//        val sqlStatement = "SELECT * FROM $QuestionTableName"
+//        val cursor: Cursor = db.rawQuery("SELECT * FROM " + UserTableName +
+//                " WHERE $UserColumn_Username=? AND $UserColumn_Password=?", arrayOf(un, pw))
 //
-//        val cursor: Cursor = db.rawQuery(sqlStatement, null)
-//
-//        if (cursor.moveToFirst())
-//            do {
-//                val id: Int = cursor.getInt(0)
-//                val topicID: Int = cursor.getInt(1)
-//                val questions: String = cursor.getString(2)
-//                //val image: ByteArray? = cursor.getBlob(3)
-//                val b = Question(id, topicID, questions, /*image*/)
-//                questionList.add(b)
-//            } while (cursor.moveToNext())
-//
-//            cursor.close()
-//        db.close()
-//
-//        return questionList
+//        if (cursor != null) {
+//            if (cursor.count > 0) {
+//                return true
+//            }
+//        }
+//        return false
 //    }
-//
-//    fun getAllAnswers(i: Int): ArrayList<Answer> {
-//        val answerList = ArrayList<Answer>()
-//        val db: SQLiteDatabase = this.readableDatabase
-//        val sqlStatement = "SELECT * FROM $AnswerTableName WHERE $AnswerColumn_QuestionID == $i"
-//
-//        val cursor: Cursor = db.rawQuery(sqlStatement, null)
-//
-//        if (cursor.moveToFirst())
-//            do {
-//                val id: Int = cursor.getInt(0)
-//                val questionID = cursor.getInt(1)
-//                val answers = cursor.getString(2)
-//                val isCorrect = cursor.getInt(3)
-//                val b = Answer(id, questionID, answers, isCorrect)
-//                answerList.add(b)
-//            } while (cursor.moveToNext())
-//
-//            cursor.close()
-//        db.close()
-//
-//        return answerList
-//    }
-//
-//    fun getAllStudents(): ArrayList<Student> {
-//
-//        val studentList = ArrayList<Student>()
-//        val db: SQLiteDatabase = this.readableDatabase
-//        val sqlStatement = "SELECT * FROM $StudentTableName"
-//
-//        val cursor: Cursor = db.rawQuery(sqlStatement, null)
-//
-//        if (cursor.moveToFirst())
-//            do {
-//                val id: Int = cursor.getInt(0)
-//                val name: String = cursor.getString(1)
-//                val grade: Int = cursor.getInt(2)
-//                val dateTaken: String = cursor.getString(3)
-//                val b = Student(id, name, grade, dateTaken)
-//                studentList.add(b)
-//            } while (cursor.moveToNext())
-//
-//        cursor.close()
-//        db.close()
-//
-//        return studentList
-//    }
-//
-//    fun addStudent(student : Student) : Boolean {
-//
-//        val db: SQLiteDatabase = this.writableDatabase
-//        val cv: ContentValues = ContentValues()
-//
-//        cv.put(StudentColumn_Name, student.Name)
-//        cv.put(StudentColumn_Grade, student.Grade)
-//        cv.put(StudentColumn_DateTaken, student.dateTaken)
-//
-//        val success  =  db.insert(StudentTableName, null, cv)
-//
-//        db.close()
-//        return success != -1L
-//
-//    }
-//
-//    fun updateStudent(student: Student) : Boolean {
-//
-//        val db: SQLiteDatabase = this.writableDatabase
-//        val cv: ContentValues = ContentValues()
-//
-//        cv.put(StudentColumn_Name, student.Name)
-//        cv.put(StudentColumn_Grade, student.Grade)
-//        cv.put(StudentColumn_DateTaken, student.dateTaken)
-//
-//        val success = db.update(StudentTableName, cv, "$StudentColumn_ID = ${student.ID}", null) == 1
-//        db.close()
-//        return success
-//
-//    }
-//
-//    fun getAllAdmins(): ArrayList<Admin> {
-//        val adminList = ArrayList<Admin>()
-//
-//        val db: SQLiteDatabase = this.readableDatabase
-//        val sqlStatement = "SELECT * FROM $AdminTableName"
-//
-//        val cursor: Cursor = db.rawQuery(sqlStatement, null)
-//        if(cursor.moveToFirst())
-//            do{
-//                val id: Int = cursor.getInt(0)
-//                val adminNumber: Int = cursor.getInt(1)
-//                val password: Int = cursor.getInt(2)
-//
-//                val b = Admin(id, adminNumber, password)
-//                adminList.add(b)
-//            } while (cursor.moveToNext())
-//
-//            cursor.close()
-//        db.close()
-//
-//        return adminList
-//    }
-//
-//    fun addAdminQuestion(q: Question): Boolean {
-//        val db: SQLiteDatabase = this.writableDatabase
-//        val cv: ContentValues = ContentValues()
-//
-//        cv.put(QuestionColumn_TopicID, q.ID)
-//        cv.put(Column_Questions, q.Questions)
-//
-//        val success = db.insert(QuestionTableName, null, cv)
-//        db.close()
-//        return success != -1L
-//    }
-//
-//    fun addAdminAnswers(a : Answer): Boolean {
-//        val db: SQLiteDatabase = this.writableDatabase
-//        val cv: ContentValues = ContentValues()
-//
-//        cv.put(AnswerColumn_QuestionID, a.QuestionID)
-//        cv.put(Column_Answers, a.Answers)
-//        cv.put(AnswersColumn_IsCorrect, a.IsCorrect)
-//
-//        val success = db.insert(AnswerTableName, null, cv)
-//        db.close()
-//        return success != -1L
-//    }
-//}
+}

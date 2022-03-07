@@ -9,21 +9,21 @@
 
     <TextView
         android:id="@+id/txtActivityTitle"
-        android:text="Home"
-        android:textStyle="bold|normal"
-        android:textSize="30sp"
-        android:textColor="@color/btnColour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="Activities"
+        android:textColor="@color/btnColour"
+        android:textSize="30sp"
+        android:textStyle="bold|normal" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/txtActivityTitle"
-        android:layout_marginTop="170dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="150dp"
         android:layout_marginRight="20dp"
         android:columnCount="2"
         android:rowCount="3">
@@ -38,10 +38,10 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="8dp"
-            android:cardElevation="8dp"
-            app:cardCornerRadius="10dp"
             android:backgroundTint="@color/textColor"
-            android:clickable="true">
+            android:clickable="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -75,10 +75,10 @@
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
             android:layout_margin="8dp"
-            android:cardElevation="8dp"
-            app:cardCornerRadius="10dp"
             android:backgroundTint="@color/textColor"
-            android:clickable="true">
+            android:clickable="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"

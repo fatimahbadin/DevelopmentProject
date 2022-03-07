@@ -19,7 +19,7 @@ class Home : AppCompatActivity() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val imgMenuToggle = findViewById<ImageView>(R.id.imgMenuToggle)
         val navView = findViewById<NavigationView>(R.id.navDrawer)
-        val btnActivity = findViewById<CardView>(R.id.btnActivity)
+//        val btnActivity = findViewById<CardView>(R.id.btnActivity)
 
         navView.itemIconTintList = null
         imgMenuToggle.setOnClickListener{

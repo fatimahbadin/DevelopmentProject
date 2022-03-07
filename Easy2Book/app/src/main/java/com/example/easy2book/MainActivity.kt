@@ -24,17 +24,10 @@ class MainActivity : AppCompatActivity() {
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
         val txtForgotPW = findViewById<TextView>(R.id.txtForgotPW)
 
-        val myApp : App
         val dbHelper = DataBaseHelper(this)
-        val users = dbHelper.getAllUsers()
+        var userList = ArrayList<User>()
+        val u = dbHelper.getAllUsers()
 
-
-        myApp = App(this)
-        val usersArray: ArrayList<User>
-        usersArray = myApp.get_UserList()
-
-        val usernameInputL = findViewById<TextInputEditText>(R.id.txtUsername).toString()
-        val passwordInputL = findViewById<TextInputEditText>(R.id.txtPassword).toString()
 
         signUp.setOnClickListener {
             signUp.background = resources.getDrawable(R.drawable.switch_trcks)
@@ -47,26 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         login.setOnClickListener {
             signUp.background = null
-            signUp.setTextColor(resources.getColor(R.color.btnColour,null))
-            login.background = resources.getDrawable(R.drawable.switch_trcks)
-            signUpLayout.visibility = View.GONE
-            loginLayout.visibility = View.VISIBLE
-            login.setTextColor(resources.getColor(R.color.textColor, null))
-        }
-
-        btnLogin.setOnClickListener {
-//            for (i in usersArray) {
-//                if (i.Username == usernameInputL && i.Password == passwordInputL) {
-                    startActivity(Intent(this, Home::class.java))
-//                } else {
-//                    Toast.makeText(this, "Incorrect username and password", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-        }
-
-        btnSignUp.setOnClickListener {
-            signUp.background = null
-            signUp.setTextColor(resources.getColor(R.color.btnColour,null))
+            signUp.setTextColor(resources.getColor(R.color.btnColour, null))
             login.background = resources.getDrawable(R.drawable.switch_trcks)
             signUpLayout.visibility = View.GONE
             loginLayout.visibility = View.VISIBLE
@@ -83,5 +57,65 @@ class MainActivity : AppCompatActivity() {
             login.setTextColor(resources.getColor(R.color.btnColour, null))
         }
 
+        btnLogin.setOnClickListener {
+            val usernameInputL = findViewById<TextInputEditText>(R.id.txtUsername).text.toString()
+            val passwordInputL = findViewById<TextInputEditText>(R.id.txtPassword).text.toString()
+
+            userList.addAll(u)
+
+            if (usernameInputL.isNotEmpty() && passwordInputL.isNotEmpty()){
+                for (i in userList) {
+                    if (usernameInputL == i.Username && passwordInputL == i.Password){
+                        Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, Home::class.java))
+                    } else if (usernameInputL != i.Username || passwordInputL != i.Password) {
+                        Toast.makeText(this, "Username or password is incorrect.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Both fields must be filled in", Toast.LENGTH_SHORT).show()
+            }
+
+
+
+//            if (usernameInputL.isEmpty() || passwordInputL.isEmpty()){
+//                Toast.makeText(this, "Username and Password fields must be filled in.", Toast.LENGTH_SHORT).show()
+//            } else if (dbHelper.loginValid(usernameInputL, passwordInputL)) {
+//                Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
+//                startActivity(Intent(this, Home::class.java))
+//            } else {
+//                Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
+//            }
+        }
+
+        btnSignUp.setOnClickListener {
+            val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString()
+            val passwordInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword).text.toString()
+            val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString()
+
+//                for (i in userList) {
+                    if (usernameInputS != "" && passwordInputS != "" && emailInputS != ""){
+                        var un = usernameInputS
+                        var pw = passwordInputS
+                        var em = emailInputS
+
+                        var user = User(0, un, pw, em)
+
+                        if (dbHelper.addUser(user)) {
+                            Toast.makeText(this, "Account has been created", Toast.LENGTH_SHORT).show()
+                            signUp.background = null
+                            signUp.setTextColor(resources.getColor(R.color.btnColour,null))
+                            login.background = resources.getDrawable(R.drawable.switch_trcks)
+                            signUpLayout.visibility = View.GONE
+                            loginLayout.visibility = View.VISIBLE
+                            login.setTextColor(resources.getColor(R.color.textColor, null))
+                        } else {
+                            Toast.makeText(this, "Account already exits", Toast.LENGTH_SHORT).show()
+                        }
+ //                   }
+            }
+        }
+
     }
+
 }
