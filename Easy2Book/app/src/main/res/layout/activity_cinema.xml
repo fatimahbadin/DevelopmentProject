@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Cinema">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cinema"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="214dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

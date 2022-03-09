@@ -28,7 +28,6 @@
         android:columnCount="2"
         android:rowCount="3">
 
-
         <androidx.cardview.widget.CardView
             android:id="@+id/btnActivity"
             android:layout_width="wrap_content"
@@ -59,13 +58,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Person"
+                    android:text="Activity"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnTransport"
@@ -92,7 +90,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_transport" />
+                    android:src="@drawable/ic_person" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -47,6 +47,34 @@ class MainActivity : AppCompatActivity() {
             login.setTextColor(resources.getColor(R.color.textColor, null))
         }
 
+        btnSignUp.setOnClickListener {
+            val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString()
+            val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString()
+            val pwInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword).text.toString()
+
+            if (usernameInputS.isEmpty() && emailInputS.isEmpty() && pwInputS.isEmpty()) {
+                Toast.makeText(this, "All fields must be filled in", Toast.LENGTH_SHORT).show()
+            } else {
+                val newUser = User(0, usernameInputS, emailInputS, pwInputS)
+
+                val result = dbHelper.addUser(newUser)
+
+                when (result) {
+                    1 -> {
+                        Toast.makeText(this, "Account has been created! Please login now.", Toast.LENGTH_SHORT).show()
+                        signUp.background = null
+                        signUp.setTextColor(resources.getColor(R.color.btnColour,null))
+                        login.background = resources.getDrawable(R.drawable.switch_trcks)
+                        signUpLayout.visibility = View.GONE
+                        loginLayout.visibility = View.VISIBLE
+                        login.setTextColor(resources.getColor(R.color.textColor, null))
+                    }
+                    -3 ->
+                        Toast.makeText(this, "Account already exists", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
         txtForgotPW.setOnClickListener {
             Toast.makeText(this, "Please sign up again", Toast.LENGTH_SHORT).show()
             signUp.background = resources.getDrawable(R.drawable.switch_trcks)
@@ -75,7 +103,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Both fields must be filled in", Toast.LENGTH_SHORT).show()
             }
-
 
 
 //            if (usernameInputL.isEmpty() || passwordInputL.isEmpty()){

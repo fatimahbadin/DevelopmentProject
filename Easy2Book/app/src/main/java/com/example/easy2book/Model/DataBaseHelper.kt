@@ -132,7 +132,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return userList
     }
 
-    fun addUser(user : User) : Boolean {
+    fun addUser(user : User) : Int {
+        val nameExists = checkUserName(user)
+        if (nameExists < 0)
+            return nameExists
 
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
@@ -144,7 +147,39 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         val success  =  db.insert(UserTableName, null, cv)
 
         db.close()
-        return success != -1L
+
+        if (success.toInt() == -1) {
+            return success.toInt()
+        } else {
+            return 1
+        }
+    }
+
+    private fun checkUserName(user: User) : Int {
+        val db: SQLiteDatabase
+        try {
+            db = this.readableDatabase
+        } catch (e: SQLException) {
+            return -2
+        }
+
+        val username = user.Username.lowercase()
+
+        val sqlStatement = "SELECT * FROM $UserTableName WHERE $UserColumn_Username ==?"
+
+        val param = arrayOf(username)
+        val cursor: Cursor = db.rawQuery(sqlStatement, param)
+
+        if (cursor.moveToFirst()){
+            val a = cursor.getInt(0)
+            cursor.close()
+            db.close()
+            return -3
+        }
+
+        cursor.close()
+        db.close()
+        return 0
 
     }
 
