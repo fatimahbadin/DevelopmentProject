@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -24,19 +26,18 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val navController = Navigation.findNavController(this, R.id.fragment)
-//        NavigationUI.setupWithNavController(navView, navController)
-//
-//        val txtTitle = findViewById<TextView>(R.id.txtTitle)
-//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-//            txtTitle.text = destination.label
-//        }
+        view.findViewById<CardView>(R.id.btnActivity).setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.fragment, ActivityFragment()).commit()
+        }
+
+        view.findViewById<CardView>(R.id.btnTransport).setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.fragment, TransportFragment()).commit()
+      }
+
     }
 
     override fun onClick(v: View?) {
-//        btnActivity.setOnClickListener {
-//          setContentView(R.layout.fragment_activity)
-//      }
+        TODO("Not yet implemented")
     }
 
 }

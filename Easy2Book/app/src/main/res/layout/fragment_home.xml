@@ -28,6 +28,7 @@
         android:columnCount="2"
         android:rowCount="3">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/btnActivity"
             android:layout_width="wrap_content"
@@ -64,6 +65,7 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnTransport"

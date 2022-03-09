@@ -10,6 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easy2Book">
         <activity
+            android:name=".Transport.Bus"
+            android:exported="false" />
+        <activity
+            android:name=".Transport.Train"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Museum"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.Cinema"
+            android:exported="false" />
+        <activity
+            android:name=".Bus"
+            android:exported="false" />
+        <activity
+            android:name=".Train"
+            android:exported="false" />
+        <activity
+            android:name=".Museum"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

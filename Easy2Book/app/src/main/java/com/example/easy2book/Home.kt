@@ -9,6 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.example.easy2book.Nav.HomeFragment
 import com.google.android.material.navigation.NavigationView
 
 class Home : AppCompatActivity() {
@@ -20,6 +21,8 @@ class Home : AppCompatActivity() {
         val imgMenuToggle = findViewById<ImageView>(R.id.imgMenuToggle)
         val navView = findViewById<NavigationView>(R.id.navDrawer)
 //        val btnActivity = findViewById<CardView>(R.id.btnActivity)
+
+//        supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()
 
         navView.itemIconTintList = null
         imgMenuToggle.setOnClickListener{

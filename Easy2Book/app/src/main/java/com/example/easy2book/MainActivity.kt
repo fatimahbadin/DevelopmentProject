@@ -88,33 +88,38 @@ class MainActivity : AppCompatActivity() {
 //            }
         }
 
-        btnSignUp.setOnClickListener {
-            val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString()
-            val passwordInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword).text.toString()
-            val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString()
-
+//        btnSignUp.setOnClickListener {
+//            val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString()
+//            val passwordInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword).text.toString()
+//            val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString()
+//
+//            for (i in userList) {
+//                if (usernameInputS.toLowerCase() == i.Username.toLowerCase()){
+//                    Toast.makeText(this, "Account exists", Toast.LENGTH_SHORT).show()
+//                }
+//            }
 //                for (i in userList) {
-                    if (usernameInputS != "" && passwordInputS != "" && emailInputS != ""){
-                        var un = usernameInputS
-                        var pw = passwordInputS
-                        var em = emailInputS
-
-                        var user = User(0, un, pw, em)
-
-                        if (dbHelper.addUser(user)) {
-                            Toast.makeText(this, "Account has been created", Toast.LENGTH_SHORT).show()
-                            signUp.background = null
-                            signUp.setTextColor(resources.getColor(R.color.btnColour,null))
-                            login.background = resources.getDrawable(R.drawable.switch_trcks)
-                            signUpLayout.visibility = View.GONE
-                            loginLayout.visibility = View.VISIBLE
-                            login.setTextColor(resources.getColor(R.color.textColor, null))
-                        } else {
-                            Toast.makeText(this, "Account already exits", Toast.LENGTH_SHORT).show()
-                        }
+//                    if (usernameInputS != "" && passwordInputS != "" && emailInputS != ""){
+//                        var un = usernameInputS
+//                        var pw = passwordInputS
+//                        var em = emailInputS
+//
+//                        var user = User(0, un, pw, em)
+//
+//                        if (dbHelper.addUser(user)) {
+//                            Toast.makeText(this, "Account has been created", Toast.LENGTH_SHORT).show()
+//                            signUp.background = null
+//                            signUp.setTextColor(resources.getColor(R.color.btnColour,null))
+//                            login.background = resources.getDrawable(R.drawable.switch_trcks)
+//                            signUpLayout.visibility = View.GONE
+//                            loginLayout.visibility = View.VISIBLE
+//                            login.setTextColor(resources.getColor(R.color.textColor, null))
+//                        } else {
+//                            Toast.makeText(this, "Account already exits", Toast.LENGTH_SHORT).show()
+//                        }
  //                   }
-            }
-        }
+
+ //       }
 
     }
 
