@@ -7,7 +7,8 @@
         <entry key="app/src/main/res/drawable/switch_tumbs.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/toolbar_bg.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_bus.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_cinema.xml" value="0.14361702127659576" />
+        <entry key="app/src/main/res/layout/activity_cinema.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_confirmation_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23540489642184556" />
         <entry key="app/src/main/res/layout/activity_museum.xml" value="0.335" />

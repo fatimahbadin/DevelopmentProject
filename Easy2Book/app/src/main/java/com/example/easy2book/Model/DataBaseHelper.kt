@@ -21,43 +21,22 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val UserColumn_Password = "Password"
     public val UserColumn_Email = "Email"
 
-//    /****************************************/
-//
-//    /* Question table */
-//    public val QuestionTableName = "Questions"
-//    public val QuestionColumn_ID = "ID"
-//    public val QuestionColumn_TopicID = "TopicID"
-//    public val Column_Questions = "Questions"
-//    //public val QuestionColumn_Image = "Image"
-//
-//    /****************************************/
-//
-//    /* Answer table */
-//    public val AnswerTableName = "Answers"
-//    public val AnswerColumn_ID = "ID"
-//    public val AnswerColumn_QuestionID = "QuestionID"
-//    public val Column_Answers = "Answers"
-//    public val AnswersColumn_IsCorrect = "IsCorrect"
-//   /* public val AnswersColumn_IncorrectAnswer2 = "IncorrectAnswer2"
-//    public val AnswersColumn_IncorrectAnswer3 = "IncorrectAnswer3"
-//    public val AnswersColumn_IncorrectAnswer4 = "IncorrectAnswer4"*/
-//
-//    /****************************************/
-//
-//    public val StudentTableName = "Students"
-//    public val StudentColumn_ID = "ID"
-//    public val StudentColumn_Name = "Name"
-//    public val StudentColumn_Grade = "Grade"
-//    public val StudentColumn_DateTaken = "DateTaken"
-//
-//    /****************************************/
-//
-//    public val AdminTableName = "Admin"
-//    public val AdminColumn_ID = "ID"
-//    public val AdminColumn_AdminNumber = "AdminNumber"
-//    public val AdminColumn_Password = "Password"
-//
-//    /****************************************/
+   /****************************************/
+   /* Confirmation Details Table */
+    public val BookingDetailsTableName = "BookingDetails"
+    public val BookingDetailsColumn_ID = "ID"
+    public val BookingDetailsColumn_Activity = "Activity"
+    public val BookingDetailsColumn_TimeBooked = "TimeBooked"
+    public val BookingDetailsColumn_MovieName = "MovieName"
+    public val BookingDetailsColumn_Exhibition = "Exhibition"
+    public val BookingDetailsColumn_Transport = "Transport"
+    public val BookingDetailsColumn_LocationFrom = "LocationFrom"
+    public val BookingDetailsColumn_LocationTo = "LocationTo"
+    public val BookingDetailsColumn_DepartTime = "DepartTime"
+    public val BookingDetailsColumn_NoOfPeople = "NoOfPeople"
+
+    /****************************************/
+
 
     // This is called the first time a database is accessed
     // Create a new database
@@ -72,12 +51,16 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             db?.execSQL(sqlCreateStatement)
 
 
-//            sqlCreateStatement = "CREATE TABLE " + QuestionTableName + " ( " + QuestionColumn_ID +
-//                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + QuestionColumn_TopicID +
-//                    " INTEGER NOT NULL, " + Column_Questions + " TEXT ) "
-//                    //QuestionColumn_Image + " BLOB )"
-//
-//            db?.execSQL(sqlCreateStatement)
+            sqlCreateStatement = "CREATE TABLE " + BookingDetailsTableName + " ( " + BookingDetailsColumn_ID +
+                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + BookingDetailsColumn_Activity +
+                    " TEXT, " + BookingDetailsColumn_TimeBooked + " TEXT, " +
+                    BookingDetailsColumn_MovieName + " TEXT, " + BookingDetailsColumn_Exhibition +
+                    " TEXT, " + BookingDetailsColumn_Transport + " TEXT, " +
+                    BookingDetailsColumn_LocationFrom + " TEXT, " + BookingDetailsColumn_LocationTo +
+                    " TEXT, " + BookingDetailsColumn_DepartTime + " TEXT, " +
+                    BookingDetailsColumn_NoOfPeople + " INTEGER NOT NULL )"
+
+            db?.execSQL(sqlCreateStatement)
 //
 //            sqlCreateStatement = "CREATE TABLE " + AnswerTableName + " ( " + AnswerColumn_ID +
 //                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + AnswerColumn_QuestionID +
@@ -195,4 +178,27 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 //        }
 //        return false
 //    }
+
+    fun addConfirmDetails(confirmDetails : ConfirmDetails) : Boolean {
+
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv: ContentValues = ContentValues()
+
+        cv.put(BookingDetailsColumn_Activity, confirmDetails.Activity)
+        cv.put(BookingDetailsColumn_TimeBooked, confirmDetails.TimeBooked)
+        cv.put(BookingDetailsColumn_MovieName, confirmDetails.MovieName)
+        cv.put(BookingDetailsColumn_Exhibition, confirmDetails.Exhibition)
+        cv.put(BookingDetailsColumn_Transport, confirmDetails.Transport)
+        cv.put(BookingDetailsColumn_LocationFrom, confirmDetails.LocationFrom)
+        cv.put(BookingDetailsColumn_LocationTo, confirmDetails.LocationTo)
+        cv.put(BookingDetailsColumn_DepartTime, confirmDetails.DepartTime)
+        cv.put(BookingDetailsColumn_NoOfPeople, confirmDetails.NoOfPeople)
+
+
+        val success  =  db.insert(BookingDetailsTableName, null, cv)
+
+        db.close()
+        return success != -1L
+    }
+
 }
