@@ -7,10 +7,109 @@
     tools:context=".Activity.Cinema">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtMovies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cinema"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="214dp" />
+        android:text="Movies Showing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <RadioGroup
+        android:id="@+id/rdgMovies"
+        android:layout_width="383dp"
+        android:layout_height="114dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171">
+
+        <RadioButton
+            android:id="@+id/rdbtnMovie1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie 1 " />
+
+        <RadioButton
+            android:id="@+id/rdbtnMovie2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie 2 " />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtShowingTimes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Showing Time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgMovies"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <RadioGroup
+        android:id="@+id/rdgShowingTimes"
+        android:layout_width="383dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtShowingTimes"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/rdbtnSTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time 1 " />
+
+        <RadioButton
+            android:id="@+id/rdbtnSTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time 2 " />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtNoOfPeopleMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of People: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgShowingTimes"
+        app:layout_constraintVertical_bias="0.233" />
+
+    <EditText
+        android:id="@+id/etxtNoOfPeopleMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtNoOfPeopleMovie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleMovie" />
+
+    <Button
+        android:id="@+id/btnCinemaConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgShowingTimes"
+        app:layout_constraintVertical_bias="0.851" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Museum">
 
+    <TextView
+        android:id="@+id/txtMExhibits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exhibitions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <RadioGroup
+        android:id="@+id/rdgExhibits"
+        android:layout_width="383dp"
+        android:layout_height="114dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171">
+
+        <RadioButton
+            android:id="@+id/rdbtnExhibit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exhibit 1 " />
+
+        <RadioButton
+            android:id="@+id/rdbtnExhibit2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exhibit 2 " />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtVisitTimes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exhibit Viewing Times"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgExhibits"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <RadioGroup
+        android:id="@+id/rdgVisitTimes"
+        android:layout_width="383dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtVisitTimes"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/rdbtnVTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time 1 " />
+
+        <RadioButton
+            android:id="@+id/rdbtnVTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time 2 " />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtNoOfPeopleMuseum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of People: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgVisitTimes"
+        app:layout_constraintVertical_bias="0.233" />
+
+    <EditText
+        android:id="@+id/etxtNoOfPeopleMuseum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtNoOfPeopleMuseum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleMuseum" />
+
+    <Button
+        android:id="@+id/btnMuseumConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgVisitTimes"
+        app:layout_constraintVertical_bias="0.851" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

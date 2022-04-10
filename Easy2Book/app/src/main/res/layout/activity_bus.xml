@@ -27,12 +27,140 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/rdgDepartLocationBus"
+        android:layout_width="383dp"
+        android:layout_height="114dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171">
 
+        <RadioButton
+            android:id="@+id/rdbtnCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leicester City Centre " />
 
+        <RadioButton
+            android:id="@+id/rdbtnFosse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fosse Park " />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtArrivalLocationBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrival Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgDepartLocationBus"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <RadioGroup
+        android:id="@+id/rdgArrivalLocationBus"
+        android:layout_width="383dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtArrivalLocationBus"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/rdbtnArrCinema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cinema " />
+
+        <RadioButton
+            android:id="@+id/rdbtnArrMuseum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Museum " />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtDepartTimeBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Depart Time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgArrivalLocationBus"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <RadioGroup
+        android:id="@+id/rdgDepartTimeBus"
+        android:layout_width="374dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDepartTimeBus"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/rdbtnTime1Bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time 1 " />
+
+        <RadioButton
+            android:id="@+id/rdbtnTime2Bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time 2 " />
+
+        <RadioButton
+            android:id="@+id/rdbtnTime3Bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time 3 " />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtNoOfPeopleBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of People: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeBus"
+        app:layout_constraintVertical_bias="0.233" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtNoOfPeopleBus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleBus" />
+
+    <Button
+        android:id="@+id/btnBusConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeBus"
+        app:layout_constraintVertical_bias="0.851" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
