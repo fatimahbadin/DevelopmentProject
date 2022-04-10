@@ -144,7 +144,7 @@
         app:layout_constraintVertical_bias="0.233" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/etxtNoOfPeopleBus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -158,12 +158,26 @@
         android:id="@+id/btnBusConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="confirmBtn"
         android:text="Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeBus"
-        app:layout_constraintVertical_bias="0.851" />
+        app:layout_constraintVertical_bias="0.858" />
+
+    <Button
+        android:id="@+id/btnBackBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backBtn"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBusConfirm"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNoOfPeopleBus"
+        app:layout_constraintVertical_bias="0.777" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

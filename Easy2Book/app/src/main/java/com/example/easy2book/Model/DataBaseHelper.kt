@@ -58,7 +58,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     " TEXT, " + BookingDetailsColumn_Transport + " TEXT, " +
                     BookingDetailsColumn_LocationFrom + " TEXT, " + BookingDetailsColumn_LocationTo +
                     " TEXT, " + BookingDetailsColumn_DepartTime + " TEXT, " +
-                    BookingDetailsColumn_NoOfPeople + " INTEGER NOT NULL )"
+                    BookingDetailsColumn_NoOfPeople + " TEXT NOT NULL )"
 
             db?.execSQL(sqlCreateStatement)
 //
@@ -178,6 +178,37 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 //        }
 //        return false
 //    }
+
+    fun getAllConfirmDetails(): ArrayList<ConfirmDetails> {
+        val detailsList = ArrayList<ConfirmDetails>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $BookingDetailsTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val activity: String = cursor.getString(1)
+                val timeBooked: String = cursor.getString(2)
+                val movieName: String = cursor.getString(3)
+                val exhibition: String = cursor.getString(4)
+                val transport: String = cursor.getString(5)
+                val locationFrom: String = cursor.getString(6)
+                val locationTo: String = cursor.getString(7)
+                val departTime: String = cursor.getString(8)
+                val noOfPeople: String = cursor.getString(9)
+
+                val b = ConfirmDetails(id, activity, timeBooked, movieName, exhibition,
+                    transport, locationFrom, locationTo, departTime, noOfPeople)
+                detailsList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return detailsList
+    }
 
     fun addConfirmDetails(confirmDetails : ConfirmDetails) : Boolean {
 

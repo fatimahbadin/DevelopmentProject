@@ -144,12 +144,25 @@
         android:id="@+id/btnTrainConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="confirmBtn"
         android:text="Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeTrain"
         app:layout_constraintVertical_bias="0.851" />
+
+    <Button
+        android:id="@+id/btnBackTrain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="backBtn"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnTrainConfirm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNoOfPeopleTrain"
+        app:layout_constraintVertical_bias="0.777" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
