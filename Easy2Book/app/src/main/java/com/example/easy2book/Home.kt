@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
@@ -20,9 +19,6 @@ class Home : AppCompatActivity() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val imgMenuToggle = findViewById<ImageView>(R.id.imgMenuToggle)
         val navView = findViewById<NavigationView>(R.id.navDrawer)
-//        val btnActivity = findViewById<CardView>(R.id.btnActivity)
-
-//        supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()
 
         navView.itemIconTintList = null
         imgMenuToggle.setOnClickListener{
@@ -32,9 +28,9 @@ class Home : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.fragment)
         NavigationUI.setupWithNavController(navView, navController)
 
-        val txtTitle = findViewById<TextView>(R.id.txtTitle)
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            txtTitle.text = destination.label
-        }
+//        val txtTitle = findViewById<TextView>(R.id.txtTitle)
+//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+//            txtTitle.text = destination.label
+//        }
     }
 }

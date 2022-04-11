@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
-import com.example.easy2book.Activity.Museum
 import com.example.easy2book.R
 import com.example.easy2book.Transport.Bus
 import com.example.easy2book.Transport.Train

@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/travel_bg"
     android:id="@+id/drawerLayout"
     tools:context=".Home">
 
@@ -39,7 +38,7 @@
                 android:textStyle="bold|normal"
                 android:textSize="18sp"
                 android:layout_margin="15dp"
-                android:textColor="#0E38CF"
+                android:textColor="@color/btnColour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

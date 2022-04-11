@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import com.example.easy2book.Activity.Cinema
 import com.example.easy2book.Activity.Museum
-import com.example.easy2book.Home
 import com.example.easy2book.R
 
 class ActivityFragment : Fragment() {
