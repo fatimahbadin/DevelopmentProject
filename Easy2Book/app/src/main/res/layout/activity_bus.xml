@@ -7,36 +7,45 @@
     android:background="@drawable/travel_bg"
     tools:context=".Transport.Bus">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txtConfirmationTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:inputType="none"
-            android:text="Location From ... " />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <RadioGroup
-        android:id="@+id/rdgDepartLocationBus"
-        android:layout_width="378dp"
-        android:layout_height="92dp"
-        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:text="Bus Booking"
+        android:textColor="@color/btnColour"
+        android:textSize="30sp"
+        android:textStyle="bold|normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171">
+        app:layout_constraintVertical_bias="0.057" />
+
+    <TextView
+        android:id="@+id/txtLocationFromBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrival Location"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.192" />
+
+    <RadioGroup
+        android:id="@+id/rdgDepartLocationBus"
+        android:layout_width="316dp"
+        android:layout_height="62dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.264">
 
         <RadioButton
             android:id="@+id/rdbtnCity"
@@ -56,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Arrival Location"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -65,9 +75,10 @@
 
     <RadioGroup
         android:id="@+id/rdgArrivalLocationBus"
-        android:layout_width="372dp"
-        android:layout_height="85dp"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Depart Time"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -102,9 +114,10 @@
 
     <RadioGroup
         android:id="@+id/rdgDepartTimeBus"
-        android:layout_width="369dp"
-        android:layout_height="90dp"
+        android:layout_width="294dp"
+        android:layout_height="59dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,22 +150,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of People: "
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeBus"
-        app:layout_constraintVertical_bias="0.233" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <EditText
         android:id="@+id/etxtNoOfPeopleBus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="197dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtNoOfPeopleBus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleBus" />
 
     <Button
@@ -183,16 +197,14 @@
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
         android:onClick="backBtn"
-        android:text="Back"
+        android:text="Back Home"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnBusConfrim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939"
         app:shapeAppearanceOverlay="@style/Button5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

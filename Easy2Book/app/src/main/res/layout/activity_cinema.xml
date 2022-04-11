@@ -8,27 +8,44 @@
     tools:context=".Activity.Cinema">
 
     <TextView
+        android:id="@+id/txtConfirmationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Cinema Booking"
+        android:textColor="@color/btnColour"
+        android:textSize="30sp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <TextView
         android:id="@+id/txtMovies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Movies Showing"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.206" />
 
     <RadioGroup
         android:id="@+id/rdgMovies"
-        android:layout_width="383dp"
-        android:layout_height="114dp"
+        android:layout_width="287dp"
+        android:layout_height="60dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171">
+        app:layout_constraintVertical_bias="0.28">
 
         <RadioButton
             android:id="@+id/rdbtnMovie1"
@@ -48,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Showing Time"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -57,10 +75,11 @@
 
     <RadioGroup
         android:id="@+id/rdgShowingTimes"
-        android:layout_width="383dp"
-        android:layout_height="114dp"
-        android:orientation="horizontal"
+        android:layout_width="281dp"
+        android:layout_height="62dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of People: "
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
@@ -101,7 +121,6 @@
         android:minHeight="48dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtNoOfPeopleMovie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleMovie" />
 
     <Button
@@ -132,16 +151,14 @@
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
         android:onClick="backBtn"
-        android:text="Back"
+        android:text="Back Home"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnCinemaConfrim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939"
         app:shapeAppearanceOverlay="@style/Button5" />
 
 

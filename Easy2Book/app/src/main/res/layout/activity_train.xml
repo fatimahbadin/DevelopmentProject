@@ -8,27 +8,45 @@
     tools:context=".Transport.Train">
 
     <TextView
+        android:id="@+id/txtConfirmationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Train Booking"
+        android:textColor="@color/btnColour"
+        android:textSize="30sp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <TextView
         android:id="@+id/txtDepartLocationTrain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Depart Location"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.209" />
 
     <RadioGroup
         android:id="@+id/rdgDepartLocationTrain"
-        android:layout_width="383dp"
-        android:layout_height="114dp"
+        android:layout_width="262dp"
+        android:layout_height="76dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171">
+        app:layout_constraintVertical_bias="0.305">
 
         <RadioButton
             android:id="@+id/rdbtnBham"
@@ -48,19 +66,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Arrival Location"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdgDepartLocationTrain"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <RadioGroup
         android:id="@+id/rdgArrivalLocationTrain"
-        android:layout_width="383dp"
-        android:layout_height="114dp"
-        android:orientation="horizontal"
+        android:layout_width="134dp"
+        android:layout_height="66dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,19 +98,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Depart Time"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdgArrivalLocationTrain"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <RadioGroup
         android:id="@+id/rdgDepartTimeTrain"
-        android:layout_width="374dp"
-        android:layout_height="136dp"
-        android:orientation="horizontal"
+        android:layout_width="274dp"
+        android:layout_height="68dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
@@ -123,12 +144,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of People: "
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeTrain"
-        app:layout_constraintVertical_bias="0.233" />
+        app:layout_constraintVertical_bias="0.088" />
 
     <EditText
         android:id="@+id/etxtNoOfPeopleTrain"
@@ -138,7 +160,7 @@
         android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtNoOfPeopleTrain"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleTrain" />
 
     <Button
@@ -169,16 +191,14 @@
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
         android:onClick="backBtn"
-        android:text="Back"
+        android:text="Back Home"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnTrainConfrim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939"
         app:shapeAppearanceOverlay="@style/Button5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,25 +15,30 @@ class ConfirmationPage : AppCompatActivity() {
         val dbHelper = DataBaseHelper(this)
         val lastDetail = dbHelper.getAllConfirmDetails().last()
 
-        var txtActivity = findViewById<TextView>(R.id.txtActivityC)
-        var txtATime = findViewById<TextView>(R.id.txtATimeC)
-        var txtMovie = findViewById<TextView>(R.id.txtMovieC)
-        var txtExhibit = findViewById<TextView>(R.id.txtExhibitC)
-        var txtTransport = findViewById<TextView>(R.id.txtTransportC)
+        var txtActOrTrans = findViewById<TextView>(R.id.txtActOrTrans)
+        var txtTime = findViewById<TextView>(R.id.txtTimeC)
+        var txtMovOrEx = findViewById<TextView>(R.id.txtMovOrEx)
         var txtLocationFrom = findViewById<TextView>(R.id.txtLFromC)
         var txtLocationTo = findViewById<TextView>(R.id.txtLToC)
-        var txtDepartTime = findViewById<TextView>(R.id.txtDepartC)
         var txtNoOfPeople = findViewById<TextView>(R.id.txtNoOfPeopleC)
 
-        txtActivity.text = lastDetail.Activity
-        txtATime.text = lastDetail.TimeBooked
-        txtMovie.text = lastDetail.MovieName
-        txtExhibit.text = lastDetail.Exhibition
-        txtTransport.text = lastDetail.Transport
-        txtLocationFrom.text = lastDetail.LocationFrom
-        txtLocationTo.text = lastDetail.LocationTo
-        txtDepartTime.text = lastDetail.DepartTime
-        txtNoOfPeople.text = lastDetail.NoOfPeople
+        if (lastDetail.Transport == "" && lastDetail.Activity == "Cinema") {
+            txtActOrTrans.text = "Activity Booked: " + lastDetail.Activity
+            txtTime.text = "Time Booked: " + lastDetail.TimeBooked
+            txtMovOrEx.text = "Movie Name: " + lastDetail.MovieName
+            txtNoOfPeople.text = "Number of People Booked: " + lastDetail.NoOfPeople
+        } else if (lastDetail.Transport == "" && lastDetail.Activity == "Museum") {
+            txtActOrTrans.text = "Activity Booked: " + lastDetail.Activity
+            txtTime.text = "Time Booked: " + lastDetail.TimeBooked
+            txtMovOrEx.text = "Exhibit Booked: " + lastDetail.Exhibition
+            txtNoOfPeople.text = "Number of People Booked: " + lastDetail.NoOfPeople
+        } else if (lastDetail.Activity == "") {
+            txtActOrTrans.text = "Transport Booked: " + lastDetail.Transport
+            txtLocationFrom.text = "Location From: " + lastDetail.LocationFrom
+            txtLocationTo.text = "Location To: " + lastDetail.LocationTo
+            txtTime.text = "Depart Time: " + lastDetail.DepartTime
+            txtNoOfPeople.text = "Number of People Booked: " + lastDetail.NoOfPeople
+        }
     }
 
     fun backBtn (view: View) {
