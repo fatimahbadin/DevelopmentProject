@@ -57,7 +57,7 @@ class Train : AppCompatActivity() {
             Toast.makeText(this, "Please select a depart time", Toast.LENGTH_SHORT).show()
         }
 
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleTrain).toString()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleTrain).text.toString()
         if (noOfpeople != "" && (rdbtnTime1Train.isChecked || rdbtnTime2Train.isChecked || rdbtnTime3Train.isChecked)
             && rdbtnArrLeicester.isChecked && (rdbtnBham.isChecked || rdbtnLough.isChecked)
         ) {

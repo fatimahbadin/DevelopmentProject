@@ -25,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         val txtForgotPW = findViewById<TextView>(R.id.txtForgotPW)
 
         val dbHelper = DataBaseHelper(this)
-        var userList = ArrayList<User>()
-        val u = dbHelper.getAllUsers()
 
 
         signUp.setOnClickListener {
@@ -55,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             if (usernameInputS.isEmpty() && emailInputS.isEmpty() && pwInputS.isEmpty()) {
                 Toast.makeText(this, "All fields must be filled in", Toast.LENGTH_SHORT).show()
             } else {
-                val newUser = User(0, usernameInputS, emailInputS, pwInputS)
+                val newUser = User(0, usernameInputS, pwInputS, emailInputS)
 
                 val result = dbHelper.addUser(newUser)
 
@@ -86,28 +84,39 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLogin.setOnClickListener {
+
+            var userList = ArrayList<User>()
+            val u = dbHelper.getAllUsers()
+
             val usernameInputL = findViewById<TextInputEditText>(R.id.txtUsername).text.toString()
             val passwordInputL = findViewById<TextInputEditText>(R.id.txtPassword).text.toString()
 
             userList.addAll(u)
 
-            if (usernameInputL.isNotEmpty() && passwordInputL.isNotEmpty()){
+            if (usernameInputL != "" && passwordInputL != "")
                 for (i in userList) {
-                    if (usernameInputL == i.Username && passwordInputL == i.Password){
+                    if (usernameInputL == i.Username && passwordInputL == i.Password) {
                         Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, Home::class.java))
                     } else if (usernameInputL != i.Username || passwordInputL != i.Password) {
-                        Toast.makeText(this, "Username or password is incorrect.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
                     }
-                }
-            } else {
+                } else {
                 Toast.makeText(this, "Both fields must be filled in", Toast.LENGTH_SHORT).show()
             }
+
+//                    } else if (usernameInputL != i.Username) {
+//                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
+//                    } else if (passwordInputL != i.Password) {
+//                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
+//                    }
 
 
 //            if (usernameInputL.isEmpty() || passwordInputL.isEmpty()){
 //                Toast.makeText(this, "Username and Password fields must be filled in.", Toast.LENGTH_SHORT).show()
-//            } else if (dbHelper.loginValid(usernameInputL, passwordInputL)) {
+//            } else
+//
+//            if (dbHelper.loginValid(usernameInputL, passwordInputL)) {
 //                Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
 //                startActivity(Intent(this, Home::class.java))
 //            } else {

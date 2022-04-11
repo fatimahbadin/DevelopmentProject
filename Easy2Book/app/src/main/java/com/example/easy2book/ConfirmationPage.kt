@@ -22,6 +22,7 @@ class ConfirmationPage : AppCompatActivity() {
         var txtTransport = findViewById<TextView>(R.id.txtTransportC)
         var txtLocationFrom = findViewById<TextView>(R.id.txtLFromC)
         var txtLocationTo = findViewById<TextView>(R.id.txtLToC)
+        var txtDepartTime = findViewById<TextView>(R.id.txtDepartC)
         var txtNoOfPeople = findViewById<TextView>(R.id.txtNoOfPeopleC)
 
         txtActivity.text = lastDetail.Activity
@@ -31,6 +32,7 @@ class ConfirmationPage : AppCompatActivity() {
         txtTransport.text = lastDetail.Transport
         txtLocationFrom.text = lastDetail.LocationFrom
         txtLocationTo.text = lastDetail.LocationTo
+        txtDepartTime.text = lastDetail.DepartTime
         txtNoOfPeople.text = lastDetail.NoOfPeople
     }
 

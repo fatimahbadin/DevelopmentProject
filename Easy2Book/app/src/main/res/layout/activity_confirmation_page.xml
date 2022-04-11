@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/travel_bg"
     tools:context=".ConfirmationPage">
 
     <TextView
@@ -142,11 +143,18 @@
         android:id="@+id/btnBackC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="backBtn"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/btnColour"
+        android:elevation="15dp"
         android:text="Back Home"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
+        app:layout_constraintVertical_bias="0.859"
+        app:shapeAppearanceOverlay="@style/Button5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

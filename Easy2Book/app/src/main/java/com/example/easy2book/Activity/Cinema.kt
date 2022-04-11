@@ -46,7 +46,7 @@ class Cinema : AppCompatActivity() {
             Toast.makeText(this, "Please select a time", Toast.LENGTH_SHORT).show()
         }
 
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).toString()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
         if (noOfpeople != "" && (rdbtnSTime1.isChecked || rdbtnSTime2.isChecked)
             && (rdbtnMovie1.isChecked || rdbtnMovie2.isChecked)) {
 

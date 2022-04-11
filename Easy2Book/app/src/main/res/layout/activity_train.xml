@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/travel_bg"
     tools:context=".Transport.Train">
 
     <TextView
@@ -141,28 +142,41 @@
         app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleTrain" />
 
     <Button
-        android:id="@+id/btnTrainConfirm"
+        android:id="@+id/btnTrainConfrim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="confirmBtn"
-        android:text="Confirm"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/btnColour"
+        android:elevation="15dp"
+        android:text="Confrim"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeTrain"
-        app:layout_constraintVertical_bias="0.851" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939"
+        app:shapeAppearanceOverlay="@style/Button5" />
 
     <Button
         android:id="@+id/btnBackTrain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="backBtn"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/btnColour"
+        android:elevation="15dp"
         android:text="Back"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnTrainConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNoOfPeopleTrain"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939"
+        app:shapeAppearanceOverlay="@style/Button5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

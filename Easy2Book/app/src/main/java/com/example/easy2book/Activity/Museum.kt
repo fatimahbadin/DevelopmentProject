@@ -45,7 +45,7 @@ class Museum : AppCompatActivity() {
             Toast.makeText(this, "Please select a time", Toast.LENGTH_SHORT).show()
         }
 
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).toString()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).text.toString()
         if (noOfpeople != "" && (rdbtnVTime1.isChecked || rdbtnVTime2.isChecked)
             && (exhibit1.isChecked || exhibit2.isChecked)
         ) {

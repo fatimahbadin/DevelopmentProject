@@ -166,18 +166,19 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
     }
 
-//    fun loginValid(un: String, pw: String): Boolean {
-//        val db: SQLiteDatabase = this.readableDatabase
-//        val cursor: Cursor = db.rawQuery("SELECT * FROM " + UserTableName +
-//                " WHERE $UserColumn_Username=? AND $UserColumn_Password=?", arrayOf(un, pw))
-//
-//        if (cursor != null) {
-//            if (cursor.count > 0) {
-//                return true
-//            }
-//        }
-//        return false
-//    }
+    fun loginValid(un: String, pw: String): Boolean {
+        val db: SQLiteDatabase = this.readableDatabase
+        val cursor: Cursor = db.rawQuery("SELECT * FROM " + UserTableName +
+                " WHERE $UserColumn_Username=? AND $UserColumn_Password=?", arrayOf(un, pw))
+
+        if (cursor != null) {
+            if (cursor.count > 0) {
+                return true
+            }
+        }
+        return false
+    }
+
 
     fun getAllConfirmDetails(): ArrayList<ConfirmDetails> {
         val detailsList = ArrayList<ConfirmDetails>()

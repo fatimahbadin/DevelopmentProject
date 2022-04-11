@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/travel_bg"
     tools:context=".Transport.Bus">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -155,29 +156,41 @@
         app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleBus" />
 
     <Button
-        android:id="@+id/btnBusConfirm"
+        android:id="@+id/btnBusConfrim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="confirmBtn"
-        android:text="Confirm"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/btnColour"
+        android:elevation="15dp"
+        android:text="Confrim"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdgDepartTimeBus"
-        app:layout_constraintVertical_bias="0.858" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939"
+        app:shapeAppearanceOverlay="@style/Button5" />
 
     <Button
         android:id="@+id/btnBackBus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="backBtn"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/btnColour"
+        android:elevation="15dp"
         android:text="Back"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnBusConfirm"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNoOfPeopleBus"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939"
+        app:shapeAppearanceOverlay="@style/Button5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

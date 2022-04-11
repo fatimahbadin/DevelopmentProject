@@ -61,7 +61,7 @@ class Bus : AppCompatActivity() {
             Toast.makeText(this, "Please select a depart time", Toast.LENGTH_SHORT).show()
         }
 
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).toString()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).text.toString()
         if (noOfpeople != "" && (rdbtnTime1Bus.isChecked || rdbtnTime2Bus.isChecked || rdbtnTime3Bus.isChecked)
             && (rdbtnArrCinema.isChecked || rdbtnArrMuseum.isChecked) && (rdbtnCity.isChecked || rdbtnFosse.isChecked)
         ) {
