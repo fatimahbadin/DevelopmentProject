@@ -9,14 +9,14 @@
 
     <TextView
         android:id="@+id/txtTransportTitle"
-        android:text="Transport"
-        android:textStyle="bold|normal"
-        android:textSize="30sp"
-        android:textColor="@color/btnColour"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Transport"
+        android:textColor="@color/btnColour"
+        android:textSize="30sp"
+        android:textStyle="bold|normal" />
 
     <GridLayout
         android:layout_width="match_parent"
