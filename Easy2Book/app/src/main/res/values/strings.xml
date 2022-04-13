@@ -4,4 +4,36 @@
     <string name="sign_up">Sign Up</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="back_home">Back Home</string>
+    <string name="leicester_city_centre">Leicester City Centre</string>
+    <string name="fosse_park">Fosse Park</string>
+    <string name="arrival_location">Arrival Location</string>
+    <string name="cinema">Cinema</string>
+    <string name="museum">Museum</string>
+    <string name="depart_time">Depart Time</string>
+    <string name="time_1">Time 1</string>
+    <string name="time_2">Time 2</string>
+    <string name="time_3">Time 3</string>
+    <string name="number_of_people">Number of People:</string>
+    <string name="bus_booking">Bus Booking</string>
+    <string name="confrim">Confrim</string>
+    <string name="movies_showing">Movies Showing</string>
+    <string name="movie_1">Movie 1</string>
+    <string name="movie_2">Movie 2</string>
+    <string name="showing_time">Showing Time</string>
+    <string name="cinema_booking">Cinema Booking</string>
+    <string name="exhibitions">Exhibitions</string>
+    <string name="exhibit_1">Exhibit 1</string>
+    <string name="exhibit_2">Exhibit 2</string>
+    <string name="exhibit_viewing_times">Exhibit Viewing Times</string>
+    <string name="museum_booking">Museum Booking</string>
+    <string name="depart_location">Depart Location</string>
+    <string name="birmingham">Birmingham</string>
+    <string name="loughborough">Loughborough</string>
+    <string name="leicester">Leicester</string>
+    <string name="train_booking">Train Booking</string>
+    <string name="date">Date:</string>
 </resources>

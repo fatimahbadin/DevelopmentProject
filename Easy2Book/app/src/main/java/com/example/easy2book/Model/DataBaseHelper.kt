@@ -5,8 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.easy2book.Nav.ProfileFragment
 
 /* Data config */
 private val DataBaseName = "Easy2BookDatabase.db"
@@ -22,9 +22,12 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val UserColumn_Email = "Email"
 
    /****************************************/
+
    /* Confirmation Details Table */
     public val BookingDetailsTableName = "BookingDetails"
     public val BookingDetailsColumn_ID = "ID"
+    public val BookingDetailsColumn_Username = "Username"
+    public val BookingDetailsColumn_Email = "Email"
     public val BookingDetailsColumn_Activity = "Activity"
     public val BookingDetailsColumn_TimeBooked = "TimeBooked"
     public val BookingDetailsColumn_MovieName = "MovieName"
@@ -34,55 +37,61 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val BookingDetailsColumn_LocationTo = "LocationTo"
     public val BookingDetailsColumn_DepartTime = "DepartTime"
     public val BookingDetailsColumn_NoOfPeople = "NoOfPeople"
+    public val BookingDetailsColumn_Date = "Date"
+
+    /****************************************/
+
+    /* User Logged Table */
+    public val UserLoggedTableName = "UserLogged"
+    public val UserLoggedColumn_ID = "ID"
+    public val UserLoggedColumn_Username = "Username"
+    public val UserLoggedColumn_Password = "Password"
+    public val UserLoggedColumn_Email = "Email"
 
     /****************************************/
 
 
     // This is called the first time a database is accessed
-    // Create a new database
     override fun onCreate(db: SQLiteDatabase?) {
         try {
             var sqlCreateStatement: String =
-                "CREATE TABLE " + UserTableName + " ( " + UserColumn_ID +
-                        " INTEGER PRIMARY KEY AUTOINCREMENT, " + UserColumn_Username + " TEXT NOT NULL, " +
-                        UserColumn_Username + " TEXT NOT NULL, " + UserColumn_Password + " TEXT NOT NULL, " +
+                "CREATE TABLE " + UserTableName + " ( " +
+                        UserColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        UserColumn_Username + " TEXT NOT NULL, " +
+                        UserColumn_Password + " TEXT NOT NULL, " +
                         UserColumn_Email + " TEXT NOT NULL )"
 
             db?.execSQL(sqlCreateStatement)
 
 
-            sqlCreateStatement = "CREATE TABLE " + BookingDetailsTableName + " ( " + BookingDetailsColumn_ID +
-                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + BookingDetailsColumn_Activity +
-                    " TEXT, " + BookingDetailsColumn_TimeBooked + " TEXT, " +
-                    BookingDetailsColumn_MovieName + " TEXT, " + BookingDetailsColumn_Exhibition +
-                    " TEXT, " + BookingDetailsColumn_Transport + " TEXT, " +
-                    BookingDetailsColumn_LocationFrom + " TEXT, " + BookingDetailsColumn_LocationTo +
-                    " TEXT, " + BookingDetailsColumn_DepartTime + " TEXT, " +
-                    BookingDetailsColumn_NoOfPeople + " TEXT NOT NULL )"
+            sqlCreateStatement = "CREATE TABLE " + BookingDetailsTableName + " ( " +
+                    BookingDetailsColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    BookingDetailsColumn_Username + " TEXT NOT NULL " +
+                    BookingDetailsColumn_Email + " TEXT NOT NULL" +
+                    BookingDetailsColumn_Activity + " TEXT, " +
+                    BookingDetailsColumn_TimeBooked + " TEXT, " +
+                    BookingDetailsColumn_MovieName + " TEXT, " +
+                    BookingDetailsColumn_Exhibition + " TEXT, " +
+                    BookingDetailsColumn_Transport + " TEXT, " +
+                    BookingDetailsColumn_LocationFrom + " TEXT, " +
+                    BookingDetailsColumn_LocationTo + " TEXT, " +
+                    BookingDetailsColumn_DepartTime + " TEXT, " +
+                    BookingDetailsColumn_NoOfPeople + " TEXT NOT NULL, " +
+                    BookingDetailsColumn_Date + " TEXT NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
-//
-//            sqlCreateStatement = "CREATE TABLE " + AnswerTableName + " ( " + AnswerColumn_ID +
-//                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + AnswerColumn_QuestionID +
-//                    " INTEGER NOT NULL, " + Column_Answers + " TEXT NOT NULL, " +
-//                    AnswersColumn_IsCorrect + " INTEGER NOT NULL )"
-//
-//            db?.execSQL(sqlCreateStatement)
-//
-//            sqlCreateStatement = "CREATE TABLE " + StudentTableName + " ( " + StudentColumn_ID +
-//                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + StudentTableName + " TEXT NOT NULL, " +
-//                    StudentColumn_Grade + " INTEGER NOT NULL, " + StudentColumn_DateTaken +
-//                    " TEXT NOT NULL )"
-//
-//            db?.execSQL(sqlCreateStatement)
-//
-//            sqlCreateStatement = "CREATE TABLE " + AdminTableName + " ( " + AdminColumn_ID +
-//                    " INTEGER PRIMARY KEY AUTOINCREMENT, " + AdminColumn_AdminNumber + " INTEGER NOT NULL, " +
-//                    AdminColumn_Password + " INTEGER NOT NULL )"
-//
-//            db?.execSQL(sqlCreateStatement)
+
+
+            sqlCreateStatement = "CREATE TABLE " + UserLoggedTableName + " ( " +
+                    UserLoggedColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    UserLoggedColumn_Username + " TEXT NOT NULL, " +
+                    UserLoggedColumn_Password + " TEXT NOT NULL, " +
+                    UserLoggedColumn_Email + " TEXT NOT NULL )"
+
+            db?.execSQL(sqlCreateStatement)
 
         } catch (e: SQLException) {
+
         }
 
     }
@@ -92,6 +101,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         TODO("Not yet implemented")
     }
 
+//  functions for the user table
     fun getAllUsers(): ArrayList<User> {
         val userList = ArrayList<User>()
         val db: SQLiteDatabase = this.readableDatabase
@@ -180,6 +190,46 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     }
 
 
+//  functions for the userLogged table
+    fun getAllLoggedUsers(): ArrayList<UserLogged> {
+        val userLoggedList = ArrayList<UserLogged>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $UserLoggedTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val username: String = cursor.getString(1)
+                val password: String = cursor.getString(2)
+                val email: String = cursor.getString(3)
+                val b = UserLogged(id, username, password, email)
+                userLoggedList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return userLoggedList
+    }
+
+    fun addLoggedUser(userL : UserLogged) : Boolean {
+
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv: ContentValues = ContentValues()
+
+        cv.put(UserColumn_Username, userL.Username)
+        cv.put(UserColumn_Password, userL.Password)
+        cv.put(UserColumn_Email, userL.Email)
+
+        val success  =  db.insert(UserLoggedTableName, null, cv)
+
+        db.close()
+        return success != -1L
+    }
+
+//  functions for the booking details table
     fun getAllConfirmDetails(): ArrayList<ConfirmDetails> {
         val detailsList = ArrayList<ConfirmDetails>()
         val db: SQLiteDatabase = this.readableDatabase
@@ -190,18 +240,22 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         if (cursor.moveToFirst())
             do {
                 val id: Int = cursor.getInt(0)
-                val activity: String = cursor.getString(1)
-                val timeBooked: String = cursor.getString(2)
-                val movieName: String = cursor.getString(3)
-                val exhibition: String = cursor.getString(4)
-                val transport: String = cursor.getString(5)
-                val locationFrom: String = cursor.getString(6)
-                val locationTo: String = cursor.getString(7)
-                val departTime: String = cursor.getString(8)
-                val noOfPeople: String = cursor.getString(9)
+                val username: String = cursor.getString(1)
+                val email: String = cursor.getString(2)
+                val activity: String = cursor.getString(3)
+                val timeBooked: String = cursor.getString(4)
+                val movieName: String = cursor.getString(5)
+                val exhibition: String = cursor.getString(6)
+                val transport: String = cursor.getString(7)
+                val locationFrom: String = cursor.getString(8)
+                val locationTo: String = cursor.getString(9)
+                val departTime: String = cursor.getString(10)
+                val noOfPeople: String = cursor.getString(11)
+                val date: String = cursor.getString(12)
 
-                val b = ConfirmDetails(id, activity, timeBooked, movieName, exhibition,
-                    transport, locationFrom, locationTo, departTime, noOfPeople)
+                val b = ConfirmDetails(id, username, email, activity, timeBooked,
+                    movieName, exhibition, transport, locationFrom, locationTo,
+                    departTime, noOfPeople, date)
                 detailsList.add(b)
             } while (cursor.moveToNext())
 
@@ -216,6 +270,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
+        cv.put(BookingDetailsColumn_Username, confirmDetails.Username)
+        cv.put(BookingDetailsColumn_Email, confirmDetails.Email)
         cv.put(BookingDetailsColumn_Activity, confirmDetails.Activity)
         cv.put(BookingDetailsColumn_TimeBooked, confirmDetails.TimeBooked)
         cv.put(BookingDetailsColumn_MovieName, confirmDetails.MovieName)
@@ -225,6 +281,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         cv.put(BookingDetailsColumn_LocationTo, confirmDetails.LocationTo)
         cv.put(BookingDetailsColumn_DepartTime, confirmDetails.DepartTime)
         cv.put(BookingDetailsColumn_NoOfPeople, confirmDetails.NoOfPeople)
+        cv.put(BookingDetailsColumn_Date, confirmDetails.Date)
 
 
         val success  =  db.insert(BookingDetailsTableName, null, cv)

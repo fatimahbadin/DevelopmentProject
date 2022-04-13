@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.cardview.widget.CardView
-import com.example.easy2book.Model.App
-import com.example.easy2book.Model.DataBaseHelper
-import com.example.easy2book.Model.User
+import com.example.easy2book.Model.*
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
@@ -93,17 +90,42 @@ class MainActivity : AppCompatActivity() {
 
             userList.addAll(u)
 
-            if (usernameInputL != "" && passwordInputL != "")
-                for (i in userList) {
-                    if (usernameInputL == i.Username && passwordInputL == i.Password) {
-                        Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, Home::class.java))
-                    } else if (usernameInputL != i.Username || passwordInputL != i.Password) {
-                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                Toast.makeText(this, "Both fields must be filled in", Toast.LENGTH_SHORT).show()
+            var email = ""
+            for (i in userList) {
+                if (usernameInputL == i.Username) {
+                    email = i.Email
+                }
             }
+
+            if (dbHelper.loginValid(usernameInputL, passwordInputL)) {
+                var userLogged = UserLogged(0, usernameInputL, passwordInputL, email)
+                if (dbHelper.addLoggedUser(userLogged)) {
+                    Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, Home::class.java))
+                } else {
+                    Toast.makeText(this, "Not Added", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
+            }
+//
+//            if (usernameInputL != "" && passwordInputL != "")
+//                for (i in userList) {
+//                    if (usernameInputL == i.Username && usernameInputL == i.Password) {
+//                        var userLogged = UserLogged(0, usernameInputL, passwordInputL,
+//                            "@"
+//                        )
+//
+//                        if (dbHelper.addLoggedUser(userLogged)) {
+//                            Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
+//                            startActivity(Intent(this, Home::class.java))
+//                        }
+//                    } else if (usernameInputL != i.Username || passwordInputL != i.Password) {
+//                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
+//                    }
+//                } else {
+//                Toast.makeText(this, "Both fields must be filled in", Toast.LENGTH_SHORT).show()
+//            }
 
 //                    } else if (usernameInputL != i.Username) {
 //                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
@@ -115,13 +137,15 @@ class MainActivity : AppCompatActivity() {
 //            if (usernameInputL.isEmpty() || passwordInputL.isEmpty()){
 //                Toast.makeText(this, "Username and Password fields must be filled in.", Toast.LENGTH_SHORT).show()
 //            } else
-//
-//            if (dbHelper.loginValid(usernameInputL, passwordInputL)) {
+
+//            var userLogged = UserLogged(0, usernameInputL, passwordInputL, "@")
+//            if (dbHelper.addLoggedUser(userLogged)) {
 //                Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
 //                startActivity(Intent(this, Home::class.java))
 //            } else {
-//                Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Not Added", Toast.LENGTH_SHORT).show()
 //            }
+//
         }
 
 //        btnSignUp.setOnClickListener {

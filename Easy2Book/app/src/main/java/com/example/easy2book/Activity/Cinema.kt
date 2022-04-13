@@ -6,19 +6,24 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
-import android.widget.TextView
 import android.widget.Toast
 import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
 import com.example.easy2book.Model.ConfirmDetails
 import com.example.easy2book.Model.DataBaseHelper
-import com.example.easy2book.Nav.ActivityFragment
 import com.example.easy2book.R
 
 class Cinema : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cinema)
+//
+//        val rdbtnMovie1 = findViewById<RadioButton>(R.id.rdbtnMovie1)
+//        val rdbtnMovie2 = findViewById<RadioButton>(R.id.rdbtnMovie2)
+//
+//        val rdbtnSTime1 = findViewById<RadioButton>(R.id.rdbtnSTime1)
+//        val rdbtnSTime2 = findViewById<RadioButton>(R.id.rdbtnSTime2)
+
     }
 
     fun confirmBtn (view: View) {
@@ -46,12 +51,21 @@ class Cinema : AppCompatActivity() {
             Toast.makeText(this, "Please select a time", Toast.LENGTH_SHORT).show()
         }
 
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
-        if (noOfpeople != "" && (rdbtnSTime1.isChecked || rdbtnSTime2.isChecked)
-            && (rdbtnMovie1.isChecked || rdbtnMovie2.isChecked)) {
+        //INCLUDE CAPACITYYYY!!!
 
-            var confirmDetails = ConfirmDetails(0, "Cinema", showTime, movieName,
-                "", "", "", "", "", noOfpeople)
+        val dateC = findViewById<EditText>(R.id.etxtDateCinema).text.toString()
+
+        val lastUserL = dbHelper.getAllLoggedUsers().last()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
+        if (noOfpeople != "" && dateC != "" &&
+            (rdbtnSTime1.isChecked || rdbtnSTime2.isChecked) &&
+            (rdbtnMovie1.isChecked || rdbtnMovie2.isChecked)) {
+
+            var confirmDetails = ConfirmDetails(
+                0, lastUserL.Username, lastUserL.Email,
+                "Cinema", showTime, movieName, "", "",
+                "", "", "", noOfpeople, dateC
+            )
 
             if(dbHelper.addConfirmDetails(confirmDetails)) {
                 Toast.makeText(this, "Details Added", Toast.LENGTH_SHORT).show()

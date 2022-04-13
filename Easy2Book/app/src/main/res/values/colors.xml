@@ -10,5 +10,6 @@
 
     <color name="textColor">#c4d9ef</color>
     <color name="btnColour">#758f9e</color>
+    <color name="darkerColour">#FF61737E</color>
     <color name="transparentColor">#00FFFFFF</color>
 </resources>

@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Cinema Booking"
+        android:text="@string/cinema_booking"
         android:textColor="@color/btnColour"
         android:textSize="30sp"
         android:textStyle="bold|normal"
@@ -22,106 +22,182 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.057" />
 
-    <TextView
-        android:id="@+id/txtMovies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Movies Showing"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206" />
-
-    <RadioGroup
-        android:id="@+id/rdgMovies"
-        android:layout_width="287dp"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:orientation="horizontal"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewDetails"
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        android:layout_row="0"
+        android:layout_rowWeight="10"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/textColor"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/rdbtnMovie1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Movie 1 " />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/rdbtnMovie2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Movie 2 " />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/txtMovies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movies_showing"
+                android:textSize="18sp"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.206" />
 
-    <TextView
-        android:id="@+id/txtShowingTimes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Showing Time"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdgMovies"
-        app:layout_constraintVertical_bias="0.043" />
+            <RadioGroup
+                android:id="@+id/rdgMovies"
+                android:layout_width="287dp"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.28">
 
-    <RadioGroup
-        android:id="@+id/rdgShowingTimes"
-        android:layout_width="281dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtShowingTimes"
-        app:layout_constraintVertical_bias="0.0">
+                <RadioButton
+                    android:id="@+id/rdbtnMovie1"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/movie_1" />
 
-        <RadioButton
-            android:id="@+id/rdbtnSTime1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time 1 " />
+                <RadioButton
+                    android:id="@+id/rdbtnMovie2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/movie_2" />
+            </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/rdbtnSTime2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time 2 " />
-    </RadioGroup>
+            <View
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:background="@color/btnColour" />
 
-    <TextView
-        android:id="@+id/txtNoOfPeopleMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number of People: "
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdgShowingTimes"
-        app:layout_constraintVertical_bias="0.233" />
+            <TextView
+                android:id="@+id/txtShowingTimes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/showing_time"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.043" />
 
-    <EditText
-        android:id="@+id/etxtNoOfPeopleMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtNoOfPeopleMovie"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtNoOfPeopleMovie" />
+            <RadioGroup
+                android:id="@+id/rdgShowingTimes"
+                android:layout_width="281dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <RadioButton
+                    android:id="@+id/rdbtnSTime1"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_1" />
+
+                <RadioButton
+                    android:id="@+id/rdbtnSTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_2" />
+            </RadioGroup>
+
+            <View
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:background="@color/btnColour" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtNoOfPeopleMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/number_of_people"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.061"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="0.233" />
+
+                <EditText
+                    android:id="@+id/etxtNoOfPeopleMovie"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:layout_margin="15dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:background="@color/btnColour" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/txtDateCinema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date: "
+                    android:textSize="18sp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginStart="25dp"/>
+
+                <EditText
+                    android:id="@+id/etxtDateCinema"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:inputType="date" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnCinemaConfrim"
@@ -131,16 +207,16 @@
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
         android:onClick="confirmBtn"
-        android:text="Confrim"
+        android:text="@string/confrim"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.939"
+        app:layout_constraintVertical_bias="0.936"
         app:shapeAppearanceOverlay="@style/Button5" />
 
     <Button
@@ -151,13 +227,13 @@
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
         android:onClick="backBtn"
-        android:text="Back Home"
+        android:text="@string/back_home"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         android:textSize="17sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnCinemaConfrim"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintHorizontal_bias="0.193"
         app:layout_constraintStart_toStartOf="parent"
         app:shapeAppearanceOverlay="@style/Button5" />
 

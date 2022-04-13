@@ -23,7 +23,7 @@
 
             <TextView
                 android:text="My"
-                android:textColor="@color/black"
+                android:textColor="@color/textColor"
                 android:textSize="30sp"
                 android:textStyle="normal"
                 android:layout_marginStart="15dp"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="Profile"
-                android:textColor="@color/black"
+                android:textColor="@color/btnColour"
                 android:textSize="33sp"
                 android:textStyle="bold"
                 android:layout_marginStart="15dp"
@@ -58,9 +58,9 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-            <include layout="@layout/item_add" />
             <include layout="@layout/item_info" />
             <include layout="@layout/item_email" />
+            <include layout="@layout/item_add" />
 
         </LinearLayout>
     </ScrollView>

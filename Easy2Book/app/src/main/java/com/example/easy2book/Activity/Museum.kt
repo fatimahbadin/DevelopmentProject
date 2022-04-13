@@ -11,7 +11,6 @@ import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
 import com.example.easy2book.Model.ConfirmDetails
 import com.example.easy2book.Model.DataBaseHelper
-import com.example.easy2book.Nav.ActivityFragment
 import com.example.easy2book.R
 
 class Museum : AppCompatActivity() {
@@ -45,14 +44,19 @@ class Museum : AppCompatActivity() {
             Toast.makeText(this, "Please select a time", Toast.LENGTH_SHORT).show()
         }
 
+        val dateC = findViewById<EditText>(R.id.etxtDateMuseum).text.toString()
+
+        val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).text.toString()
-        if (noOfpeople != "" && (rdbtnVTime1.isChecked || rdbtnVTime2.isChecked)
-            && (exhibit1.isChecked || exhibit2.isChecked)
+        if (noOfpeople != "" && dateC != "" &&
+            (rdbtnVTime1.isChecked || rdbtnVTime2.isChecked) &&
+            (exhibit1.isChecked || exhibit2.isChecked)
         ) {
 
             var confirmDetails = ConfirmDetails(
-                0, "Museum", visitTime, "",
-                exhibit, "", "", "", "", noOfpeople
+                0, lastUserL.Username, lastUserL.Email,"Museum", visitTime,
+                "", exhibit, "", "", "",
+                "", noOfpeople, dateC
             )
 
             if (dbHelper.addConfirmDetails(confirmDetails)) {

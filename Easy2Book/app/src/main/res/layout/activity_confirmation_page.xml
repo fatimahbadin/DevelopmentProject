@@ -7,12 +7,123 @@
     android:background="@drawable/travel_bg"
     tools:context=".ConfirmationPage">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewDetails"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_row="0"
+        android:layout_rowWeight="10"
+        android:layout_column="0"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/textColor"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtUsernameC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtEmailC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtDateC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtNoOfPeopleC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtTimeC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtActOrTrans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtMovOrEx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtLFromC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:id="@+id/txtLToC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
     <TextView
         android:id="@+id/txtConfirmationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Booking Details"
+        android:text="@string/booking_details"
         android:textColor="@color/btnColour"
         android:textSize="30sp"
         android:textStyle="bold|normal"
@@ -20,107 +131,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.072" />
-
-    <TextView
-        android:id="@+id/txtUsernameC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="username"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157" />
-
-    <TextView
-        android:id="@+id/txtEmailC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsernameC"
-        app:layout_constraintVertical_bias="0.041" />
-
-    <TextView
-        android:id="@+id/txtActOrTrans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmailC"
-        app:layout_constraintVertical_bias="0.057" />
-
-    <TextView
-        android:id="@+id/txtTimeC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtActOrTrans"
-        app:layout_constraintVertical_bias="0.055" />
-
-    <TextView
-        android:id="@+id/txtMovOrEx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTimeC"
-        app:layout_constraintVertical_bias="0.056" />
-
-    <TextView
-        android:id="@+id/txtLFromC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMovOrEx"
-        app:layout_constraintVertical_bias="0.092" />
-
-    <TextView
-        android:id="@+id/txtLToC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLFromC"
-        app:layout_constraintVertical_bias="0.086" />
-
-    <TextView
-        android:id="@+id/txtNoOfPeopleC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLToC"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <Button
         android:id="@+id/btnBackC"
@@ -130,7 +141,7 @@
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
         android:onClick="backBtn"
-        android:text="Back Home"
+        android:text="@string/back_home"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         android:textSize="17sp"
@@ -139,7 +150,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871"
+        app:layout_constraintVertical_bias="0.911"
         app:shapeAppearanceOverlay="@style/Button5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

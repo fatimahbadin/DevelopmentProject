@@ -8,13 +8,17 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.example.easy2book.Model.DataBaseHelper
 import com.example.easy2book.Nav.HomeFragment
+import com.example.easy2book.Nav.ProfileFragment
 import com.google.android.material.navigation.NavigationView
 
 class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val dbHelper = DataBaseHelper(this)
 
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val imgMenuToggle = findViewById<ImageView>(R.id.imgMenuToggle)

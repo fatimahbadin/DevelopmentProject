@@ -11,7 +11,6 @@ import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
 import com.example.easy2book.Model.ConfirmDetails
 import com.example.easy2book.Model.DataBaseHelper
-import com.example.easy2book.Nav.TransportFragment
 import com.example.easy2book.R
 
 class Train : AppCompatActivity() {
@@ -57,14 +56,20 @@ class Train : AppCompatActivity() {
             Toast.makeText(this, "Please select a depart time", Toast.LENGTH_SHORT).show()
         }
 
+        val dateC = findViewById<EditText>(R.id.etxtDateTrain).text.toString()
+
+        val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleTrain).text.toString()
-        if (noOfpeople != "" && (rdbtnTime1Train.isChecked || rdbtnTime2Train.isChecked || rdbtnTime3Train.isChecked)
-            && rdbtnArrLeicester.isChecked && (rdbtnBham.isChecked || rdbtnLough.isChecked)
+        if  (noOfpeople != "" && dateC != "" &&
+            (rdbtnTime1Train.isChecked || rdbtnTime2Train.isChecked || rdbtnTime3Train.isChecked) &&
+            rdbtnArrLeicester.isChecked &&
+            (rdbtnBham.isChecked || rdbtnLough.isChecked)
         ) {
 
             var confirmDetails = ConfirmDetails(
-                0, "", "", "",
-                "", "Train", locationFrom, arrivalLocation, departTime, noOfpeople
+                0, lastUserL.Username, lastUserL.Email,"", "",
+                "", "", "Train", locationFrom,
+                arrivalLocation, departTime, noOfpeople, dateC
             )
 
             if (dbHelper.addConfirmDetails(confirmDetails)) {

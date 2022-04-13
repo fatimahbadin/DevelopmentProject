@@ -15,29 +15,34 @@ class ConfirmationPage : AppCompatActivity() {
         val dbHelper = DataBaseHelper(this)
         val lastDetail = dbHelper.getAllConfirmDetails().last()
 
+        var txtUsername = findViewById<TextView>(R.id.txtUsernameC)
+        var txtEmail = findViewById<TextView>(R.id.txtEmailC)
         var txtActOrTrans = findViewById<TextView>(R.id.txtActOrTrans)
         var txtTime = findViewById<TextView>(R.id.txtTimeC)
         var txtMovOrEx = findViewById<TextView>(R.id.txtMovOrEx)
         var txtLocationFrom = findViewById<TextView>(R.id.txtLFromC)
         var txtLocationTo = findViewById<TextView>(R.id.txtLToC)
+        var txtDate = findViewById<TextView>(R.id.txtDateC)
         var txtNoOfPeople = findViewById<TextView>(R.id.txtNoOfPeopleC)
+
+        txtUsername.text = "Username: ${lastDetail.Username}"
+        txtEmail.text = "Email: ${lastDetail.Email}"
+        txtDate.text = "Date: ${lastDetail.Date}"
+        txtNoOfPeople.text = "Number of People Booked: ${lastDetail.NoOfPeople}"
 
         if (lastDetail.Transport == "" && lastDetail.Activity == "Cinema") {
             txtActOrTrans.text = "Activity Booked: " + lastDetail.Activity
             txtTime.text = "Time Booked: " + lastDetail.TimeBooked
             txtMovOrEx.text = "Movie Name: " + lastDetail.MovieName
-            txtNoOfPeople.text = "Number of People Booked: " + lastDetail.NoOfPeople
         } else if (lastDetail.Transport == "" && lastDetail.Activity == "Museum") {
             txtActOrTrans.text = "Activity Booked: " + lastDetail.Activity
             txtTime.text = "Time Booked: " + lastDetail.TimeBooked
             txtMovOrEx.text = "Exhibit Booked: " + lastDetail.Exhibition
-            txtNoOfPeople.text = "Number of People Booked: " + lastDetail.NoOfPeople
         } else if (lastDetail.Activity == "") {
             txtActOrTrans.text = "Transport Booked: " + lastDetail.Transport
             txtLocationFrom.text = "Location From: " + lastDetail.LocationFrom
             txtLocationTo.text = "Location To: " + lastDetail.LocationTo
             txtTime.text = "Depart Time: " + lastDetail.DepartTime
-            txtNoOfPeople.text = "Number of People Booked: " + lastDetail.NoOfPeople
         }
     }
 
