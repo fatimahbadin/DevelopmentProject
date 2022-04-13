@@ -75,23 +75,18 @@
                 app:layout_constraintVertical_bias="0.264">
 
                 <RadioButton
-                    android:id="@+id/rdbtnCity"
+                    android:id="@+id/rdbtnFrom1Bus"
                     android:layout_marginEnd="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/leicester_city_centre" />
+                    android:text="" />
 
                 <RadioButton
-                    android:id="@+id/rdbtnFosse"
+                    android:id="@+id/rdbtnFrom2Bus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fosse_park" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <TextView
                 android:id="@+id/txtArrivalLocationBus"
@@ -118,23 +113,18 @@
                 app:layout_constraintVertical_bias="0.0">
 
                 <RadioButton
-                    android:id="@+id/rdbtnArrCinema"
+                    android:id="@+id/rdbtnArr1Bus"
                     android:layout_marginEnd="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cinema" />
 
                 <RadioButton
-                    android:id="@+id/rdbtnArrMuseum"
+                    android:id="@+id/rdbtnArr2Bus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/museum" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <TextView
                 android:id="@+id/txtDepartTimeBus"
@@ -167,26 +157,21 @@
                     android:layout_marginEnd="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_1" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime2Bus"
                     android:layout_marginEnd="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_2" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime3Bus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_3" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -218,11 +203,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.6" />
             </LinearLayout>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"

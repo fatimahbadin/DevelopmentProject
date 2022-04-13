@@ -80,19 +80,14 @@
                     android:layout_marginEnd="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/exhibit_1" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnExhibit2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/exhibit_2" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <TextView
                 android:id="@+id/txtVisitTimes"
@@ -125,19 +120,14 @@
                     android:layout_marginEnd="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_1" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnVTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_2" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -168,11 +158,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.562" />
             </LinearLayout>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"

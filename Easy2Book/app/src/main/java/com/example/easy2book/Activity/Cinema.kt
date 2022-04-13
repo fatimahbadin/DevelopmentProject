@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
@@ -17,13 +18,35 @@ class Cinema : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cinema)
-//
-//        val rdbtnMovie1 = findViewById<RadioButton>(R.id.rdbtnMovie1)
-//        val rdbtnMovie2 = findViewById<RadioButton>(R.id.rdbtnMovie2)
-//
-//        val rdbtnSTime1 = findViewById<RadioButton>(R.id.rdbtnSTime1)
-//        val rdbtnSTime2 = findViewById<RadioButton>(R.id.rdbtnSTime2)
 
+        val dbHelper = DataBaseHelper(this)
+
+        val movieName1 = dbHelper.getAllCinema().get(0).MovieName
+        val movieName2 = dbHelper.getAllCinema().get(1).MovieName
+        val rdbtnMovie1 = findViewById<RadioButton>(R.id.rdbtnMovie1)
+        val rdbtnMovie2 = findViewById<RadioButton>(R.id.rdbtnMovie2)
+
+        rdbtnMovie1.text = movieName1
+        rdbtnMovie2.text = movieName2
+
+        val time1M1 = dbHelper.getAllCinema().get(0).MovieStartTime1
+        val time2M1 = dbHelper.getAllCinema().get(0).MovieStartTime2
+
+        val time1M2 = dbHelper.getAllCinema().get(1).MovieStartTime1
+        val time2M2 = dbHelper.getAllCinema().get(1).MovieStartTime2
+
+        val rdbtnSTime1 = findViewById<RadioButton>(R.id.rdbtnSTime1)
+        val rdbtnSTime2 = findViewById<RadioButton>(R.id.rdbtnSTime2)
+
+        rdbtnMovie1.setOnClickListener {
+            rdbtnSTime1.text = time1M1
+            rdbtnSTime2.text = time2M1
+        }
+
+        rdbtnMovie2.setOnClickListener {
+            rdbtnSTime1.text = time1M2
+            rdbtnSTime2.text = time2M2
+        }
     }
 
     fun confirmBtn (view: View) {
@@ -68,7 +91,7 @@ class Cinema : AppCompatActivity() {
             )
 
             if(dbHelper.addConfirmDetails(confirmDetails)) {
-                Toast.makeText(this, "Details Added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, ConfirmationPage::class.java))
             } else {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()

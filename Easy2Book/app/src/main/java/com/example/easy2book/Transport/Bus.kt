@@ -17,30 +17,77 @@ class Bus : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bus)
+
+        val dbHelper = DataBaseHelper(this)
+
+        val bus1 = dbHelper.getAllBus().first().LocationFrom
+        val bus2 = dbHelper.getAllBus().last().LocationFrom
+        val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Bus)
+        val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Bus)
+
+        rdbtnFrom1.text = bus1
+        rdbtnFrom2.text = bus2
+
+        val locationTo1f1 = dbHelper.getAllBus().first().LocationTo1
+        val locationTo2f1 = dbHelper.getAllBus().first().LocationTo2
+
+        val locationTo1f2 = dbHelper.getAllBus().last().LocationTo1
+        val locationTo2f2 = dbHelper.getAllBus().last().LocationTo2
+
+        val rdbtnArr1 = findViewById<RadioButton>(R.id.rdbtnArr1Bus)
+        val rdbtnArr2 = findViewById<RadioButton>(R.id.rdbtnArr2Bus)
+
+        val departTime1b1 = dbHelper.getAllBus().first().DepartTime1
+        val departTime2b1 = dbHelper.getAllBus().first().DepartTime2
+        val departTime3b1 = dbHelper.getAllBus().first().DepartTime3
+
+        val departTime1b2 = dbHelper.getAllBus().last().DepartTime1
+        val departTime2b2 = dbHelper.getAllBus().last().DepartTime2
+        val departTime3b2 = dbHelper.getAllBus().last().DepartTime3
+
+        val rdbtnTime1Bus = findViewById<RadioButton>(R.id.rdbtnTime1Bus)
+        val rdbtnTime2Bus = findViewById<RadioButton>(R.id.rdbtnTime2Bus)
+        val rdbtnTime3Bus = findViewById<RadioButton>(R.id.rdbtnTime3Bus)
+
+        rdbtnFrom1.setOnClickListener {
+            rdbtnArr1.text = locationTo1f1
+            rdbtnArr2.text = locationTo2f1
+            rdbtnTime1Bus.text = departTime1b1
+            rdbtnTime2Bus.text = departTime2b1
+            rdbtnTime3Bus.text = departTime3b1
+        }
+
+        rdbtnFrom2.setOnClickListener {
+            rdbtnArr1.text = locationTo1f2
+            rdbtnArr2.text = locationTo2f2
+            rdbtnTime1Bus.text = departTime1b2
+            rdbtnTime2Bus.text = departTime2b2
+            rdbtnTime3Bus.text = departTime3b2
+        }
     }
 
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
         var locationFrom = " "
-        val rdbtnCity = findViewById<RadioButton>(R.id.rdbtnCity)
-        val rdbtnFosse = findViewById<RadioButton>(R.id.rdbtnFosse)
-        if (rdbtnCity.isChecked) {
-            locationFrom = rdbtnCity.text.toString()
-        } else if (rdbtnFosse.isChecked) {
-            locationFrom = rdbtnFosse.text.toString()
+        val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Bus)
+        val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Bus)
+        if (rdbtnFrom1.isChecked) {
+            locationFrom = rdbtnFrom1.text.toString()
+        } else if (rdbtnFrom2.isChecked) {
+            locationFrom = rdbtnFrom2.text.toString()
         } else {
             Toast.makeText(this, "Please select a location to leave from", Toast.LENGTH_SHORT)
                 .show()
         }
 
         var arrivalLocation = " "
-        val rdbtnArrCinema = findViewById<RadioButton>(R.id.rdbtnArrCinema)
-        val rdbtnArrMuseum = findViewById<RadioButton>(R.id.rdbtnArrMuseum)
-        if (rdbtnArrCinema.isChecked) {
-            arrivalLocation = rdbtnArrCinema.text.toString()
-        } else if (rdbtnArrMuseum.isChecked) {
-            arrivalLocation = rdbtnArrMuseum.text.toString()
+        val rdbtnArr1 = findViewById<RadioButton>(R.id.rdbtnArr1Bus)
+        val rdbtnArr2 = findViewById<RadioButton>(R.id.rdbtnArr2Bus)
+        if (rdbtnArr1.isChecked) {
+            arrivalLocation = rdbtnArr1.text.toString()
+        } else if (rdbtnArr2.isChecked) {
+            arrivalLocation = rdbtnArr2.text.toString()
         } else {
             Toast.makeText(this, "Please select a location to arrive at", Toast.LENGTH_SHORT).show()
         }
@@ -65,8 +112,8 @@ class Bus : AppCompatActivity() {
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).text.toString()
         if  (noOfpeople != "" && dateC != "" &&
             (rdbtnTime1Bus.isChecked || rdbtnTime2Bus.isChecked || rdbtnTime3Bus.isChecked) &&
-            (rdbtnArrCinema.isChecked || rdbtnArrMuseum.isChecked) &&
-            (rdbtnCity.isChecked || rdbtnFosse.isChecked)
+            (rdbtnArr1.isChecked || rdbtnArr2.isChecked) &&
+            (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
         ) {
 
             var confirmDetails = ConfirmDetails(
@@ -76,7 +123,7 @@ class Bus : AppCompatActivity() {
             )
 
             if (dbHelper.addConfirmDetails(confirmDetails)) {
-                Toast.makeText(this, "Details Added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, ConfirmationPage::class.java))
             } else {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()

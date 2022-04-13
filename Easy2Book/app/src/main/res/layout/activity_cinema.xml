@@ -78,19 +78,14 @@
                     android:layout_marginEnd="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/movie_1" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnMovie2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/movie_2" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <TextView
                 android:id="@+id/txtShowingTimes"
@@ -123,19 +118,14 @@
                     android:layout_marginEnd="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_1" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnSTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_2" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -167,11 +157,6 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"

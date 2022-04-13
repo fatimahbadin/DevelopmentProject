@@ -17,6 +17,35 @@ class Museum : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_museum)
+
+        val dbHelper = DataBaseHelper(this)
+
+        val exhibit1 = dbHelper.getAllMuseum().get(0).Exhibitions
+        val exhibit2 = dbHelper.getAllMuseum().get(1).Exhibitions
+        val rbtnExhibit1 = findViewById<RadioButton>(R.id.rdbtnExhibit1)
+        val rbtnExhibit2 = findViewById<RadioButton>(R.id.rdbtnExhibit2)
+
+        rbtnExhibit1.text = exhibit1
+        rbtnExhibit2.text = exhibit2
+
+        val time1v1 = dbHelper.getAllMuseum().get(0).VisitTime1
+        val time2v1 = dbHelper.getAllMuseum().get(0).VisitTime2
+
+        val time1v2 = dbHelper.getAllMuseum().get(1).VisitTime1
+        val time2v2 = dbHelper.getAllMuseum().get(1).VisitTime2
+
+        val rdbtnVTime1 = findViewById<RadioButton>(R.id.rdbtnVTime1)
+        val rdbtnVTime2 = findViewById<RadioButton>(R.id.rdbtnVTime2)
+
+        rbtnExhibit1.setOnClickListener {
+            rdbtnVTime1.text = time1v1
+            rdbtnVTime2.text = time2v1
+        }
+
+        rbtnExhibit2.setOnClickListener {
+            rdbtnVTime1.text = time1v2
+            rdbtnVTime2.text = time2v2
+        }
     }
 
     fun confirmBtn (view: View) {
@@ -60,7 +89,7 @@ class Museum : AppCompatActivity() {
             )
 
             if (dbHelper.addConfirmDetails(confirmDetails)) {
-                Toast.makeText(this, "Details Added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, ConfirmationPage::class.java))
             } else {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()

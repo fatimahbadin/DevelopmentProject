@@ -50,6 +50,65 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
     /****************************************/
 
+    /* Activity Table */
+    public val ActivityTableName = "Activity"
+    public val ActivityColumn_ID = "ID"
+    public val ActivityColumn_Activity = "Activity"
+
+    /****************************************/
+
+    /* Cinema Table */
+    public val CinemaTableName = "Cinema"
+    public val CinemaColumn_ID = "ID"
+    public val CinemaColumn_MovieName = "MovieName"
+    public val CinemaColumn_MovieStartTime1 = "MovieStartTime1"
+    public val CinemaColumn_MovieStartTime2 = "MovieStartTime2"
+    public val CinemaColumn_Capacity = "Capacity"
+
+    /****************************************/
+
+    /* Museum Table */
+    public val MuseumTableName = "Museum"
+    public val MuseumColumn_ID = "ID"
+    public val MuseumColumn_VisitTime1 = "VisitTime1"
+    public val MuseumColumn_VisitTime2 = "VisitTime"
+    public val MuseumColumn_Exhibitions = "Exhibitions"
+    public val MuseumColumn_Capacity = "Capacity"
+
+    /****************************************/
+
+    /* Transport Table */
+    public val TransportTableName = "Transport"
+    public val TransportColumn_ID = "ID"
+    public val TransportColumn_Transport = "Transport"
+
+    /****************************************/
+
+    /* Bus Table */
+    public val BusTableName = "Bus"
+    public val BusColumn_ID = "ID"
+    public val BusColumn_LocationFrom = "LocationFrom"
+    public val BusColumn_LocationTo1 = "LocationTo1"
+    public val BusColumn_LocationTo2 = "LocationTo2"
+    public val BusColumn_DepartTime1 = "DepartTime1"
+    public val BusColumn_DepartTime2 = "DepartTime2"
+    public val BusColumn_DepartTime3 = "DepartTime3"
+    public val BusColumn_Capacity = "Capacity"
+
+    /****************************************/
+
+    /* Train Table */
+    public val TrainTableName = "Train"
+    public val TrainColumn_ID = "ID"
+    public val TrainColumn_LocationFrom = "LocationFrom"
+    public val TrainColumn_LocationTo = "LocationTo"
+    public val TrainColumn_DepartTime1 = "DepartTime1"
+    public val TrainColumn_DepartTime2 = "DepartTime2"
+    public val TrainColumn_DepartTime3 = "DepartTime3"
+    public val TrainColumn_Capacity = "Capacity"
+
+    /****************************************/
+
 
     // This is called the first time a database is accessed
     override fun onCreate(db: SQLiteDatabase?) {
@@ -82,11 +141,70 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             db?.execSQL(sqlCreateStatement)
 
 
-            sqlCreateStatement = "CREATE TABLE " + UserLoggedTableName + " ( " +
+            sqlCreateStatement = "CREATE TABLE " + MuseumTableName + " ( " +
                     UserLoggedColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     UserLoggedColumn_Username + " TEXT NOT NULL, " +
                     UserLoggedColumn_Password + " TEXT NOT NULL, " +
                     UserLoggedColumn_Email + " TEXT NOT NULL )"
+
+            db?.execSQL(sqlCreateStatement)
+
+
+            sqlCreateStatement = "CREATE TABLE " + ActivityTableName + " ( " +
+                    ActivityColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    ActivityColumn_Activity + " TEXT NOT NULL ) "
+
+            db?.execSQL(sqlCreateStatement)
+
+
+            sqlCreateStatement = "CREATE TABLE " + CinemaTableName + " ( " +
+                    CinemaColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CinemaColumn_MovieName + " TEXT NOT NULL, " +
+                    CinemaColumn_MovieStartTime1 + " TEXT NOT NULL, " +
+                    CinemaColumn_MovieStartTime2 + " TEXT NOT NULL, " +
+                    CinemaColumn_Capacity + " INTEGER NOT NULL ) "
+
+            db?.execSQL(sqlCreateStatement)
+
+
+            sqlCreateStatement = "CREATE TABLE " + CinemaTableName + " ( " +
+                    MuseumColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    MuseumColumn_VisitTime1 + " TEXT NOT NULL, " +
+                    MuseumColumn_VisitTime2 + " TEXT NOT NULL, " +
+                    MuseumColumn_Exhibitions + " TEXT NOT NULL, " +
+                    MuseumColumn_Capacity + " INTEGER NOT NULL ) "
+
+            db?.execSQL(sqlCreateStatement)
+
+
+            sqlCreateStatement = "CREATE TABLE " + TransportTableName + " ( " +
+                    TransportColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    TransportColumn_Transport + " TEXT NOT NULL ) "
+
+            db?.execSQL(sqlCreateStatement)
+
+
+            sqlCreateStatement = "CREATE TABLE " + BusTableName + " ( " +
+                    BusColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    BusColumn_LocationFrom + " TEXT NOT NULL, " +
+                    BusColumn_LocationTo1 + " TEXT NOT NULL, " +
+                    BusColumn_LocationTo2 + " TEXT NOT NULL, " +
+                    BusColumn_DepartTime1 + " TEXT NOT NULL, " +
+                    BusColumn_DepartTime2 + " TEXT NOT NULL, " +
+                    BusColumn_DepartTime3 + " TEXT NOT NULL, " +
+                    BusColumn_Capacity + " INTEGER NOT NULL ) "
+
+            db?.execSQL(sqlCreateStatement)
+
+
+            sqlCreateStatement = "CREATE TABLE " + TrainTableName + " ( " +
+                    TrainColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    TrainColumn_LocationFrom + " TEXT NOT NULL, " +
+                    TrainColumn_LocationTo + " TEXT NOT NULL, " +
+                    TrainColumn_DepartTime1 + " TEXT NOT NULL, " +
+                    TrainColumn_DepartTime2 + " TEXT NOT NULL, " +
+                    TrainColumn_DepartTime3 + " TEXT NOT NULL, " +
+                    TrainColumn_Capacity + " INTEGER NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
 
@@ -288,6 +406,159 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
         db.close()
         return success != -1L
+    }
+
+
+//  functions for the Activity and Transport tables
+    fun getAllActivity(): ArrayList<Activity> {
+        val activityList = ArrayList<Activity>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $ActivityTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val activity: String = cursor.getString(1)
+                val b = Activity(id, activity)
+                activityList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return activityList
+    }
+
+
+    fun getAllTransport(): ArrayList<Transport> {
+        val transportList = ArrayList<Transport>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $TransportTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val transport: String = cursor.getString(1)
+                val b = Transport(id, transport)
+                transportList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return transportList
+    }
+
+
+    fun getAllCinema(): ArrayList<CinemaClass> {
+        val cinemaList = ArrayList<CinemaClass>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $CinemaTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val movieName: String = cursor.getString(1)
+                val movieStartTime1: String = cursor.getString(2)
+                val movieStartTime2: String = cursor.getString(3)
+                val capacity: Int = cursor.getInt(4)
+                val b = CinemaClass(id, movieName, movieStartTime1,
+                    movieStartTime2, capacity)
+                cinemaList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return cinemaList
+    }
+
+
+    fun getAllMuseum(): ArrayList<MuseumClass> {
+        val museumList = ArrayList<MuseumClass>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $MuseumTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val visitTime1: String = cursor.getString(1)
+                val visitTime2: String = cursor.getString(2)
+                val exhibition: String = cursor.getString(3)
+                val capacity: Int = cursor.getInt(4)
+                val b = MuseumClass(id, visitTime1, visitTime2, exhibition, capacity)
+                museumList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return museumList
+    }
+
+
+    fun getAllBus(): ArrayList<BusClass> {
+        val busList = ArrayList<BusClass>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $BusTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val locationFrom: String = cursor.getString(1)
+                val locationTo1: String = cursor.getString(2)
+                val locationTo2: String = cursor.getString(3)
+                val departTime1: String = cursor.getString(4)
+                val departTime2: String = cursor.getString(5)
+                val departTime3: String = cursor.getString(6)
+                val capacity: Int = cursor.getInt(7)
+                val b = BusClass(id, locationFrom, locationTo1, locationTo2,
+                    departTime1, departTime2, departTime3, capacity)
+                busList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return busList
+    }
+
+
+    fun getAllTrain(): ArrayList<TrainClass> {
+        val trainList = ArrayList<TrainClass>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $TrainTableName"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val locationFrom: String = cursor.getString(1)
+                val locationTo: String = cursor.getString(2)
+                val departTime1: String = cursor.getString(3)
+                val departTime2: String = cursor.getString(4)
+                val departTime3: String = cursor.getString(5)
+                val capacity: Int = cursor.getInt(6)
+                val b = TrainClass(id, locationFrom, locationTo, departTime1,
+                    departTime2, departTime3, capacity)
+                trainList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return trainList
     }
 
 }

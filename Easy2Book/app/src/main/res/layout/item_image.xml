@@ -62,7 +62,7 @@
                         android:textStyle="bold" />
 
                     <View
-                        android:layout_width="0dp"
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:background="#79D6D1D1" />
 

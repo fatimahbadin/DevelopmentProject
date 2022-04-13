@@ -66,23 +66,18 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rdbtnBham"
+                    android:id="@+id/rdbtnFrom1Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:text="@string/birmingham" />
+                    android:text="" />
 
                 <RadioButton
-                    android:id="@+id/rdbtnLough"
+                    android:id="@+id/rdbtnFrom2Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/loughborough" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <TextView
                 android:id="@+id/txtArrivalLocationTrain"
@@ -101,16 +96,11 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rdbtnArrLeicester"
+                    android:id="@+id/rdbtnArr1Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/leicester" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <TextView
                 android:id="@+id/txtDepartTimeTrain"
@@ -144,26 +134,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    android:text="@string/time_1" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime2Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    android:text="@string/time_2" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime3Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/time_3" />
+                    android:text="" />
             </RadioGroup>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -194,11 +179,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.437" />
             </LinearLayout>
-
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:background="@color/btnColour" />
 
             <LinearLayout
                 android:layout_width="match_parent"
