@@ -52,13 +52,17 @@ class Cinema : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
+        var capacity = 0
+
         var movieName = " "
         val rdbtnMovie1 = findViewById<RadioButton>(R.id.rdbtnMovie1)
         val rdbtnMovie2 = findViewById<RadioButton>(R.id.rdbtnMovie2)
         if(rdbtnMovie1.isChecked) {
             movieName = rdbtnMovie1.text.toString()
+            capacity = dbHelper.getAllCinema().get(0).Capacity
         } else if (rdbtnMovie2.isChecked) {
             movieName = rdbtnMovie2.text.toString()
+            capacity = dbHelper.getAllCinema().get(1).Capacity
         } else {
             Toast.makeText(this, "Please select a movie", Toast.LENGTH_SHORT).show()
         }
@@ -74,13 +78,11 @@ class Cinema : AppCompatActivity() {
             Toast.makeText(this, "Please select a time", Toast.LENGTH_SHORT).show()
         }
 
-        //INCLUDE CAPACITYYYY!!!
-
         val dateC = findViewById<EditText>(R.id.etxtDateCinema).text.toString()
 
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
-        if (noOfpeople != "" && dateC != "" &&
+        if ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
             (rdbtnSTime1.isChecked || rdbtnSTime2.isChecked) &&
             (rdbtnMovie1.isChecked || rdbtnMovie2.isChecked)) {
 
@@ -97,7 +99,9 @@ class Cinema : AppCompatActivity() {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
             }
         } else {
-            Toast.makeText(this, "Make sure all fields have been filled", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                Toast.LENGTH_SHORT).show()
         }
     }
 

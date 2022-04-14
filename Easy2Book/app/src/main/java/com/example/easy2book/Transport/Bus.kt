@@ -69,13 +69,17 @@ class Bus : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
+        var capacity = 0
+
         var locationFrom = " "
         val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Bus)
         val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Bus)
         if (rdbtnFrom1.isChecked) {
             locationFrom = rdbtnFrom1.text.toString()
+            capacity = dbHelper.getAllBus().get(0).Capacity
         } else if (rdbtnFrom2.isChecked) {
             locationFrom = rdbtnFrom2.text.toString()
+            capacity = dbHelper.getAllBus().get(1).Capacity
         } else {
             Toast.makeText(this, "Please select a location to leave from", Toast.LENGTH_SHORT)
                 .show()
@@ -110,7 +114,7 @@ class Bus : AppCompatActivity() {
 
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).text.toString()
-        if  (noOfpeople != "" && dateC != "" &&
+        if  ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
             (rdbtnTime1Bus.isChecked || rdbtnTime2Bus.isChecked || rdbtnTime3Bus.isChecked) &&
             (rdbtnArr1.isChecked || rdbtnArr2.isChecked) &&
             (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
@@ -129,8 +133,9 @@ class Bus : AppCompatActivity() {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
             }
         } else {
-            Toast.makeText(this, "Make sure all fields have been filled", Toast.LENGTH_SHORT).show()
-        }
+            Toast.makeText(this,
+                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                Toast.LENGTH_SHORT).show()        }
     }
 
     fun backBtn (view: View) {

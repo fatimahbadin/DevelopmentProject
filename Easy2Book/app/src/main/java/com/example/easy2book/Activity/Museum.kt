@@ -51,13 +51,17 @@ class Museum : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
+        var capacity = 0
+
         var exhibit = " "
         val exhibit1 = findViewById<RadioButton>(R.id.rdbtnExhibit1)
         val exhibit2 = findViewById<RadioButton>(R.id.rdbtnExhibit2)
         if (exhibit1.isChecked) {
             exhibit = exhibit1.text.toString()
+            capacity = dbHelper.getAllMuseum().get(0).Capacity
         } else if (exhibit2.isChecked) {
             exhibit = exhibit2.text.toString()
+            capacity = dbHelper.getAllMuseum().get(1).Capacity
         } else {
             Toast.makeText(this, "Please select an exhibit", Toast.LENGTH_SHORT).show()
         }
@@ -77,7 +81,7 @@ class Museum : AppCompatActivity() {
 
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).text.toString()
-        if (noOfpeople != "" && dateC != "" &&
+        if ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
             (rdbtnVTime1.isChecked || rdbtnVTime2.isChecked) &&
             (exhibit1.isChecked || exhibit2.isChecked)
         ) {
@@ -95,8 +99,9 @@ class Museum : AppCompatActivity() {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
             }
         } else {
-            Toast.makeText(this, "Make sure all fields have been filled", Toast.LENGTH_SHORT).show()
-        }
+            Toast.makeText(this,
+                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                Toast.LENGTH_SHORT).show()        }
     }
 
     fun backBtn (view: View) {
