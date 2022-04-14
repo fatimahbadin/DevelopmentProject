@@ -1,11 +1,13 @@
 package com.example.easy2book.Nav
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.easy2book.Activity.Cinema
@@ -37,11 +39,22 @@ class ProfileFragment : Fragment() {
         var txtEmail = view.findViewById<TextView>(R.id.txtProfileEmail)
         txtEmail.text = dbHelper.getAllLoggedUsers().last().Email
 
-        var txtChangePass = view.findViewById<TextView>(R.id.txtChangePass)
-        txtChangePass.setOnClickListener {
-            Toast.makeText(context, "Please Sign Up Again", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(context, MainActivity::class.java))
+        val btnSignOut = view.findViewById<Button>(R.id.btnSignOut)
+        btnSignOut.setOnClickListener {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Are you sure you want to Sign Out?")
+
+            builder.setPositiveButton("Yes") { dialog, which ->
+                startActivity(Intent(context, MainActivity::class.java))
+            }
+
+            builder.setNegativeButton("No") { dialog, whihc ->
+                dialog.cancel()
+            }
+
+            builder.show()
         }
+
     }
 
 }

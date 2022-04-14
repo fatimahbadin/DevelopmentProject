@@ -149,6 +149,7 @@
 
                 <EditText
                     android:id="@+id/etxtDateMuseum"
+                    android:hint="DD/MM/YYYY"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:ems="10"

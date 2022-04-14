@@ -141,7 +141,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             db?.execSQL(sqlCreateStatement)
 
 
-            sqlCreateStatement = "CREATE TABLE " + MuseumTableName + " ( " +
+            sqlCreateStatement = "CREATE TABLE " + UserLoggedTableName + " ( " +
                     UserLoggedColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     UserLoggedColumn_Username + " TEXT NOT NULL, " +
                     UserLoggedColumn_Password + " TEXT NOT NULL, " +
@@ -167,7 +167,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
             db?.execSQL(sqlCreateStatement)
 
 
-            sqlCreateStatement = "CREATE TABLE " + CinemaTableName + " ( " +
+            sqlCreateStatement = "CREATE TABLE " + MuseumTableName + " ( " +
                     MuseumColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     MuseumColumn_VisitTime1 + " TEXT NOT NULL, " +
                     MuseumColumn_VisitTime2 + " TEXT NOT NULL, " +
