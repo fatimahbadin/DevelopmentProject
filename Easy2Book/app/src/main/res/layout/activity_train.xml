@@ -108,12 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/depart_time"
                 android:textSize="18sp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.029" />
+                android:layout_marginTop="10dp"/>
 
             <RadioGroup
                 android:id="@+id/rdgDepartTimeTrain"
@@ -122,12 +117,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.486"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rdbtnTime1Train"
@@ -162,12 +152,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/number_of_people"
                     android:textSize="18sp"
-                    android:layout_marginEnd="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.062"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintVertical_bias="0.088" />
+                    android:layout_marginEnd="15dp" />
 
                 <EditText
                     android:id="@+id/etxtNoOfPeopleTrain"
@@ -175,9 +160,7 @@
                     android:layout_height="50dp"
                     android:ems="10"
                     android:inputType="number"
-                    android:layout_margin="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.437" />
+                    android:layout_margin="10dp" />
             </LinearLayout>
 
             <LinearLayout

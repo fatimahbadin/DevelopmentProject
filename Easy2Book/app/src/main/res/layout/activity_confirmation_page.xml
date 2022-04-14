@@ -7,6 +7,32 @@
     android:background="@drawable/travel_bg"
     tools:context=".ConfirmationPage">
 
+    <TextView
+        android:id="@+id/txtConfirmationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/booking_details"
+        android:textColor="@color/btnColour"
+        android:textSize="30sp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077" />
+
+    <TextView
+        android:id="@+id/txtThanksC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thank you for booking with Easy2Book!"
+        android:textColor="@color/btnColour"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtConfirmationTitle" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewDetails"
         android:layout_width="300dp"
@@ -116,22 +142,6 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-    <TextView
-        android:id="@+id/txtConfirmationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/booking_details"
-        android:textColor="@color/btnColour"
-        android:textSize="30sp"
-        android:textStyle="bold|normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
 
     <Button
         android:id="@+id/btnBackC"

@@ -54,26 +54,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/exhibitions"
                 android:textSize="18sp"
-                android:layout_marginBottom="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.209" />
+                android:layout_marginBottom="15dp" />
 
             <RadioGroup
                 android:id="@+id/rdgExhibits"
                 android:layout_width="226dp"
                 android:layout_height="60dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.475"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.284">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rdbtnExhibit1"
@@ -95,12 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/exhibit_viewing_times"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.043" />
+                android:layout_marginTop="20dp" />
 
             <RadioGroup
                 android:id="@+id/rdgVisitTimes"
@@ -109,11 +92,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginBottom="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                android:layout_marginBottom="15dp">
 
                 <RadioButton
                     android:id="@+id/rdbtnVTime1"
@@ -141,12 +120,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/number_of_people"
                     android:textSize="18sp"
-                    android:layout_marginEnd="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.054"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintVertical_bias="0.089" />
+                    android:layout_marginEnd="15dp" />
 
                 <EditText
                     android:id="@+id/etxtNoOfPeopleMuseum"
@@ -154,9 +128,7 @@
                     android:layout_height="50dp"
                     android:ems="10"
                     android:inputType="number"
-                    android:layout_margin="15dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.562" />
+                    android:layout_margin="15dp" />
             </LinearLayout>
 
             <LinearLayout

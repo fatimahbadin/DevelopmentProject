@@ -53,25 +53,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/movies_showing"
                 android:textSize="18sp"
-                android:layout_marginBottom="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.206" />
+                android:layout_marginBottom="15dp" />
 
             <RadioGroup
                 android:id="@+id/rdgMovies"
                 android:layout_width="287dp"
                 android:layout_height="60dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.28">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rdbtnMovie1"
@@ -93,12 +82,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/showing_time"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.043" />
+                android:layout_marginTop="20dp" />
 
             <RadioGroup
                 android:id="@+id/rdgShowingTimes"
@@ -107,11 +91,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginBottom="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                android:layout_marginBottom="15dp">
 
                 <RadioButton
                     android:id="@+id/rdbtnSTime1"
@@ -139,12 +119,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/number_of_people"
                     android:textSize="18sp"
-                    android:layout_marginEnd="15dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.061"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintVertical_bias="0.233" />
+                    android:layout_marginEnd="15dp" />
 
                 <EditText
                     android:id="@+id/etxtNoOfPeopleMovie"
@@ -152,9 +127,7 @@
                     android:layout_height="50dp"
                     android:ems="10"
                     android:inputType="number"
-                    android:layout_margin="15dp"
-                    android:minHeight="48dp"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:layout_margin="15dp"/>
 
             </LinearLayout>
 
