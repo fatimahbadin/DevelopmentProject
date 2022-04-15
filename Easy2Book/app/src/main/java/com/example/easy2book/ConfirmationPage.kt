@@ -12,6 +12,8 @@ class ConfirmationPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirmation_page)
 
+//      Values and variables to retrieve the dbHelper, the last detail in booking details table
+//      and retrieve all of the text views on the confirmation page
         val dbHelper = DataBaseHelper(this)
         val lastDetail = dbHelper.getAllConfirmDetails().last()
 
@@ -25,6 +27,8 @@ class ConfirmationPage : AppCompatActivity() {
         var txtDate = findViewById<TextView>(R.id.txtDateC)
         var txtNoOfPeople = findViewById<TextView>(R.id.txtNoOfPeopleC)
 
+//      Depending on what the user selected in previous pages,
+//      the text views will be updated accordingly
         txtUsername.text = "Username: ${lastDetail.Username}"
         txtEmail.text = "Email: ${lastDetail.Email}"
         txtDate.text = "Date: ${lastDetail.Date}"
@@ -46,6 +50,7 @@ class ConfirmationPage : AppCompatActivity() {
         }
     }
 
+//  function for the back button, to take the user back to the Home page    
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

@@ -26,10 +26,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//      Function for the activity button that will take the user to the activity page
         view.findViewById<CardView>(R.id.btnActivity).setOnClickListener {
             parentFragmentManager.beginTransaction().replace(R.id.fragment, ActivityFragment()).commit()
         }
 
+//      Function for the transport button that will take the user to the transport page
         view.findViewById<CardView>(R.id.btnTransport).setOnClickListener {
             parentFragmentManager.beginTransaction().replace(R.id.fragment, TransportFragment()).commit()
       }

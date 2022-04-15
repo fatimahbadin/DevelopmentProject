@@ -29,6 +29,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//      Values to retrieve the database helper and the text views on the profile page
+//      The text view gets the last row of data from the user logged table and
+//      sets the text accordingly
         val dbHelper = DataBaseHelper(requireContext())
         var txtUsernameM = view.findViewById<TextView>(R.id.txtProfileUsername)
         txtUsernameM.text = dbHelper.getAllLoggedUsers().last().Username
@@ -39,6 +42,9 @@ class ProfileFragment : Fragment() {
         var txtEmail = view.findViewById<TextView>(R.id.txtProfileEmail)
         txtEmail.text = dbHelper.getAllLoggedUsers().last().Email
 
+//      Function for the sign out button, a dialog box will appear asking the user
+//      if they are sure they want to sign out. If no the dialog box will close if yes the user
+//      will be taken to the login page.
         val btnSignOut = view.findViewById<Button>(R.id.btnSignOut)
         btnSignOut.setOnClickListener {
             val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())

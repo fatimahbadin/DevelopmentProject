@@ -18,6 +18,8 @@ class Train : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_train)
 
+//      This is what will load on the page at the start
+//      Values and variables that retrieve the dbHelper and text views         
         val dbHelper = DataBaseHelper(this)
 
         val train1 = dbHelper.getAllTrain().first().LocationFrom
@@ -25,6 +27,8 @@ class Train : AppCompatActivity() {
         val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Train)
         val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Train)
 
+//      The text for the two radio buttons are set after retrieving the locatioFrom
+//      from the train table
         rdbtnFrom1.text = train1
         rdbtnFrom2.text = train2
 
@@ -44,6 +48,8 @@ class Train : AppCompatActivity() {
         val rdbtnTime2Train = findViewById<RadioButton>(R.id.rdbtnTime2Train)
         val rdbtnTime3Train = findViewById<RadioButton>(R.id.rdbtnTime3Train)
 
+//      When either of the radio  buttons for the movies is clicked a different time
+//      and locationTo will be set to the text of the time and locationTo radio buttons
         rdbtnFrom1.setOnClickListener {
             rdbtnArr1.text = locationTo
             rdbtnTime1Train.text = departTime1t1
@@ -60,6 +66,9 @@ class Train : AppCompatActivity() {
 
     }
 
+//  This function is for the confirm button.
+//  Depending on what the user has selected for each section, the details will be added
+//  to the booking details table accordingly
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
@@ -103,6 +112,7 @@ class Train : AppCompatActivity() {
 
         val dateC = findViewById<EditText>(R.id.etxtDateTrain).text.toString()
 
+//      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleTrain).text.toString()
         if  ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
@@ -128,6 +138,7 @@ class Train : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()        }
     }
 
+//  Function for the back button to take the user back to the home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

@@ -24,10 +24,12 @@ class ActivityFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//      Function for the cinema button that will take the user to the cinema page
         view.findViewById<CardView>(R.id.btnCinema).setOnClickListener {
             startActivity(Intent(context, Cinema::class.java))
         }
 
+//      Function for the museum button that will take the user to the museum page
         view.findViewById<CardView>(R.id.btnMuseum).setOnClickListener {
             startActivity(Intent(context, Museum::class.java))
         }

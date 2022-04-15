@@ -18,8 +18,8 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val dbHelper = DataBaseHelper(this)
-
+//        val dbHelper = DataBaseHelper(this)
+//      This code allows for the navigation drawer to function
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val imgMenuToggle = findViewById<ImageView>(R.id.imgMenuToggle)
         val navView = findViewById<NavigationView>(R.id.navDrawer)

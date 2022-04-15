@@ -18,6 +18,8 @@ class Museum : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_museum)
 
+//      This is what will load on the page at the start
+//      Values and variables that retrieve the dbHelper and text views
         val dbHelper = DataBaseHelper(this)
 
         val exhibit1 = dbHelper.getAllMuseum().get(0).Exhibitions
@@ -25,6 +27,8 @@ class Museum : AppCompatActivity() {
         val rbtnExhibit1 = findViewById<RadioButton>(R.id.rdbtnExhibit1)
         val rbtnExhibit2 = findViewById<RadioButton>(R.id.rdbtnExhibit2)
 
+//      The text for the two radio buttons are set after retrieving the exhibits
+//      from the museum table
         rbtnExhibit1.text = exhibit1
         rbtnExhibit2.text = exhibit2
 
@@ -37,6 +41,8 @@ class Museum : AppCompatActivity() {
         val rdbtnVTime1 = findViewById<RadioButton>(R.id.rdbtnVTime1)
         val rdbtnVTime2 = findViewById<RadioButton>(R.id.rdbtnVTime2)
 
+//      When either of the radio  buttons for the movies is clicked a different time
+//      will be set to the text of the time radio buttons
         rbtnExhibit1.setOnClickListener {
             rdbtnVTime1.text = time1v1
             rdbtnVTime2.text = time2v1
@@ -48,6 +54,9 @@ class Museum : AppCompatActivity() {
         }
     }
 
+//  This function is for the confirm button.
+//  Depending on what the user has selected for each section, the details will be added
+//  to the booking details table accordingly
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
@@ -79,6 +88,7 @@ class Museum : AppCompatActivity() {
 
         val dateC = findViewById<EditText>(R.id.etxtDateMuseum).text.toString()
 
+//      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).text.toString()
         if ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
@@ -104,6 +114,7 @@ class Museum : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()        }
     }
 
+//  Function for the back button to take the user back to the home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

@@ -4,16 +4,16 @@ import android.content.Context
 
 class App(context: Context) {
 
-    private val userList: ArrayList<User>
+//    private val userList: ArrayList<User>
 //    private val questionList: ArrayList<Question>
 //    private val answerList: ArrayList<Answer>
 //    private val studentList: ArrayList<Student>
 //    private val adminList: ArrayList<Admin>
-    private val dbHelper: DataBaseHelper = DataBaseHelper(context)
+//    private val dbHelper: DataBaseHelper = DataBaseHelper(context)
 
-    init {
+//    init {
 
-        userList = dbHelper.getAllUsers()
+//        userList = dbHelper.getAllUsers()
 //        questionList = dbHelper.getAllQuestions()
 //        answerList = dbHelper.getAllAnswers(0)
 //        studentList = dbHelper.getAllStudents()
@@ -21,9 +21,9 @@ class App(context: Context) {
 
     }
 
-    fun get_UserList(): ArrayList<User> {
-        return userList
-    }
+//    fun get_UserList(): ArrayList<User> {
+//        return userList
+//    }
 
 //    fun get_QuestionList(): ArrayList<Question> {
 //        return questionList
@@ -47,4 +47,4 @@ class App(context: Context) {
 //        return topic
 //    }
 
-}
+//}

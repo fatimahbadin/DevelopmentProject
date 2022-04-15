@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//      Values and variables that will be needed throughout this activity
         val signUp = findViewById<TextView>(R.id.signUp)
         val login = findViewById<TextView>(R.id.login)
         val signUpLayout = findViewById<LinearLayout>(R.id.signUpLayout)
@@ -21,9 +22,11 @@ class MainActivity : AppCompatActivity() {
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
         val txtForgotPW = findViewById<TextView>(R.id.txtForgotPW)
 
+//      Call on the DataBaseHelper
         val dbHelper = DataBaseHelper(this)
 
-
+//      Function for when the signUp label is clicked,
+//      the login layout will appear and sign up layout will disappear
         signUp.setOnClickListener {
             signUp.background = resources.getDrawable(R.drawable.switch_trcks)
             signUp.setTextColor(resources.getColor(R.color.textColor,null))
@@ -33,6 +36,8 @@ class MainActivity : AppCompatActivity() {
             login.setTextColor(resources.getColor(R.color.btnColour, null))
         }
 
+//      Function for when the login label is clicked,
+//      the sign up layout will appear and login will disappear
         login.setOnClickListener {
             signUp.background = null
             signUp.setTextColor(resources.getColor(R.color.btnColour, null))
@@ -42,6 +47,8 @@ class MainActivity : AppCompatActivity() {
             login.setTextColor(resources.getColor(R.color.textColor, null))
         }
 
+//      Function for the signUp button, the users details will be checked against existing details
+//      If details do not exist the users details will be saved onto the user table and they can login
         btnSignUp.setOnClickListener {
             val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString()
             val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString()
@@ -70,6 +77,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+//      Function for the "forgot password" label
         txtForgotPW.setOnClickListener {
             Toast.makeText(this, "Please sign up again", Toast.LENGTH_SHORT).show()
             signUp.background = resources.getDrawable(R.drawable.switch_trcks)
@@ -80,6 +88,10 @@ class MainActivity : AppCompatActivity() {
             login.setTextColor(resources.getColor(R.color.btnColour, null))
         }
 
+//      Function for the login button, the users details will be checked against existing users
+//      If details are incorrect, the user will not be able to login and will be told details are incorrect
+//      If details are correct, the details will be saved onto another table so we can retrieve the details
+//      within the rest of the application
         btnLogin.setOnClickListener {
 
             var userList = ArrayList<User>()
@@ -108,44 +120,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
             }
-//
-//            if (usernameInputL != "" && passwordInputL != "")
-//                for (i in userList) {
-//                    if (usernameInputL == i.Username && usernameInputL == i.Password) {
-//                        var userLogged = UserLogged(0, usernameInputL, passwordInputL,
-//                            "@"
-//                        )
-//
-//                        if (dbHelper.addLoggedUser(userLogged)) {
-//                            Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
-//                            startActivity(Intent(this, Home::class.java))
-//                        }
-//                    } else if (usernameInputL != i.Username || passwordInputL != i.Password) {
-//                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
-//                    }
-//                } else {
-//                Toast.makeText(this, "Both fields must be filled in", Toast.LENGTH_SHORT).show()
-//            }
-
-//                    } else if (usernameInputL != i.Username) {
-//                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
-//                    } else if (passwordInputL != i.Password) {
-//                        Toast.makeText(this, "Invalid username and password", Toast.LENGTH_SHORT).show()
-//                    }
-
-
-//            if (usernameInputL.isEmpty() || passwordInputL.isEmpty()){
-//                Toast.makeText(this, "Username and Password fields must be filled in.", Toast.LENGTH_SHORT).show()
-//            } else
-
-//            var userLogged = UserLogged(0, usernameInputL, passwordInputL, "@")
-//            if (dbHelper.addLoggedUser(userLogged)) {
-//                Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
-//                startActivity(Intent(this, Home::class.java))
-//            } else {
-//                Toast.makeText(this, "Not Added", Toast.LENGTH_SHORT).show()
-//            }
-//
         }
 
     }

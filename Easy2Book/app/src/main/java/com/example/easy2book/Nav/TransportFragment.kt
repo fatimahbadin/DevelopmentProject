@@ -17,17 +17,19 @@ class TransportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+//      Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_transport, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//      Function for the bus button that will take the user to the bus page
         view.findViewById<CardView>(R.id.btnBus).setOnClickListener {
             startActivity(Intent(context, Bus::class.java))
         }
 
+//      Function for the train button that will take the user to the train page
         view.findViewById<CardView>(R.id.btnTrain).setOnClickListener {
             startActivity(Intent(context, Train::class.java))
         }

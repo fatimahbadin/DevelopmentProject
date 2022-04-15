@@ -19,6 +19,8 @@ class Cinema : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cinema)
 
+//      This is what will load on the page at the start
+//      Values and variables that retrieve the dbHelper and text views
         val dbHelper = DataBaseHelper(this)
 
         val movieName1 = dbHelper.getAllCinema().get(0).MovieName
@@ -26,6 +28,8 @@ class Cinema : AppCompatActivity() {
         val rdbtnMovie1 = findViewById<RadioButton>(R.id.rdbtnMovie1)
         val rdbtnMovie2 = findViewById<RadioButton>(R.id.rdbtnMovie2)
 
+//      The text for the two radio buttons are set after retrieving the name of
+//      the movies from the cinema table
         rdbtnMovie1.text = movieName1
         rdbtnMovie2.text = movieName2
 
@@ -38,6 +42,8 @@ class Cinema : AppCompatActivity() {
         val rdbtnSTime1 = findViewById<RadioButton>(R.id.rdbtnSTime1)
         val rdbtnSTime2 = findViewById<RadioButton>(R.id.rdbtnSTime2)
 
+//      When either of the radio  buttons for the movies is clicked a different time
+//      will be set to the text of the time radio buttons
         rdbtnMovie1.setOnClickListener {
             rdbtnSTime1.text = time1M1
             rdbtnSTime2.text = time2M1
@@ -49,6 +55,9 @@ class Cinema : AppCompatActivity() {
         }
     }
 
+//  This function is for the confirm button.
+//  Depending on what the user has selected for each section, the details will be added
+//  to the booking details table accordingly
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
@@ -80,6 +89,7 @@ class Cinema : AppCompatActivity() {
 
         val dateC = findViewById<EditText>(R.id.etxtDateCinema).text.toString()
 
+//      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
         if ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
@@ -105,6 +115,7 @@ class Cinema : AppCompatActivity() {
         }
     }
 
+//  Function for the back button to take the user back to the home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

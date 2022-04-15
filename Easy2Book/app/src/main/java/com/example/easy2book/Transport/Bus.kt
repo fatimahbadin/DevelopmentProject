@@ -18,6 +18,8 @@ class Bus : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bus)
 
+//      This is what will load on the page at the start
+//      Values and variables that retrieve the dbHelper and text views
         val dbHelper = DataBaseHelper(this)
 
         val bus1 = dbHelper.getAllBus().first().LocationFrom
@@ -25,6 +27,8 @@ class Bus : AppCompatActivity() {
         val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Bus)
         val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Bus)
 
+//      The text for the two radio buttons are set after retrieving the locatioFrom
+//      from the bus table
         rdbtnFrom1.text = bus1
         rdbtnFrom2.text = bus2
 
@@ -49,6 +53,8 @@ class Bus : AppCompatActivity() {
         val rdbtnTime2Bus = findViewById<RadioButton>(R.id.rdbtnTime2Bus)
         val rdbtnTime3Bus = findViewById<RadioButton>(R.id.rdbtnTime3Bus)
 
+//      When either of the radio  buttons for the movies is clicked a different time
+//      and locationTo will be set to the text of the time and locationTo radio buttons
         rdbtnFrom1.setOnClickListener {
             rdbtnArr1.text = locationTo1f1
             rdbtnArr2.text = locationTo2f1
@@ -66,6 +72,9 @@ class Bus : AppCompatActivity() {
         }
     }
 
+//  This function is for the confirm button.
+//  Depending on what the user has selected for each section, the details will be added
+//  to the booking details table accordingly
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
@@ -112,6 +121,7 @@ class Bus : AppCompatActivity() {
 
         val dateC = findViewById<EditText>(R.id.etxtDateBus).text.toString()
 
+//      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).text.toString()
         if  ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
@@ -138,6 +148,7 @@ class Bus : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()        }
     }
 
+//  Function for the back button to take the user back to the home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }
