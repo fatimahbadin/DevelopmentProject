@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/travel_bg"
+    android:background="@drawable/bg4"
     tools:context=".Transport.Bus">
 
     <TextView
@@ -12,7 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:background="@color/white"
         android:text="@string/bus_booking"
+        android:fontFamily="@font/montserrat"
         android:textColor="@color/btnColour"
         android:textSize="30sp"
         android:textStyle="bold|normal"
@@ -53,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/arrival_location"
+                android:fontFamily="@font/montserrat"
                 android:textSize="18sp"
                 android:layout_marginBottom="10dp" />
 
@@ -68,13 +71,15 @@
                     android:layout_marginEnd="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat"/>
 
                 <RadioButton
                     android:id="@+id/rdbtnFrom2Bus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat"/>
             </RadioGroup>
 
             <TextView
@@ -82,6 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/arrival_location"
+                android:fontFamily="@font/montserrat"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp" />
 
@@ -98,13 +104,15 @@
                     android:layout_marginEnd="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/cinema" />
+                    android:text="@string/cinema"
+                    android:fontFamily="@font/montserrat" />
 
                 <RadioButton
                     android:id="@+id/rdbtnArr2Bus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/museum" />
+                    android:text="@string/museum"
+                    android:fontFamily="@font/montserrat" />
             </RadioGroup>
 
             <TextView
@@ -112,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/depart_time"
+                android:fontFamily="@font/montserrat"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp" />
 
@@ -129,20 +138,23 @@
                     android:layout_marginEnd="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime2Bus"
                     android:layout_marginEnd="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime3Bus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
             </RadioGroup>
 
             <LinearLayout
@@ -156,12 +168,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/number_of_people"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="18sp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"/>
 
                 <EditText
                     android:id="@+id/etxtNoOfPeopleBus"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:ems="10"
@@ -181,6 +195,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/date"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="18sp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginStart="25dp"/>
@@ -188,6 +203,7 @@
                 <EditText
                     android:id="@+id/etxtDateBus"
                     android:hint="DD/MM/YYYY"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:ems="10"
@@ -203,6 +219,7 @@
         android:layout_gravity="center"
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
+        android:fontFamily="@font/montserrat"
         android:onClick="confirmBtn"
         android:text="@string/confrim"
         android:textAllCaps="true"
@@ -210,10 +227,10 @@
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
+        app:layout_constraintVertical_bias="0.955"
         app:shapeAppearanceOverlay="@style/Button5" />
 
     <Button
@@ -223,6 +240,7 @@
         android:layout_gravity="center"
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
+        android:fontFamily="@font/montserrat"
         android:onClick="backBtn"
         android:text="@string/back_home"
         android:textAllCaps="true"
@@ -230,7 +248,7 @@
         android:textSize="17sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnBusConfrim"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
         app:shapeAppearanceOverlay="@style/Button5" />
 

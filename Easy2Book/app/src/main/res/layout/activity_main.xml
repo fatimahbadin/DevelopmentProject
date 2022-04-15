@@ -6,19 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/travel_bg"
+    android:background="@drawable/bg4"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/txtLoginTitle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="45dp"
-        android:gravity="center"
+        android:background="@color/white"
         android:text="Easy2Book"
         android:textColor="@color/btnColour"
         android:textSize="30sp"
-        android:textStyle="bold|normal|italic" />
+        android:textStyle="bold|normal|italic"
+        android:fontFamily="@font/montserrat"/>
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="25dp"
@@ -50,6 +52,7 @@
 
                 <TextView
                     android:id="@+id/login"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/login"
                     android:paddingTop="5dp"
                     android:textAlignment="center"
@@ -68,6 +71,7 @@
 
                 <TextView
                     android:id="@+id/signUp"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -99,6 +103,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:hint="Username"
+                    android:fontFamily="@font/montserrat"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
@@ -112,6 +117,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:inputType="text"
                         android:id="@+id/txtUsername"
+                        android:fontFamily="@font/montserrat"
                         android:ems="10"
                         android:textSize="13sp"
                         android:textColor="@color/black"
@@ -123,6 +129,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:hint="Password"
+                    android:fontFamily="@font/montserrat"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
@@ -136,6 +143,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:inputType="textPassword"
+                        android:fontFamily="@font/montserrat"
                         android:id="@+id/txtPassword"
                         android:ems="10"
                         android:textSize="13sp"
@@ -150,6 +158,9 @@
                     android:id="@+id/txtForgotPW"
                     android:textSize="11sp"
                     android:text="Forgot Password"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="5dp"
+                    android:fontFamily="@font/montserrat"
                     android:textAlignment="textEnd"
                     android:textColor="#616161"
                     android:textStyle="normal"
@@ -159,6 +170,7 @@
                 <Button
                     android:id="@+id/btnLogin"
                     android:text="@string/login"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="17sp"
                     android:textAllCaps="true"
                     android:elevation="15dp"
@@ -186,6 +198,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:hint="Email Address"
+                    android:fontFamily="@font/montserrat"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
@@ -198,6 +211,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:inputType="textEmailAddress"
+                        android:fontFamily="@font/montserrat"
                         android:id="@+id/txtSignUpEmail"
                         android:ems="10"
                         android:textSize="13sp"
@@ -210,6 +224,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:hint="Username"
+                    android:fontFamily="@font/montserrat"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
@@ -223,6 +238,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:inputType="text"
                         android:id="@+id/txtSignUpUsername"
+                        android:fontFamily="@font/montserrat"
                         android:ems="10"
                         android:textSize="13sp"
                         android:textColor="@color/black"
@@ -234,6 +250,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:hint="Password"
+                    android:fontFamily="@font/montserrat"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
@@ -248,6 +265,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:inputType="textPassword"
                         android:id="@+id/txtSignUpPassword"
+                        android:fontFamily="@font/montserrat"
                         android:ems="10"
                         android:textSize="13sp"
                         android:textColor="@color/black"
@@ -268,6 +286,7 @@
                     android:elevation="15dp"
                     android:gravity="center"
                     android:text="@string/sign_up"
+                    android:fontFamily="@font/montserrat"
                     android:textAllCaps="true"
                     android:textColor="@color/textColor"
                     android:textSize="17sp"

@@ -30,6 +30,7 @@
 
             <TextView
                 android:text="Username"
+                android:fontFamily="@font/montserrat"
                 android:layout_marginStart="10dp"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -42,6 +43,7 @@
         <TextView
             android:id="@+id/txtProfileUsernameSm"
             android:text="User username"
+            android:fontFamily="@font/montserrat"
             android:textStyle="bold"
             android:textColor="@color/btnColour"
             android:textSize="18sp"

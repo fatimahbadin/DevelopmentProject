@@ -36,6 +36,7 @@
 
                 <TextView
                     android:text="Sign Out"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="12sp"
                     android:layout_margin="5dp"
                     android:textStyle="bold|normal"
@@ -69,6 +70,7 @@
                 <Button
                     android:id="@+id/btnSignOut"
                     android:text="Sign Out"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="17sp"
                     android:textAllCaps="true"
                     android:elevation="15dp"

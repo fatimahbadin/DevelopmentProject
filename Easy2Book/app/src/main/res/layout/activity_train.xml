@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/travel_bg"
+    android:background="@drawable/bg4"
     tools:context=".Transport.Train">
 
     <TextView
@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/train_booking"
+        android:fontFamily="@font/montserrat"
+        android:background="@color/white"
         android:textColor="@color/btnColour"
         android:textSize="30sp"
         android:textStyle="bold|normal"
@@ -53,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/depart_location"
+                android:fontFamily="@font/montserrat"
                 android:textSize="18sp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
@@ -70,13 +73,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFrom2Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
             </RadioGroup>
 
             <TextView
@@ -84,6 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/arrival_location"
+                android:fontFamily="@font/montserrat"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"/>
 
@@ -99,7 +105,8 @@
                     android:id="@+id/rdbtnArr1Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
             </RadioGroup>
 
             <TextView
@@ -107,6 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/depart_time"
+                android:fontFamily="@font/montserrat"
                 android:textSize="18sp"
                 android:layout_marginTop="10dp"/>
 
@@ -124,20 +132,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime2Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
 
                 <RadioButton
                     android:id="@+id/rdbtnTime3Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="" />
+                    android:text=""
+                    android:fontFamily="@font/montserrat" />
             </RadioGroup>
 
             <LinearLayout
@@ -151,11 +162,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/number_of_people"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="18sp"
                     android:layout_marginEnd="15dp" />
 
                 <EditText
                     android:id="@+id/etxtNoOfPeopleTrain"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:ems="10"
@@ -175,6 +188,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/date"
+                    android:fontFamily="@font/montserrat"
                     android:textSize="18sp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginStart="25dp"/>
@@ -182,6 +196,7 @@
                 <EditText
                     android:id="@+id/etxtDateTrain"
                     android:hint="DD/MM/YYYY"
+                    android:fontFamily="@font/montserrat"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:ems="10"
@@ -198,6 +213,7 @@
         android:layout_gravity="center"
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
+        android:fontFamily="@font/montserrat"
         android:onClick="confirmBtn"
         android:text="@string/confrim"
         android:textAllCaps="true"
@@ -205,10 +221,10 @@
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.829"
+        app:layout_constraintHorizontal_bias="0.858"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.959"
+        app:layout_constraintVertical_bias="0.955"
         app:shapeAppearanceOverlay="@style/Button5" />
 
     <Button
@@ -218,6 +234,7 @@
         android:layout_gravity="center"
         android:backgroundTint="@color/btnColour"
         android:elevation="15dp"
+        android:fontFamily="@font/montserrat"
         android:onClick="backBtn"
         android:text="@string/back_home"
         android:textAllCaps="true"
@@ -225,7 +242,7 @@
         android:textSize="17sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnTrainConfrim"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:shapeAppearanceOverlay="@style/Button5" />
 
