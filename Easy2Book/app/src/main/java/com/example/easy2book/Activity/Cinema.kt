@@ -49,13 +49,13 @@ class Cinema : AppCompatActivity() {
         rdbtnMovie1.setOnClickListener {
             rdbtnSTime1.text = time1M1
             rdbtnSTime2.text = time2M1
-            txtPrice.text = price1.toString()
+            txtPrice.text = "Price: £" + price1.toString() + ".00 per person"
         }
 
         rdbtnMovie2.setOnClickListener {
             rdbtnSTime1.text = time1M2
             rdbtnSTime2.text = time2M2
-            txtPrice.text = price2.toString()
+            txtPrice.text = "Price: £" + price2.toString() + ".00 per person"
         }
     }
 

@@ -17,7 +17,7 @@ class ConfirmationPage : AppCompatActivity() {
         val dbHelper = DataBaseHelper(this)
         val lastDetail = dbHelper.getAllConfirmDetails().last()
 
-        var txtUsername = findViewById<TextView>(R.id.txtUsernameC)
+        var txtPrice = findViewById<TextView>(R.id.txtPriceC)
         var txtEmail = findViewById<TextView>(R.id.txtEmailC)
         var txtActOrTrans = findViewById<TextView>(R.id.txtActOrTrans)
         var txtTime = findViewById<TextView>(R.id.txtTimeC)
@@ -29,7 +29,7 @@ class ConfirmationPage : AppCompatActivity() {
 
 //      Depending on what the user selected in previous pages,
 //      the text views will be updated accordingly
-        txtUsername.text = "Username: ${lastDetail.Price}"
+        txtPrice.text = "Total Price: £${lastDetail.Price}"
         txtEmail.text = "Email: ${lastDetail.Email}"
         txtDate.text = "Date: ${lastDetail.Date}"
         txtNoOfPeople.text = "Number of People Booked: ${lastDetail.NoOfPeople}"

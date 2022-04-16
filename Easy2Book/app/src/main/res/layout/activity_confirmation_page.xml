@@ -63,16 +63,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtUsernameC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/username"
-                android:fontFamily="@font/montserrat"
-                android:textSize="16sp"
-                android:padding="5dp"
-                android:layout_margin="5dp" />
-
-            <TextView
                 android:id="@+id/txtEmailC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,7 +70,19 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/txtPriceC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txtDateC"
@@ -90,7 +92,8 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txtNoOfPeopleC"
@@ -100,7 +103,8 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txtTimeC"
@@ -110,7 +114,8 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txtActOrTrans"
@@ -120,7 +125,8 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txtMovOrEx"
@@ -130,7 +136,8 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txtLFromC"
@@ -140,7 +147,8 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txtLToC"
@@ -150,7 +158,8 @@
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:gravity="center" />
 
 
         </LinearLayout>

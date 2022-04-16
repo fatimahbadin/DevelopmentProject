@@ -52,13 +52,13 @@ class Museum : AppCompatActivity() {
         rbtnExhibit1.setOnClickListener {
             rdbtnVTime1.text = time1v1
             rdbtnVTime2.text = time2v1
-            txtPrice.text = price1.toString()
+            txtPrice.text = "Price: £" + price1.toString() + ".00 per person"
         }
 
         rbtnExhibit2.setOnClickListener {
             rdbtnVTime1.text = time1v2
             rdbtnVTime2.text = time2v2
-            txtPrice.text = price2.toString()
+            txtPrice.text = "Price: £" + price2.toString() + ".00 per person"
         }
     }
 

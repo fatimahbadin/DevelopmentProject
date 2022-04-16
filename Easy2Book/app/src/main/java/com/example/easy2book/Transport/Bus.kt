@@ -67,7 +67,7 @@ class Bus : AppCompatActivity() {
             rdbtnTime1Bus.text = departTime1b1
             rdbtnTime2Bus.text = departTime2b1
             rdbtnTime3Bus.text = departTime3b1
-            txtPrice.text = price1.toString()
+            txtPrice.text = "Price: £" + price1.toString() + ".00 per person"
         }
 
         rdbtnFrom2.setOnClickListener {
@@ -76,7 +76,7 @@ class Bus : AppCompatActivity() {
             rdbtnTime1Bus.text = departTime1b2
             rdbtnTime2Bus.text = departTime2b2
             rdbtnTime3Bus.text = departTime3b2
-            txtPrice.text = price2.toString()
+            txtPrice.text = "Price: £" + price2.toString() + ".00 per person"
         }
     }
 

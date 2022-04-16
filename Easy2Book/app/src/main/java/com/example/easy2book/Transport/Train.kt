@@ -61,7 +61,7 @@ class Train : AppCompatActivity() {
             rdbtnTime1Train.text = departTime1t1
             rdbtnTime2Train.text = departTime2t1
             rdbtnTime3Train.text = departTime3t1
-            txtPrice.text = price1.toString()
+            txtPrice.text = "Price: £" + price1.toString() + ".00 per person"
         }
 
         rdbtnFrom2.setOnClickListener {
@@ -69,7 +69,7 @@ class Train : AppCompatActivity() {
             rdbtnTime1Train.text = departTime1t2
             rdbtnTime2Train.text = departTime2t2
             rdbtnTime3Train.text = departTime3t2
-            txtPrice.text = price2.toString()
+            txtPrice.text = "Price: £" + price2.toString() + ".00 per person"
         }
 
     }
