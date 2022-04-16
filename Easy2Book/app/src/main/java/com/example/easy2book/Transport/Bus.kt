@@ -1,5 +1,6 @@
 package com.example.easy2book.Transport
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -149,8 +150,19 @@ class Bus : AppCompatActivity() {
             )
 
             if (dbHelper.addConfirmDetails(confirmDetails)) {
-                Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, ConfirmationPage::class.java))
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                builder.setTitle("Total Price: £$txtPriceUpdated")
+
+                builder.setPositiveButton("Confirm") { dialog, which ->
+                    Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, ConfirmationPage::class.java))
+                }
+
+                builder.setNegativeButton("Cancel") { dialog, whihc ->
+                    dialog.cancel()
+                }
+
+                builder.show()
             } else {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
             }

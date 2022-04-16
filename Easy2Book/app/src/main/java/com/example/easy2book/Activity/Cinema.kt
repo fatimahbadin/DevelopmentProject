@@ -1,5 +1,6 @@
 package com.example.easy2book.Activity
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.*
 import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
+import com.example.easy2book.MainActivity
 import com.example.easy2book.Model.ConfirmDetails
 import com.example.easy2book.Model.DataBaseHelper
 import com.example.easy2book.R
@@ -112,8 +114,19 @@ class Cinema : AppCompatActivity() {
             )
 
             if(dbHelper.addConfirmDetails(confirmDetails)) {
-                Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, ConfirmationPage::class.java))
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                builder.setTitle("Total Price: £$txtPriceUpdated")
+
+                builder.setPositiveButton("Confirm") { dialog, which ->
+                    Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, ConfirmationPage::class.java))
+                }
+
+                builder.setNegativeButton("Cancel") { dialog, whihc ->
+                    dialog.cancel()
+                }
+
+                builder.show()
             } else {
                 Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
             }
