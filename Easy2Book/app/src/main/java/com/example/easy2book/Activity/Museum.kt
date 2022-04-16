@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
 import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
@@ -41,16 +42,23 @@ class Museum : AppCompatActivity() {
         val rdbtnVTime1 = findViewById<RadioButton>(R.id.rdbtnVTime1)
         val rdbtnVTime2 = findViewById<RadioButton>(R.id.rdbtnVTime2)
 
+        val price1 = dbHelper.getAllMuseum().get(0).Price
+        val price2 = dbHelper.getAllMuseum().get(1).Price
+
+        val txtPrice = findViewById<TextView>(R.id.txtPriceMuseum)
+
 //      When either of the radio  buttons for the movies is clicked a different time
 //      will be set to the text of the time radio buttons
         rbtnExhibit1.setOnClickListener {
             rdbtnVTime1.text = time1v1
             rdbtnVTime2.text = time2v1
+            txtPrice.text = price1.toString()
         }
 
         rbtnExhibit2.setOnClickListener {
             rdbtnVTime1.text = time1v2
             rdbtnVTime2.text = time2v2
+            txtPrice.text = price2.toString()
         }
     }
 
@@ -60,17 +68,19 @@ class Museum : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
-//        var capacity = 0
+        var txtPrice = 0
+        val price1 = dbHelper.getAllMuseum().get(0).Price
+        val price2 = dbHelper.getAllMuseum().get(1).Price
 
         var exhibit = " "
         val exhibit1 = findViewById<RadioButton>(R.id.rdbtnExhibit1)
         val exhibit2 = findViewById<RadioButton>(R.id.rdbtnExhibit2)
         if (exhibit1.isChecked) {
             exhibit = exhibit1.text.toString()
-//            capacity = dbHelper.getAllMuseum().get(0).Capacity
+            txtPrice = price1
         } else if (exhibit2.isChecked) {
             exhibit = exhibit2.text.toString()
-//            capacity = dbHelper.getAllMuseum().get(1).Capacity
+            txtPrice = price2
         } else {
             Toast.makeText(this, "Please select an exhibit", Toast.LENGTH_SHORT).show()
         }
@@ -91,13 +101,15 @@ class Museum : AppCompatActivity() {
 //      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).text.toString()
-        if ((noOfpeople != "" /*&& (noOfpeople.toInt() < capacity)*/) && dateC != "" &&
+        if ((noOfpeople != "") && dateC != "" &&
             (rdbtnVTime1.isChecked || rdbtnVTime2.isChecked) &&
             (exhibit1.isChecked || exhibit2.isChecked)
         ) {
 
+            var txtPriceUpdated = txtPrice * noOfpeople.toInt()
+
             var confirmDetails = ConfirmDetails(
-                0, 0, lastUserL.Email,"Museum", visitTime,
+                0, txtPriceUpdated, lastUserL.Email,"Museum", visitTime,
                 "", exhibit, "", "", "",
                 "", noOfpeople, dateC
             )

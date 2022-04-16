@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
 import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
@@ -48,6 +49,11 @@ class Train : AppCompatActivity() {
         val rdbtnTime2Train = findViewById<RadioButton>(R.id.rdbtnTime2Train)
         val rdbtnTime3Train = findViewById<RadioButton>(R.id.rdbtnTime3Train)
 
+        val price1 = dbHelper.getAllTrain().first().Price
+        val price2 = dbHelper.getAllTrain().last().Price
+
+        val txtPrice = findViewById<TextView>(R.id.txtPriceTrain)
+
 //      When either of the radio  buttons for the movies is clicked a different time
 //      and locationTo will be set to the text of the time and locationTo radio buttons
         rdbtnFrom1.setOnClickListener {
@@ -55,6 +61,7 @@ class Train : AppCompatActivity() {
             rdbtnTime1Train.text = departTime1t1
             rdbtnTime2Train.text = departTime2t1
             rdbtnTime3Train.text = departTime3t1
+            txtPrice.text = price1.toString()
         }
 
         rdbtnFrom2.setOnClickListener {
@@ -62,6 +69,7 @@ class Train : AppCompatActivity() {
             rdbtnTime1Train.text = departTime1t2
             rdbtnTime2Train.text = departTime2t2
             rdbtnTime3Train.text = departTime3t2
+            txtPrice.text = price2.toString()
         }
 
     }
@@ -72,17 +80,19 @@ class Train : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
-//        var capacity = 0
+        var txtPrice = 0
+        val price1 = dbHelper.getAllTrain().first().Price
+        val price2 = dbHelper.getAllTrain().last().Price
 
         var locationFrom = " "
         val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Train)
         val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Train)
         if (rdbtnFrom1.isChecked) {
             locationFrom = rdbtnFrom1.text.toString()
-//            capacity = dbHelper.getAllTrain().get(0).Capacity
+            txtPrice = price1
         } else if (rdbtnFrom2.isChecked) {
             locationFrom = rdbtnFrom2.text.toString()
-//            capacity = dbHelper.getAllTrain().get(1).Capacity
+            txtPrice = price2
         } else {
             Toast.makeText(this, "Please select a location to leave from", Toast.LENGTH_SHORT)
                 .show()
@@ -115,13 +125,15 @@ class Train : AppCompatActivity() {
 //      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleTrain).text.toString()
-        if  ((noOfpeople != "" /*&& (noOfpeople.toInt() < capacity)*/) && dateC != "" &&
+        if  ((noOfpeople != "") && dateC != "" &&
             (rdbtnTime1Train.isChecked || rdbtnTime2Train.isChecked || rdbtnTime3Train.isChecked) &&
             rdbtnArr1.isChecked && (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
         ) {
 
+            var txtPriceUpdated = txtPrice * noOfpeople.toInt()
+
             var confirmDetails = ConfirmDetails(
-                0, 0, lastUserL.Email,"", "",
+                0, txtPriceUpdated, lastUserL.Email,"", "",
                 "", "", "Train", locationFrom,
                 arrivalLocation, departTime, noOfpeople, dateC
             )
@@ -134,7 +146,7 @@ class Train : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this,
-                "Make sure all fields have been filled in",
+                "Make sure all fields have been filled and the number of people needs to be within the capacity",
                 Toast.LENGTH_SHORT).show()        }
     }
 

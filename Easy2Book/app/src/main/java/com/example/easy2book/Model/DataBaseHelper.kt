@@ -145,7 +145,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     UserLoggedColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     UserLoggedColumn_Username + " TEXT NOT NULL, " +
                     UserLoggedColumn_Password + " TEXT NOT NULL, " +
-                    UserLoggedColumn_Email + " TEXT NOT NULL ) "
+                    UserLoggedColumn_Email + " TEXT NOT NULL )"
 
             db?.execSQL(sqlCreateStatement)
 
@@ -465,30 +465,30 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     }
 
 //  This function gets all of the cinema details within the cinema table
-fun getAllCinema(): ArrayList<CinemaClass> {
-    val cinemaList = ArrayList<CinemaClass>()
-    val db: SQLiteDatabase = this.readableDatabase
-    val sqlStatement = "SELECT * FROM $CinemaTableName"
+    fun getAllCinema(): ArrayList<CinemaClass> {
+        val cinemaList = ArrayList<CinemaClass>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $CinemaTableName"
 
-    val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
 
-    if (cursor.moveToFirst())
-        do {
-            val id: Int = cursor.getInt(0)
-            val movieName: String = cursor.getString(1)
-            val movieStartTime1: String = cursor.getString(2)
-            val movieStartTime2: String = cursor.getString(3)
-            val price: Int = cursor.getInt(4)
-            val b = CinemaClass(id, movieName, movieStartTime1,
-                movieStartTime2, price)
-            cinemaList.add(b)
-        } while (cursor.moveToNext())
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val movieName: String = cursor.getString(1)
+                val movieStartTime1: String = cursor.getString(2)
+                val movieStartTime2: String = cursor.getString(3)
+                val price: Int = cursor.getInt(4)
+                val b = CinemaClass(id, movieName, movieStartTime1,
+                    movieStartTime2, price)
+                cinemaList.add(b)
+            } while (cursor.moveToNext())
 
-    cursor.close()
-    db.close()
+        cursor.close()
+        db.close()
 
-    return cinemaList
-}
+        return cinemaList
+    }
 
 //  This function gets all of the museum details within the museum table
     fun getAllMuseum(): ArrayList<MuseumClass> {
