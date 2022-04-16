@@ -158,7 +158,7 @@ class Train : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this,
-                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                "Make sure all fields have been filled in",
                 Toast.LENGTH_SHORT).show()        }
     }
 
