@@ -72,17 +72,17 @@ class Train : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
-        var capacity = 0
+//        var capacity = 0
 
         var locationFrom = " "
         val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Train)
         val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Train)
         if (rdbtnFrom1.isChecked) {
             locationFrom = rdbtnFrom1.text.toString()
-            capacity = dbHelper.getAllTrain().get(0).Capacity
+//            capacity = dbHelper.getAllTrain().get(0).Capacity
         } else if (rdbtnFrom2.isChecked) {
             locationFrom = rdbtnFrom2.text.toString()
-            capacity = dbHelper.getAllTrain().get(1).Capacity
+//            capacity = dbHelper.getAllTrain().get(1).Capacity
         } else {
             Toast.makeText(this, "Please select a location to leave from", Toast.LENGTH_SHORT)
                 .show()
@@ -115,13 +115,13 @@ class Train : AppCompatActivity() {
 //      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleTrain).text.toString()
-        if  ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
+        if  ((noOfpeople != "" /*&& (noOfpeople.toInt() < capacity)*/) && dateC != "" &&
             (rdbtnTime1Train.isChecked || rdbtnTime2Train.isChecked || rdbtnTime3Train.isChecked) &&
             rdbtnArr1.isChecked && (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
         ) {
 
             var confirmDetails = ConfirmDetails(
-                0, lastUserL.Username, lastUserL.Email,"", "",
+                0, 0, lastUserL.Email,"", "",
                 "", "", "Train", locationFrom,
                 arrivalLocation, departTime, noOfpeople, dateC
             )
@@ -134,7 +134,7 @@ class Train : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this,
-                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                "Make sure all fields have been filled in",
                 Toast.LENGTH_SHORT).show()        }
     }
 

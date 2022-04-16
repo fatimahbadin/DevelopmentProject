@@ -29,7 +29,7 @@ class ConfirmationPage : AppCompatActivity() {
 
 //      Depending on what the user selected in previous pages,
 //      the text views will be updated accordingly
-        txtUsername.text = "Username: ${lastDetail.Username}"
+        txtUsername.text = "Username: ${lastDetail.Price}"
         txtEmail.text = "Email: ${lastDetail.Email}"
         txtDate.text = "Date: ${lastDetail.Date}"
         txtNoOfPeople.text = "Number of People Booked: ${lastDetail.NoOfPeople}"

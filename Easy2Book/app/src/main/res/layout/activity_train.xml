@@ -63,8 +63,8 @@
 
             <RadioGroup
                 android:id="@+id/rdgDepartLocationTrain"
-                android:layout_width="268dp"
-                android:layout_height="63dp"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -73,15 +73,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:text=""
-                    android:fontFamily="@font/montserrat" />
+                    android:fontFamily="@font/montserrat"
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/rdbtnFrom2Train"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:fontFamily="@font/montserrat" />
+                    android:fontFamily="@font/montserrat"
+                    android:text="" />
             </RadioGroup>
 
             <TextView
@@ -202,6 +202,16 @@
                     android:ems="10"
                     android:inputType="date" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtPriceTrain"
+                android:text="Price: "
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

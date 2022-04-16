@@ -26,7 +26,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
    /* Confirmation Details Table */
     public val BookingDetailsTableName = "BookingDetails"
     public val BookingDetailsColumn_ID = "ID"
-    public val BookingDetailsColumn_Username = "Username"
+    public val BookingDetailsColumn_Price = "Price"
     public val BookingDetailsColumn_Email = "Email"
     public val BookingDetailsColumn_Activity = "Activity"
     public val BookingDetailsColumn_TimeBooked = "TimeBooked"
@@ -63,7 +63,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val CinemaColumn_MovieName = "MovieName"
     public val CinemaColumn_MovieStartTime1 = "MovieStartTime1"
     public val CinemaColumn_MovieStartTime2 = "MovieStartTime2"
-    public val CinemaColumn_Capacity = "Capacity"
+    public val CinemaColumn_Price = "Price"
 
     /****************************************/
 
@@ -73,7 +73,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val MuseumColumn_VisitTime1 = "VisitTime1"
     public val MuseumColumn_VisitTime2 = "VisitTime"
     public val MuseumColumn_Exhibitions = "Exhibitions"
-    public val MuseumColumn_Capacity = "Capacity"
+    public val MuseumColumn_Price = "Price"
 
     /****************************************/
 
@@ -93,7 +93,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val BusColumn_DepartTime1 = "DepartTime1"
     public val BusColumn_DepartTime2 = "DepartTime2"
     public val BusColumn_DepartTime3 = "DepartTime3"
-    public val BusColumn_Capacity = "Capacity"
+    public val BusColumn_Price = "Price"
 
     /****************************************/
 
@@ -105,7 +105,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val TrainColumn_DepartTime1 = "DepartTime1"
     public val TrainColumn_DepartTime2 = "DepartTime2"
     public val TrainColumn_DepartTime3 = "DepartTime3"
-    public val TrainColumn_Capacity = "Capacity"
+    public val TrainColumn_Price = "Price"
 
     /****************************************/
 
@@ -125,7 +125,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
             sqlCreateStatement = "CREATE TABLE " + BookingDetailsTableName + " ( " +
                     BookingDetailsColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    BookingDetailsColumn_Username + " TEXT NOT NULL " +
+                    BookingDetailsColumn_Price + " INTEGER NOT NULL " +
                     BookingDetailsColumn_Email + " TEXT NOT NULL" +
                     BookingDetailsColumn_Activity + " TEXT, " +
                     BookingDetailsColumn_TimeBooked + " TEXT, " +
@@ -145,7 +145,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     UserLoggedColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     UserLoggedColumn_Username + " TEXT NOT NULL, " +
                     UserLoggedColumn_Password + " TEXT NOT NULL, " +
-                    UserLoggedColumn_Email + " TEXT NOT NULL )"
+                    UserLoggedColumn_Email + " TEXT NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
 
@@ -162,7 +162,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     CinemaColumn_MovieName + " TEXT NOT NULL, " +
                     CinemaColumn_MovieStartTime1 + " TEXT NOT NULL, " +
                     CinemaColumn_MovieStartTime2 + " TEXT NOT NULL, " +
-                    CinemaColumn_Capacity + " INTEGER NOT NULL ) "
+                    CinemaColumn_Price + " INTEGER NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
 
@@ -172,7 +172,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     MuseumColumn_VisitTime1 + " TEXT NOT NULL, " +
                     MuseumColumn_VisitTime2 + " TEXT NOT NULL, " +
                     MuseumColumn_Exhibitions + " TEXT NOT NULL, " +
-                    MuseumColumn_Capacity + " INTEGER NOT NULL ) "
+                    MuseumColumn_Price + " INTEGER NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
 
@@ -192,7 +192,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     BusColumn_DepartTime1 + " TEXT NOT NULL, " +
                     BusColumn_DepartTime2 + " TEXT NOT NULL, " +
                     BusColumn_DepartTime3 + " TEXT NOT NULL, " +
-                    BusColumn_Capacity + " INTEGER NOT NULL ) "
+                    BusColumn_Price + " INTEGER NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
 
@@ -204,7 +204,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     TrainColumn_DepartTime1 + " TEXT NOT NULL, " +
                     TrainColumn_DepartTime2 + " TEXT NOT NULL, " +
                     TrainColumn_DepartTime3 + " TEXT NOT NULL, " +
-                    TrainColumn_Capacity + " INTEGER NOT NULL ) "
+                    TrainColumn_Price + " INTEGER NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
 
@@ -367,7 +367,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         if (cursor.moveToFirst())
             do {
                 val id: Int = cursor.getInt(0)
-                val username: String = cursor.getString(1)
+                val price: Int = cursor.getInt(1)
                 val email: String = cursor.getString(2)
                 val activity: String = cursor.getString(3)
                 val timeBooked: String = cursor.getString(4)
@@ -380,7 +380,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                 val noOfPeople: String = cursor.getString(11)
                 val date: String = cursor.getString(12)
 
-                val b = ConfirmDetails(id, username, email, activity, timeBooked,
+                val b = ConfirmDetails(id, price, email, activity, timeBooked,
                     movieName, exhibition, transport, locationFrom, locationTo,
                     departTime, noOfPeople, date)
                 detailsList.add(b)
@@ -398,7 +398,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
-        cv.put(BookingDetailsColumn_Username, confirmDetails.Username)
+        cv.put(BookingDetailsColumn_Price, confirmDetails.Price)
         cv.put(BookingDetailsColumn_Email, confirmDetails.Email)
         cv.put(BookingDetailsColumn_Activity, confirmDetails.Activity)
         cv.put(BookingDetailsColumn_TimeBooked, confirmDetails.TimeBooked)
@@ -465,30 +465,30 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     }
 
 //  This function gets all of the cinema details within the cinema table
-    fun getAllCinema(): ArrayList<CinemaClass> {
-        val cinemaList = ArrayList<CinemaClass>()
-        val db: SQLiteDatabase = this.readableDatabase
-        val sqlStatement = "SELECT * FROM $CinemaTableName"
+fun getAllCinema(): ArrayList<CinemaClass> {
+    val cinemaList = ArrayList<CinemaClass>()
+    val db: SQLiteDatabase = this.readableDatabase
+    val sqlStatement = "SELECT * FROM $CinemaTableName"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+    val cursor: Cursor = db.rawQuery(sqlStatement, null)
 
-        if (cursor.moveToFirst())
-            do {
-                val id: Int = cursor.getInt(0)
-                val movieName: String = cursor.getString(1)
-                val movieStartTime1: String = cursor.getString(2)
-                val movieStartTime2: String = cursor.getString(3)
-                val capacity: Int = cursor.getInt(4)
-                val b = CinemaClass(id, movieName, movieStartTime1,
-                    movieStartTime2, capacity)
-                cinemaList.add(b)
-            } while (cursor.moveToNext())
+    if (cursor.moveToFirst())
+        do {
+            val id: Int = cursor.getInt(0)
+            val movieName: String = cursor.getString(1)
+            val movieStartTime1: String = cursor.getString(2)
+            val movieStartTime2: String = cursor.getString(3)
+            val price: Int = cursor.getInt(4)
+            val b = CinemaClass(id, movieName, movieStartTime1,
+                movieStartTime2, price)
+            cinemaList.add(b)
+        } while (cursor.moveToNext())
 
-        cursor.close()
-        db.close()
+    cursor.close()
+    db.close()
 
-        return cinemaList
-    }
+    return cinemaList
+}
 
 //  This function gets all of the museum details within the museum table
     fun getAllMuseum(): ArrayList<MuseumClass> {
@@ -504,8 +504,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                 val visitTime1: String = cursor.getString(1)
                 val visitTime2: String = cursor.getString(2)
                 val exhibition: String = cursor.getString(3)
-                val capacity: Int = cursor.getInt(4)
-                val b = MuseumClass(id, visitTime1, visitTime2, exhibition, capacity)
+                val price: Int = cursor.getInt(4)
+                val b = MuseumClass(id, visitTime1, visitTime2, exhibition, price)
                 museumList.add(b)
             } while (cursor.moveToNext())
 
@@ -532,9 +532,9 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                 val departTime1: String = cursor.getString(4)
                 val departTime2: String = cursor.getString(5)
                 val departTime3: String = cursor.getString(6)
-                val capacity: Int = cursor.getInt(7)
+                val price: Int = cursor.getInt(7)
                 val b = BusClass(id, locationFrom, locationTo1, locationTo2,
-                    departTime1, departTime2, departTime3, capacity)
+                    departTime1, departTime2, departTime3, price)
                 busList.add(b)
             } while (cursor.moveToNext())
 
@@ -560,9 +560,9 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                 val departTime1: String = cursor.getString(3)
                 val departTime2: String = cursor.getString(4)
                 val departTime3: String = cursor.getString(5)
-                val capacity: Int = cursor.getInt(6)
+                val price: Int = cursor.getInt(6)
                 val b = TrainClass(id, locationFrom, locationTo, departTime1,
-                    departTime2, departTime3, capacity)
+                    departTime2, departTime3, price)
                 trainList.add(b)
             } while (cursor.moveToNext())
 

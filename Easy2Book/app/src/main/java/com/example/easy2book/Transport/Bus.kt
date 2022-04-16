@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
 import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
@@ -78,17 +79,17 @@ class Bus : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
-        var capacity = 0
+//        var capacity = 0
 
         var locationFrom = " "
         val rdbtnFrom1 = findViewById<RadioButton>(R.id.rdbtnFrom1Bus)
         val rdbtnFrom2 = findViewById<RadioButton>(R.id.rdbtnFrom2Bus)
         if (rdbtnFrom1.isChecked) {
             locationFrom = rdbtnFrom1.text.toString()
-            capacity = dbHelper.getAllBus().get(0).Capacity
+//            capacity = dbHelper.getAllBus().get(0).Capacity
         } else if (rdbtnFrom2.isChecked) {
             locationFrom = rdbtnFrom2.text.toString()
-            capacity = dbHelper.getAllBus().get(1).Capacity
+//            capacity = dbHelper.getAllBus().get(1).Capacity
         } else {
             Toast.makeText(this, "Please select a location to leave from", Toast.LENGTH_SHORT)
                 .show()
@@ -124,14 +125,14 @@ class Bus : AppCompatActivity() {
 //      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).text.toString()
-        if  ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
+        if  ((noOfpeople != "" /*&& (noOfpeople.toInt() < capacity)*/) && dateC != "" &&
             (rdbtnTime1Bus.isChecked || rdbtnTime2Bus.isChecked || rdbtnTime3Bus.isChecked) &&
             (rdbtnArr1.isChecked || rdbtnArr2.isChecked) &&
             (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
         ) {
 
             var confirmDetails = ConfirmDetails(
-                0, lastUserL.Username, lastUserL.Email, "", "",
+                0, 0, lastUserL.Email, "", "",
                 "", "", "Bus", locationFrom,
                 arrivalLocation, departTime, noOfpeople, dateC
             )
@@ -144,7 +145,7 @@ class Bus : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this,
-                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                "Make sure all fields have been filled in",
                 Toast.LENGTH_SHORT).show()        }
     }
 

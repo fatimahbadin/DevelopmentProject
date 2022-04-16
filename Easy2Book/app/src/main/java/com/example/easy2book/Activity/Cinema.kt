@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
 import com.example.easy2book.ConfirmationPage
 import com.example.easy2book.Home
 import com.example.easy2book.Model.ConfirmDetails
@@ -42,16 +39,23 @@ class Cinema : AppCompatActivity() {
         val rdbtnSTime1 = findViewById<RadioButton>(R.id.rdbtnSTime1)
         val rdbtnSTime2 = findViewById<RadioButton>(R.id.rdbtnSTime2)
 
+        val price1 = dbHelper.getAllCinema().get(0).Price
+        val price2 = dbHelper.getAllCinema().get(1).Price
+
+        val txtPrice = findViewById<TextView>(R.id.txtPriceCinema)
+
 //      When either of the radio  buttons for the movies is clicked a different time
 //      will be set to the text of the time radio buttons
         rdbtnMovie1.setOnClickListener {
             rdbtnSTime1.text = time1M1
             rdbtnSTime2.text = time2M1
+            txtPrice.text = price1.toString()
         }
 
         rdbtnMovie2.setOnClickListener {
             rdbtnSTime1.text = time1M2
             rdbtnSTime2.text = time2M2
+            txtPrice.text = price2.toString()
         }
     }
 
@@ -61,17 +65,17 @@ class Cinema : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
-        var capacity = 0
+//        var capacity = 0
 
         var movieName = " "
         val rdbtnMovie1 = findViewById<RadioButton>(R.id.rdbtnMovie1)
         val rdbtnMovie2 = findViewById<RadioButton>(R.id.rdbtnMovie2)
         if(rdbtnMovie1.isChecked) {
             movieName = rdbtnMovie1.text.toString()
-            capacity = dbHelper.getAllCinema().get(0).Capacity
+//            capacity = dbHelper.getAllCinema().get(0).Capacity
         } else if (rdbtnMovie2.isChecked) {
             movieName = rdbtnMovie2.text.toString()
-            capacity = dbHelper.getAllCinema().get(1).Capacity
+//            capacity = dbHelper.getAllCinema().get(1).Capacity
         } else {
             Toast.makeText(this, "Please select a movie", Toast.LENGTH_SHORT).show()
         }
@@ -92,12 +96,12 @@ class Cinema : AppCompatActivity() {
 //      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
-        if ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
+        if ((noOfpeople != "" /*&& (noOfpeople.toInt() < capacity)*/) && dateC != "" &&
             (rdbtnSTime1.isChecked || rdbtnSTime2.isChecked) &&
             (rdbtnMovie1.isChecked || rdbtnMovie2.isChecked)) {
 
             var confirmDetails = ConfirmDetails(
-                0, lastUserL.Username, lastUserL.Email,
+                0, 0, lastUserL.Email,
                 "Cinema", showTime, movieName, "", "",
                 "", "", "", noOfpeople, dateC
             )
@@ -110,7 +114,7 @@ class Cinema : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this,
-                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                "Make sure all fields have been filled in",
                 Toast.LENGTH_SHORT).show()
         }
     }

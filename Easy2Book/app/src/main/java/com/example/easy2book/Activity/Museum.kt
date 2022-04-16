@@ -60,17 +60,17 @@ class Museum : AppCompatActivity() {
     fun confirmBtn (view: View) {
         val dbHelper = DataBaseHelper(this)
 
-        var capacity = 0
+//        var capacity = 0
 
         var exhibit = " "
         val exhibit1 = findViewById<RadioButton>(R.id.rdbtnExhibit1)
         val exhibit2 = findViewById<RadioButton>(R.id.rdbtnExhibit2)
         if (exhibit1.isChecked) {
             exhibit = exhibit1.text.toString()
-            capacity = dbHelper.getAllMuseum().get(0).Capacity
+//            capacity = dbHelper.getAllMuseum().get(0).Capacity
         } else if (exhibit2.isChecked) {
             exhibit = exhibit2.text.toString()
-            capacity = dbHelper.getAllMuseum().get(1).Capacity
+//            capacity = dbHelper.getAllMuseum().get(1).Capacity
         } else {
             Toast.makeText(this, "Please select an exhibit", Toast.LENGTH_SHORT).show()
         }
@@ -91,13 +91,13 @@ class Museum : AppCompatActivity() {
 //      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).text.toString()
-        if ((noOfpeople != "" && (noOfpeople.toInt() < capacity)) && dateC != "" &&
+        if ((noOfpeople != "" /*&& (noOfpeople.toInt() < capacity)*/) && dateC != "" &&
             (rdbtnVTime1.isChecked || rdbtnVTime2.isChecked) &&
             (exhibit1.isChecked || exhibit2.isChecked)
         ) {
 
             var confirmDetails = ConfirmDetails(
-                0, lastUserL.Username, lastUserL.Email,"Museum", visitTime,
+                0, 0, lastUserL.Email,"Museum", visitTime,
                 "", exhibit, "", "", "",
                 "", noOfpeople, dateC
             )
@@ -110,7 +110,7 @@ class Museum : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this,
-                "Make sure all fields have been filled and the number of people needs to be within the capacity",
+                "Make sure all fields have been filled in",
                 Toast.LENGTH_SHORT).show()        }
     }
 
