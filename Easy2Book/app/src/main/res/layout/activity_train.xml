@@ -225,7 +225,7 @@
         android:elevation="15dp"
         android:fontFamily="@font/montserrat"
         android:onClick="confirmBtn"
-        android:text="@string/confrim"
+        android:text="@string/confirm"
         android:textAllCaps="true"
         android:textColor="@color/textColor"
         android:textSize="17sp"
