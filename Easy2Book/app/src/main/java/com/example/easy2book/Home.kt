@@ -18,10 +18,12 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-//        val dbHelper = DataBaseHelper(this)
 //      This code allows for the navigation drawer to function
+        //activity_home.xml page
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        //the hamburger toggle
         val imgMenuToggle = findViewById<ImageView>(R.id.imgMenuToggle)
+        //the nav drawer
         val navView = findViewById<NavigationView>(R.id.navDrawer)
 
         navView.itemIconTintList = null
@@ -32,9 +34,5 @@ class Home : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.fragment)
         NavigationUI.setupWithNavController(navView, navController)
 
-//        val txtTitle = findViewById<TextView>(R.id.txtTitle)
-//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-//            txtTitle.text = destination.label
-//        }
     }
 }

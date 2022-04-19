@@ -196,30 +196,26 @@
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.858"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934"
+        app:layout_constraintVertical_bias="0.932"
         app:shapeAppearanceOverlay="@style/Button5" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnBackCinema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/btnColour"
+        android:background="@drawable/rounded_corners"
+        android:padding="10dp"
         android:elevation="15dp"
-        android:fontFamily="@font/montserrat"
+        android:src="@drawable/ic_home2"
         android:onClick="backBtn"
-        android:text="@string/back_home"
-        android:textAllCaps="true"
-        android:textColor="@color/textColor"
-        android:textSize="17sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnCinemaConfrim"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
-        app:shapeAppearanceOverlay="@style/Button5" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

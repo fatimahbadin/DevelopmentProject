@@ -4,20 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.2046875" />
+        <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.2361111111111111" />
         <entry key="app/src/main/res/drawable/switch_trcks.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/switch_tumbs.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/toolbar_bg.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_bus.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_bus.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_cinema.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_confirmation_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.15760869565217392" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_museum.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_train.xml" value="0.22851086676691362" />
+        <entry key="app/src/main/res/layout/activity_train.xml" value="0.335" />
         <entry key="app/src/main/res/layout/changepw_dialogue.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_activity.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.15833333333333333" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_transport.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_email.xml" value="0.25" />
