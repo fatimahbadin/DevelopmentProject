@@ -32,7 +32,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnActivity"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -70,7 +70,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnTransport"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"

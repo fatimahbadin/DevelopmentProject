@@ -244,11 +244,39 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return userList
     }
 
+//  This function checks the user names within the user table
+    private fun usernameC(user: User) : Int {
+        val db: SQLiteDatabase
+        try {
+            db = this.readableDatabase
+        } catch (e: SQLException) {
+            return -2
+        }
+
+        val username = user.Username.lowercase()
+
+        val sqlStatement = "SELECT * FROM $UserTableName WHERE $UserColumn_Username ==?"
+
+        val usernameArray = arrayOf(username)
+        val cursor: Cursor = db.rawQuery(sqlStatement, usernameArray)
+
+        if (cursor.moveToFirst()){
+            val a = cursor.getInt(0)
+            cursor.close()
+            db.close()
+            return -3
+        }
+
+        cursor.close()
+        db.close()
+        return 0
+    }
+
 //  This function allows users to be added to the user table
-    fun addUser(user : User) : Int {
-        val nameExists = checkUserName(user)
-        if (nameExists < 0)
-            return nameExists
+    fun signUpUser(user : User) : Int {
+        val usernameExists = usernameC(user)
+        if (usernameExists < 0)
+            return usernameExists
 
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
@@ -266,35 +294,6 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         } else {
             return 1
         }
-    }
-
-//  This function checks the user names within the user table
-    private fun checkUserName(user: User) : Int {
-        val db: SQLiteDatabase
-        try {
-            db = this.readableDatabase
-        } catch (e: SQLException) {
-            return -2
-        }
-
-        val username = user.Username.lowercase()
-
-        val sqlStatement = "SELECT * FROM $UserTableName WHERE $UserColumn_Username ==?"
-
-        val param = arrayOf(username)
-        val cursor: Cursor = db.rawQuery(sqlStatement, param)
-
-        if (cursor.moveToFirst()){
-            val a = cursor.getInt(0)
-            cursor.close()
-            db.close()
-            return -3
-        }
-
-        cursor.close()
-        db.close()
-        return 0
-
     }
 
 //  This function checks if the username and password match,

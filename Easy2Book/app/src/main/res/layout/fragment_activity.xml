@@ -32,7 +32,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnCinema"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -58,10 +58,11 @@
                     android:src="@drawable/ic_ticket" />
 
                 <TextView
+                    android:id="@+id/txtFragAct1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cinema"
                     android:fontFamily="@font/montserrat"
+                    android:text=""
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -70,7 +71,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnMuseum"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -96,10 +97,11 @@
                     android:src="@drawable/ic_museum" />
 
                 <TextView
+                    android:id="@+id/txtFragAct2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Museum"
                     android:fontFamily="@font/montserrat"
+                    android:text=""
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>

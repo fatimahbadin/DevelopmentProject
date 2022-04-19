@@ -32,7 +32,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnBus"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -58,9 +58,10 @@
                     android:src="@drawable/ic_bus" />
 
                 <TextView
+                    android:id="@+id/txtFragTrans1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bus"
+                    android:text=""
                     android:fontFamily="@font/montserrat"
                     android:textAlignment="center"
                     android:textStyle="bold" />
@@ -70,7 +71,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnTrain"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -96,9 +97,10 @@
                     android:src="@drawable/ic_train" />
 
                 <TextView
+                    android:id="@+id/txtFragTrans2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Train"
+                    android:text=""
                     android:fontFamily="@font/montserrat"
                     android:textAlignment="center"
                     android:textStyle="bold" />

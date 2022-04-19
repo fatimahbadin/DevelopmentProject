@@ -50,16 +50,16 @@ class MainActivity : AppCompatActivity() {
 //      Function for the signUp button, the users details will be checked against existing details
 //      If details do not exist the users details will be saved onto the user table and they can login
         btnSignUp.setOnClickListener {
-            val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString()
-            val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString()
-            val pwInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword).text.toString()
+            val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString().lowercase()
+            val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString().lowercase()
+            val pwInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword).text.toString().lowercase()
 
             if (usernameInputS.isEmpty() && emailInputS.isEmpty() && pwInputS.isEmpty()) {
                 Toast.makeText(this, "All fields must be filled in", Toast.LENGTH_SHORT).show()
             } else {
                 val newUser = User(0, usernameInputS, pwInputS, emailInputS)
 
-                val result = dbHelper.addUser(newUser)
+                val result = dbHelper.signUpUser(newUser)
 
                 when (result) {
                     1 -> {
@@ -97,8 +97,8 @@ class MainActivity : AppCompatActivity() {
             var userList = ArrayList<User>()
             val u = dbHelper.getAllUsers()
 
-            val usernameInputL = findViewById<TextInputEditText>(R.id.txtUsername).text.toString()
-            val passwordInputL = findViewById<TextInputEditText>(R.id.txtPassword).text.toString()
+            val usernameInputL = findViewById<TextInputEditText>(R.id.txtUsername).text.toString().lowercase()
+            val passwordInputL = findViewById<TextInputEditText>(R.id.txtPassword).text.toString().lowercase()
 
             userList.addAll(u)
 

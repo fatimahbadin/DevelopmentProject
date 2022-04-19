@@ -26,11 +26,13 @@ class Home : AppCompatActivity() {
         //the nav drawer
         val navView = findViewById<NavigationView>(R.id.navDrawer)
 
+        //allows the nav to open
         navView.itemIconTintList = null
         imgMenuToggle.setOnClickListener{
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
+        //changes the content within the fragment container
         val navController = Navigation.findNavController(this, R.id.fragment)
         NavigationUI.setupWithNavController(navView, navController)
 
