@@ -35,12 +35,14 @@ class ActivityFragment : Fragment() {
         txtAct2.text = dbHelper.getAllActivity().last().Activity
 
 //      Function for the cinema button that will take the user to the cinema page
-        view.findViewById<CardView>(R.id.btnCinema).setOnClickListener {
+        val btnCinema = view.findViewById<CardView>(R.id.btnCinema)
+        btnCinema.setOnClickListener {
             startActivity(Intent(context, Cinema::class.java))
         }
 
 //      Function for the museum button that will take the user to the museum page
-        view.findViewById<CardView>(R.id.btnMuseum).setOnClickListener {
+        val btnMuseum = view.findViewById<CardView>(R.id.btnMuseum)
+        btnMuseum.setOnClickListener {
             startActivity(Intent(context, Museum::class.java))
         }
     }

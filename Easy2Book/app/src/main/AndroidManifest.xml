@@ -25,15 +25,6 @@
             android:name=".Activity.Cinema"
             android:exported="false" />
         <activity
-            android:name=".Bus"
-            android:exported="false" />
-        <activity
-            android:name=".Train"
-            android:exported="false" />
-        <activity
-            android:name=".Museum"
-            android:exported="false" />
-        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

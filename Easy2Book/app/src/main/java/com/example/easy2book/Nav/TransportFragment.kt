@@ -35,12 +35,14 @@ class TransportFragment : Fragment() {
         txtTrans2.text = dbHelper.getAllTransport().last().Transport
 
 //      Function for the bus button that will take the user to the bus page
-        view.findViewById<CardView>(R.id.btnBus).setOnClickListener {
+        val btnBus = view.findViewById<CardView>(R.id.btnBus)
+        btnBus.setOnClickListener {
             startActivity(Intent(context, Bus::class.java))
         }
 
 //      Function for the train button that will take the user to the train page
-        view.findViewById<CardView>(R.id.btnTrain).setOnClickListener {
+        val btnTrain = view.findViewById<CardView>(R.id.btnTrain)
+        btnTrain.setOnClickListener {
             startActivity(Intent(context, Train::class.java))
         }
     }
