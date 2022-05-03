@@ -5,5 +5,5 @@ class ConfirmDetails (val ID: Int, val Price: Int, val Email: String,
                       val MovieName: String, val Exhibition: String,
                       val Transport: String, val LocationFrom: String,
                       val LocationTo: String, val DepartTime: String,
-                      val NoOfPeople: String, val Date: String, val Username: String) {
+                      val NoOfPeople: Int, val Date: String, val Username: String) {
 }

@@ -136,7 +136,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     BookingDetailsColumn_LocationFrom + " TEXT, " +
                     BookingDetailsColumn_LocationTo + " TEXT, " +
                     BookingDetailsColumn_DepartTime + " TEXT, " +
-                    BookingDetailsColumn_NoOfPeople + " TEXT NOT NULL, " +
+                    BookingDetailsColumn_NoOfPeople + " INTEGER NOT NULL, " +
                     BookingDetailsColumn_Date + " TEXT NOT NULL " +
                     BookingDetailsColumn_Username + " TEXT NOT NULL ) "
 
@@ -378,7 +378,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                 val locationFrom: String = cursor.getString(8)
                 val locationTo: String = cursor.getString(9)
                 val departTime: String = cursor.getString(10)
-                val noOfPeople: String = cursor.getString(11)
+                val noOfPeople: Int = cursor.getInt(11)
                 val date: String = cursor.getString(12)
                 val username: String = cursor.getString(13)
 
@@ -416,7 +416,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                 val locationFrom: String = cursor.getString(8)
                 val locationTo: String = cursor.getString(9)
                 val departTime: String = cursor.getString(10)
-                val noOfPeople: String = cursor.getString(11)
+                val noOfPeople: Int = cursor.getInt(11)
                 val date: String = cursor.getString(12)
                 val username: String = cursor.getString(13)
 

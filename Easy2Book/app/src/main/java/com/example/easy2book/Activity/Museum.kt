@@ -112,12 +112,14 @@ class Museum : AppCompatActivity() {
             var confirmDetails = ConfirmDetails(
                 0, txtPriceUpdated, lastUserL.Email,"Museum", visitTime,
                 "", exhibit, "", "", "",
-                "", noOfpeople, dateC, lastUserL.Username
+                "", noOfpeople.toInt(), dateC, lastUserL.Username
             )
 
             if (dbHelper.addConfirmDetails(confirmDetails)) {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-                builder.setTitle("Total Price: £$txtPriceUpdated")
+                builder.setTitle("Total Price")
+                builder.setMessage("The total price is:  £$txtPriceUpdated" +
+                        "\nPlease confirm you would like to book.")
 
                 builder.setPositiveButton("Confirm") { dialog, which ->
                     Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
