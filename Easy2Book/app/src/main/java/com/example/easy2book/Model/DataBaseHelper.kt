@@ -469,6 +469,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
+        cv.put(BookingDetailsColumn_Price, NOP.Price)
         cv.put(BookingDetailsColumn_NoOfPeople, NOP.NoOfPeople)
 
         val success = db.update(BookingDetailsTableName, cv, "$BookingDetailsColumn_ID = ${NOP.ID}", null) == 1

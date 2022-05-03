@@ -14,8 +14,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class BookingHistory : AppCompatActivity() {
 
     lateinit var bookingsList: ArrayList<String>
-//    lateinit var activityList: ArrayList<String>
-//    lateinit var transportList: ArrayList<String>
     lateinit var idList: ArrayList<Int>
     lateinit var randList: ArrayList<ConfirmDetails>
 
@@ -26,16 +24,12 @@ class BookingHistory : AppCompatActivity() {
         val dbHelper = DataBaseHelper(this)
         val user = dbHelper.getAllLoggedUsers().last().Username
         val bookings = dbHelper.getAllConfirmDetails()
-//        activityList = ArrayList()
-//        transportList = ArrayList()
         idList = ArrayList()
         randList = ArrayList()
         bookingsList = ArrayList()
 
         for (i in bookings) {
             if (i.Username == user && i.Activity != "") {
-//                activityList.add(i.Activity)
-//                transportList.add(i.Transport)
                 idList.add(i.ID)
                 bookingsList.add(i.Activity)
             } else if (i.Username == user && i.Transport != "") {
@@ -44,22 +38,12 @@ class BookingHistory : AppCompatActivity() {
             }
         }
 
-//        activityList.removeAll(listOf("", null))
-//        transportList.removeAll(listOf("", null))
-
-//        val adapter1: ArrayAdapter<String> =
-//            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, activityList)
-//        val adapter2: ArrayAdapter<String> =
-//            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, transportList)
         val adapter: ArrayAdapter<String> =
             ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, bookingsList)
 
-
         var listView = findViewById<ListView>(R.id.listView)
-//        var list2 = findViewById<ListView>(R.id.listView2)
 
         listView.adapter = adapter
-//        list2.adapter = adapter
 
         listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             MaterialAlertDialogBuilder(this).apply {
@@ -131,7 +115,9 @@ class BookingHistory : AppCompatActivity() {
                     builder.setView(txtEditNOP)
 
                     builder.setPositiveButton("Confirm") { dialog, which ->
-                        var priceDivide = current.Price / current.NoOfPeople
+                        var priceDivide : Int = current.Price / current.NoOfPeople
+                        var updatedNOP = txtEditNOP.text.toString()
+                        var updatedPrice = priceDivide * updatedNOP.toInt()
                         fun updateNOP(
                             id: Int, price: Int, email: String,
                             activity: String, timeBooked: String,
@@ -145,9 +131,6 @@ class BookingHistory : AppCompatActivity() {
                                 departTime, noOfPeople, date, username)
                             dbHelper.updateNOP(newNOP)
                         }
-
-                        var updatedNOP = txtEditNOP.text.toString()
-                        var updatedPrice = priceDivide * updatedNOP.toInt()
 
                         updateNOP(current.ID, updatedPrice, current.Email,
                             current.Activity, current.TimeBooked, current.MovieName,
