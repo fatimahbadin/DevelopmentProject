@@ -21,9 +21,9 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val UserColumn_Password = "Password"
     public val UserColumn_Email = "Email"
 
-   /****************************************/
+    /****************************************/
 
-   /* Confirmation Details Table */
+    /* Confirmation Details Table */
     public val BookingDetailsTableName = "BookingDetails"
     public val BookingDetailsColumn_ID = "ID"
     public val BookingDetailsColumn_Price = "Price"
@@ -38,6 +38,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     public val BookingDetailsColumn_DepartTime = "DepartTime"
     public val BookingDetailsColumn_NoOfPeople = "NoOfPeople"
     public val BookingDetailsColumn_Date = "Date"
+    public val BookingDetailsColumn_Username = "Username"
 
     /****************************************/
 
@@ -125,8 +126,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
             sqlCreateStatement = "CREATE TABLE " + BookingDetailsTableName + " ( " +
                     BookingDetailsColumn_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    BookingDetailsColumn_Price + " INTEGER NOT NULL " +
-                    BookingDetailsColumn_Email + " TEXT NOT NULL" +
+                    BookingDetailsColumn_Price + " INTEGER NOT NULL, " +
+                    BookingDetailsColumn_Email + " TEXT NOT NULL, " +
                     BookingDetailsColumn_Activity + " TEXT, " +
                     BookingDetailsColumn_TimeBooked + " TEXT, " +
                     BookingDetailsColumn_MovieName + " TEXT, " +
@@ -136,7 +137,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                     BookingDetailsColumn_LocationTo + " TEXT, " +
                     BookingDetailsColumn_DepartTime + " TEXT, " +
                     BookingDetailsColumn_NoOfPeople + " TEXT NOT NULL, " +
-                    BookingDetailsColumn_Date + " TEXT NOT NULL ) "
+                    BookingDetailsColumn_Date + " TEXT NOT NULL " +
+                    BookingDetailsColumn_Username + " TEXT NOT NULL ) "
 
             db?.execSQL(sqlCreateStatement)
 
@@ -214,12 +216,12 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
     }
 
-//  This is called if the database ver. is changed
+    //  This is called if the database ver. is changed
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         TODO("Not yet implemented")
     }
 
-//  Functions for the user table
+    //  Functions for the user table
 //  This function gets all of the users in the User table
     fun getAllUsers(): ArrayList<User> {
         val userList = ArrayList<User>()
@@ -244,7 +246,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return userList
     }
 
-//  This function checks the user names within the user table
+    //  This function checks the user names within the user table
     private fun usernameC(user: User) : Int {
         val db: SQLiteDatabase
         try {
@@ -272,7 +274,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return 0
     }
 
-//  This function allows users to be added to the user table
+    //  This function allows users to be added to the user table
     fun signUpUser(user : User) : Int {
         val usernameExists = usernameC(user)
         if (usernameExists < 0)
@@ -296,7 +298,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         }
     }
 
-//  This function checks if the username and password match,
+    //  This function checks if the username and password match,
 //  it is used for the login page to check if their input matches
     fun loginValid(un: String, pw: String): Boolean {
         val db: SQLiteDatabase = this.readableDatabase
@@ -312,7 +314,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
     }
 
 
-//  Functions for the userLogged table
+    //  Functions for the userLogged table
 //  This function gets all of the users within ther user logged table
     fun getAllLoggedUsers(): ArrayList<UserLogged> {
         val userLoggedList = ArrayList<UserLogged>()
@@ -337,7 +339,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return userLoggedList
     }
 
-//  This function allows details to be added to the user logged table
+    //  This function allows details to be added to the user logged table
 //  It is used so that everytime a user logs in their details will be added to this table
     fun addLoggedUser(userL : UserLogged) : Boolean {
 
@@ -354,7 +356,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return success != -1L
     }
 
-//  Functions for the booking details table
+    //  Functions for the booking details table
 //  This function gets all of the details within the booking details table
     fun getAllConfirmDetails(): ArrayList<ConfirmDetails> {
         val detailsList = ArrayList<ConfirmDetails>()
@@ -378,10 +380,11 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
                 val departTime: String = cursor.getString(10)
                 val noOfPeople: String = cursor.getString(11)
                 val date: String = cursor.getString(12)
+                val username: String = cursor.getString(13)
 
                 val b = ConfirmDetails(id, price, email, activity, timeBooked,
                     movieName, exhibition, transport, locationFrom, locationTo,
-                    departTime, noOfPeople, date)
+                    departTime, noOfPeople, date, username)
                 detailsList.add(b)
             } while (cursor.moveToNext())
 
@@ -391,7 +394,45 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return detailsList
     }
 
-//  This function allows for details to be added to the booking details table
+    //  Functions for the booking details table
+//  This function gets all of the details within the booking details table
+    fun getAllConfirmDetailsForId(id : Int): ArrayList<ConfirmDetails> {
+        val detailsList = ArrayList<ConfirmDetails>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $BookingDetailsTableName WHERE $BookingDetailsColumn_ID == $id"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst())
+            do {
+                val id: Int = cursor.getInt(0)
+                val price: Int = cursor.getInt(1)
+                val email: String = cursor.getString(2)
+                val activity: String = cursor.getString(3)
+                val timeBooked: String = cursor.getString(4)
+                val movieName: String = cursor.getString(5)
+                val exhibition: String = cursor.getString(6)
+                val transport: String = cursor.getString(7)
+                val locationFrom: String = cursor.getString(8)
+                val locationTo: String = cursor.getString(9)
+                val departTime: String = cursor.getString(10)
+                val noOfPeople: String = cursor.getString(11)
+                val date: String = cursor.getString(12)
+                val username: String = cursor.getString(13)
+
+                val b = ConfirmDetails(id, price, email, activity, timeBooked,
+                    movieName, exhibition, transport, locationFrom, locationTo,
+                    departTime, noOfPeople, date, username)
+                detailsList.add(b)
+            } while (cursor.moveToNext())
+
+        cursor.close()
+        db.close()
+
+        return detailsList
+    }
+
+    //  This function allows for details to be added to the booking details table
     fun addConfirmDetails(confirmDetails : ConfirmDetails) : Boolean {
 
         val db: SQLiteDatabase = this.writableDatabase
@@ -409,6 +450,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         cv.put(BookingDetailsColumn_DepartTime, confirmDetails.DepartTime)
         cv.put(BookingDetailsColumn_NoOfPeople, confirmDetails.NoOfPeople)
         cv.put(BookingDetailsColumn_Date, confirmDetails.Date)
+        cv.put(BookingDetailsColumn_Username, confirmDetails.Username)
 
 
         val success  =  db.insert(BookingDetailsTableName, null, cv)
@@ -417,8 +459,25 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return success != -1L
     }
 
+    fun deleteData(id: Int) {
+        val db = this.writableDatabase
+        db.delete(BookingDetailsTableName, "$BookingDetailsColumn_ID=$id", null)
+        db.close()
+    }
 
-//  Functions for the Activity and Transport tables
+    fun updateNOP(NOP: ConfirmDetails) : Boolean {
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv: ContentValues = ContentValues()
+
+        cv.put(BookingDetailsColumn_NoOfPeople, NOP.NoOfPeople)
+
+        val success = db.update(BookingDetailsTableName, cv, "$BookingDetailsColumn_ID = ${NOP.ID}", null) == 1
+        db.close()
+        return success
+    }
+
+
+    //  Functions for the Activity and Transport tables
 //  This function gets all of the activities within the activity table
     fun getAllActivity(): ArrayList<Activity> {
         val activityList = ArrayList<Activity>()
@@ -441,7 +500,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return activityList
     }
 
-//  This function gets all of the transport within the transport table
+    //  This function gets all of the transport within the transport table
     fun getAllTransport(): ArrayList<Transport> {
         val transportList = ArrayList<Transport>()
         val db: SQLiteDatabase = this.readableDatabase
@@ -463,7 +522,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return transportList
     }
 
-//  This function gets all of the cinema details within the cinema table
+    //  This function gets all of the cinema details within the cinema table
     fun getAllCinema(): ArrayList<CinemaClass> {
         val cinemaList = ArrayList<CinemaClass>()
         val db: SQLiteDatabase = this.readableDatabase
@@ -489,7 +548,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return cinemaList
     }
 
-//  This function gets all of the museum details within the museum table
+    //  This function gets all of the museum details within the museum table
     fun getAllMuseum(): ArrayList<MuseumClass> {
         val museumList = ArrayList<MuseumClass>()
         val db: SQLiteDatabase = this.readableDatabase
@@ -514,7 +573,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return museumList
     }
 
-//  This function gets all of the bus details within the bus table
+    //  This function gets all of the bus details within the bus table
     fun getAllBus(): ArrayList<BusClass> {
         val busList = ArrayList<BusClass>()
         val db: SQLiteDatabase = this.readableDatabase
@@ -543,7 +602,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
         return busList
     }
 
-//  This function gets all of the train details within the train table
+    //  This function gets all of the train details within the train table
     fun getAllTrain(): ArrayList<TrainClass> {
         val trainList = ArrayList<TrainClass>()
         val db: SQLiteDatabase = this.readableDatabase

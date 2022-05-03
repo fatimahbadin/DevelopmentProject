@@ -52,16 +52,16 @@
                     android:orientation="horizontal"
                     android:weightSum="3">
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <Button
+                        android:id="@+id/btnBookingHistory"
+                        android:text="Booking History"
+                        android:textColor="@color/btnColour"
+                        android:backgroundTint="@color/textColor"
+                        app:shapeAppearanceOverlay="@style/Button5"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Account Details"
-                        android:fontFamily="@font/montserrat"
-                        android:textColor="@color/darkerColour"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="30dp" />
 
                 </LinearLayout>
 

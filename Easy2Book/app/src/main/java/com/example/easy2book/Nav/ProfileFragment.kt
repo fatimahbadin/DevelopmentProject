@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.easy2book.Activity.Cinema
+import com.example.easy2book.BookingHistory
 import com.example.easy2book.Home
 import com.example.easy2book.MainActivity
 import com.example.easy2book.Model.DataBaseHelper
@@ -42,6 +43,11 @@ class ProfileFragment : Fragment() {
         var txtEmail = view.findViewById<TextView>(R.id.txtProfileEmail)
         txtEmail.text = dbHelper.getAllLoggedUsers().last().Email
 
+        val btnBookingHistory = view.findViewById<Button>(R.id.btnBookingHistory)
+        btnBookingHistory.setOnClickListener {
+            startActivity(Intent(context, BookingHistory::class.java))
+        }
+
 //      Function for the sign out button, a dialog box will appear asking the user
 //      if they are sure they want to sign out. If no the dialog box will close if yes the user
 //      will be taken to the login page.
@@ -54,7 +60,7 @@ class ProfileFragment : Fragment() {
                 startActivity(Intent(context, MainActivity::class.java))
             }
 
-            builder.setNegativeButton("No") { dialog, whihc ->
+            builder.setNegativeButton("No") { dialog, which ->
                 dialog.cancel()
             }
 

@@ -75,7 +75,7 @@ class Train : AppCompatActivity() {
 
     }
 
-//  This function is for the confirm button.
+    //  This function is for the confirm button.
 //  Depending on what the user has selected for each section, the details will be added
 //  to the booking details table accordingly
     fun confirmBtn (view: View) {
@@ -136,7 +136,7 @@ class Train : AppCompatActivity() {
             var confirmDetails = ConfirmDetails(
                 0, txtPriceUpdated, lastUserL.Email,"", "",
                 "", "", "Train", locationFrom,
-                arrivalLocation, departTime, noOfpeople, dateC
+                arrivalLocation, departTime, noOfpeople, dateC, lastUserL.Username
             )
 
             if (dbHelper.addConfirmDetails(confirmDetails)) {
@@ -148,7 +148,7 @@ class Train : AppCompatActivity() {
                     startActivity(Intent(this, ConfirmationPage::class.java))
                 }
 
-                builder.setNegativeButton("Cancel") { dialog, whihc ->
+                builder.setNegativeButton("Cancel") { dialog, which ->
                     dialog.cancel()
                 }
 
@@ -162,7 +162,7 @@ class Train : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()        }
     }
 
-//  Function for the back button to take the user back to the home page
+    //  Function for the back button to take the user back to the home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

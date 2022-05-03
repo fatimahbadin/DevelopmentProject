@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="@string/booking_details"
-        android:fontFamily="@font/montserrat"
         android:background="@color/white"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/booking_details"
         android:textColor="@color/btnColour"
         android:textSize="30sp"
         android:textStyle="bold|normal"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.062" />
 
     <TextView
         android:id="@+id/txtThanksC"
@@ -40,7 +40,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewDetails"
         android:layout_width="300dp"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_row="0"
         android:layout_rowWeight="10"
         android:layout_column="0"
@@ -67,6 +67,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
+                android:fontFamily="@font/montserrat"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/txtUsernameC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
                 android:fontFamily="@font/montserrat"
                 android:textSize="16sp"
                 android:padding="5dp"

@@ -26,11 +26,13 @@ class ConfirmationPage : AppCompatActivity() {
         var txtLocationTo = findViewById<TextView>(R.id.txtLToC)
         var txtDate = findViewById<TextView>(R.id.txtDateC)
         var txtNoOfPeople = findViewById<TextView>(R.id.txtNoOfPeopleC)
+        var txtUsername = findViewById<TextView>(R.id.txtUsernameC)
 
 //      Depending on what the user selected in previous pages,
 //      the text views will be updated accordingly
         txtPrice.text = "Total Price: £${lastDetail.Price}"
         txtEmail.text = "Email: ${lastDetail.Email}"
+        txtUsername.text = "Username: ${lastDetail.Username}"
         txtDate.text = "Date: ${lastDetail.Date}"
         txtNoOfPeople.text = "Number of People Booked: ${lastDetail.NoOfPeople}"
 
@@ -50,7 +52,7 @@ class ConfirmationPage : AppCompatActivity() {
         }
     }
 
-//  function for the back button, to take the user back to the Home page    
+    //  function for the back button, to take the user back to the Home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

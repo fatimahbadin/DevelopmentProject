@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easy2Book">
         <activity
+            android:name=".BookingHistory"
+            android:exported="false" />
+        <activity
             android:name=".ConfirmationPage"
             android:exported="false" />
         <activity
