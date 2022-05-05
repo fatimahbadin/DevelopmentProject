@@ -80,6 +80,7 @@ class BookingHistory : AppCompatActivity() {
                             "\nNumber of People: ${current.NoOfPeople}\n" +
                             "\n$ActOrTrans\n" +
                             "\n$MovOrEx\n" +
+                            "\nDate: ${current.Date}\n" +
                             "\n$Time\n" +
                             "\n$LocationFrom\n" +
                             "\n$LocationTo\n" +
@@ -115,7 +116,7 @@ class BookingHistory : AppCompatActivity() {
                     builder.setView(txtEditNOP)
 
                     builder.setPositiveButton("Confirm") { dialog, which ->
-                        var priceDivide : Int = current.Price / current.NoOfPeople
+                        var priceDivide = current.Price / current.NoOfPeople
                         var updatedNOP = txtEditNOP.text.toString()
                         var updatedPrice = priceDivide * updatedNOP.toInt()
                         fun updateNOP(

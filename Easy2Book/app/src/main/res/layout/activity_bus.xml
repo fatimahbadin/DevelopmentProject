@@ -200,14 +200,18 @@
                     android:layout_marginEnd="25dp"
                     android:layout_marginStart="25dp"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/etxtDateBus"
-                    android:hint="DD/MM/YYYY"
-                    android:fontFamily="@font/montserrat"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="date" />
+                    android:fontFamily="@font/montserrat"
+                    android:onClick="datePicker"
+                    android:padding="10dp"
+                    android:text="Click here to select a date"
+                    android:textAlignment="center"
+                    android:textColor="#79373737"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <TextView

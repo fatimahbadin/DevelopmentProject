@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnSignUp = findViewById<Button>(R.id.btnSignUp)
         val txtForgotPW = findViewById<TextView>(R.id.txtForgotPW)
+        val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername)
+        val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail)
+        val pwInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword)
+        val usernameInputL = findViewById<TextInputEditText>(R.id.txtUsername)
+        val passwordInputL = findViewById<TextInputEditText>(R.id.txtPassword)
 
 //      Call on the DataBaseHelper
         val dbHelper = DataBaseHelper(this)
@@ -31,6 +36,9 @@ class MainActivity : AppCompatActivity() {
             signUp.background = resources.getDrawable(R.drawable.switch_trcks)
             signUp.setTextColor(resources.getColor(R.color.textColor,null))
             login.background = null
+            usernameInputS.text = null
+            emailInputS.text = null
+            pwInputS.text = null
             signUpLayout.visibility = View.VISIBLE
             loginLayout.visibility = View.GONE
             login.setTextColor(resources.getColor(R.color.btnColour, null))
@@ -42,22 +50,27 @@ class MainActivity : AppCompatActivity() {
             signUp.background = null
             signUp.setTextColor(resources.getColor(R.color.btnColour, null))
             login.background = resources.getDrawable(R.drawable.switch_trcks)
+            usernameInputL.text = null
+            passwordInputL.text = null
             signUpLayout.visibility = View.GONE
             loginLayout.visibility = View.VISIBLE
             login.setTextColor(resources.getColor(R.color.textColor, null))
         }
 
-//      Function for the signUp button, the users details will be checked against existing details
+//      Function for the signUp button.
+//      If any fields are empty and the password is less than 8 characters, the user will be notified
+//      then the users details will be checked against existing details
 //      If details do not exist the users details will be saved onto the user table and they can login
         btnSignUp.setOnClickListener {
-            val usernameInputS = findViewById<TextInputEditText>(R.id.txtSignUpUsername).text.toString().lowercase()
-            val emailInputS = findViewById<TextInputEditText>(R.id.txtSignUpEmail).text.toString().lowercase()
-            val pwInputS = findViewById<TextInputEditText>(R.id.txtSignUpPassword).text.toString().lowercase()
 
-            if (usernameInputS.isEmpty() && emailInputS.isEmpty() && pwInputS.isEmpty()) {
+            if (usernameInputS.text.toString().lowercase().isEmpty() ||
+                emailInputS.text.toString().lowercase().isEmpty() ||
+                pwInputS.text.toString().lowercase().isEmpty()) {
                 Toast.makeText(this, "All fields must be filled in", Toast.LENGTH_SHORT).show()
+            } else if (pwInputS.text.toString().length < 8) {
+                Toast.makeText(this, "Password must be 8 or more characters long", Toast.LENGTH_SHORT).show()
             } else {
-                val newUser = User(0, usernameInputS, pwInputS, emailInputS)
+                val newUser = User(0, usernameInputS.toString(), pwInputS.toString(), emailInputS.toString())
 
                 val result = dbHelper.signUpUser(newUser)
 
@@ -67,6 +80,9 @@ class MainActivity : AppCompatActivity() {
                         signUp.background = null
                         signUp.setTextColor(resources.getColor(R.color.btnColour,null))
                         login.background = resources.getDrawable(R.drawable.switch_trcks)
+                        usernameInputS.text = null
+                        emailInputS.text = null
+                        pwInputS.text = null
                         signUpLayout.visibility = View.GONE
                         loginLayout.visibility = View.VISIBLE
                         login.setTextColor(resources.getColor(R.color.textColor, null))
@@ -83,6 +99,8 @@ class MainActivity : AppCompatActivity() {
             signUp.background = resources.getDrawable(R.drawable.switch_trcks)
             signUp.setTextColor(resources.getColor(R.color.textColor,null))
             login.background = null
+            usernameInputL.text = null
+            passwordInputL.text = null
             signUpLayout.visibility = View.VISIBLE
             loginLayout.visibility = View.GONE
             login.setTextColor(resources.getColor(R.color.btnColour, null))
@@ -97,22 +115,19 @@ class MainActivity : AppCompatActivity() {
             var userList = ArrayList<User>()
             val u = dbHelper.getAllUsers()
 
-            val usernameInputL = findViewById<TextInputEditText>(R.id.txtUsername).text.toString().lowercase()
-            val passwordInputL = findViewById<TextInputEditText>(R.id.txtPassword).text.toString().lowercase()
-
             userList.addAll(u)
 
             var email = ""
             for (i in userList) {
-                if (usernameInputL == i.Username) {
+                if (usernameInputL.text.toString().lowercase() == i.Username) {
                     email = i.Email
                 }
             }
 
-            if (dbHelper.loginValid(usernameInputL, passwordInputL)) {
-                var userLogged = UserLogged(0, usernameInputL, passwordInputL, email)
+            if (dbHelper.loginValid(usernameInputL.text.toString().lowercase(), passwordInputL.text.toString().lowercase())) {
+                var userLogged = UserLogged(0, usernameInputL.text.toString(), passwordInputL.text.toString(), email)
                 if (dbHelper.addLoggedUser(userLogged)) {
-                    Toast.makeText(this, "Welcome to Easy2Book $usernameInputL!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Welcome to Easy2Book ${usernameInputL.text.toString()}!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, Home::class.java))
                 } else {
                     Toast.makeText(this, "Not Added", Toast.LENGTH_SHORT).show()

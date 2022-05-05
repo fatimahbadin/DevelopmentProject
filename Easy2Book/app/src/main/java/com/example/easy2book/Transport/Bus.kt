@@ -1,6 +1,7 @@
 package com.example.easy2book.Transport
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,8 +15,13 @@ import com.example.easy2book.Home
 import com.example.easy2book.Model.ConfirmDetails
 import com.example.easy2book.Model.DataBaseHelper
 import com.example.easy2book.R
+import java.util.*
 
 class Bus : AppCompatActivity() {
+    var selectDate: TextView? = null
+    private var mYear = 0
+    private var mMonth = 0
+    private var mDay = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bus)
@@ -130,12 +136,12 @@ class Bus : AppCompatActivity() {
             Toast.makeText(this, "Please select a depart time", Toast.LENGTH_SHORT).show()
         }
 
-        val dateC = findViewById<EditText>(R.id.etxtDateBus).text.toString()
+        val dateC = findViewById<TextView>(R.id.etxtDateBus).text.toString()
 
 //      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).text.toString()
-        if  ((noOfpeople != "") && dateC != "" &&
+        if  ((noOfpeople != "" && noOfpeople.toInt() > 0) && (dateC != "" && dateC.contains("/")) &&
             (rdbtnTime1Bus.isChecked || rdbtnTime2Bus.isChecked || rdbtnTime3Bus.isChecked) &&
             (rdbtnArr1.isChecked || rdbtnArr2.isChecked) &&
             (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
@@ -153,6 +159,7 @@ class Bus : AppCompatActivity() {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(this)
                 builder.setTitle("Total Price")
                 builder.setMessage("The total price is:  £$txtPriceUpdated" +
+                        "\nPayment will be made when you arrive. " +
                         "\nPlease confirm you would like to book.")
 
                 builder.setPositiveButton("Confirm") { dialog, which ->
@@ -170,8 +177,26 @@ class Bus : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this,
-                "Make sure all fields have been filled in",
-                Toast.LENGTH_SHORT).show()        }
+                "Make sure all fields have been filled in and you have more than 0 people booked",
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+//  Function to display the calender when the user clicks the text view
+    fun datePicker(view: View) {
+        selectDate = findViewById(R.id.etxtDateBus)
+        val calender = Calendar.getInstance()
+        mYear = calender[Calendar.YEAR]
+        mMonth = calender[Calendar.MONTH]
+        mDay = calender[Calendar.DAY_OF_MONTH]
+
+        //Show dialog
+        val datePickerDialog = DatePickerDialog(
+            this, {
+                    view, year, month, day -> selectDate!!.setText(day.toString() + "/" + (month + 1) + "/" + year)
+            }, mYear, mMonth, mDay
+        )
+        datePickerDialog.show()
     }
 
     //  Function for the back button to take the user back to the home page

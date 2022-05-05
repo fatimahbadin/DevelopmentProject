@@ -55,8 +55,8 @@
                     <Button
                         android:id="@+id/btnBookingHistory"
                         android:text="Booking History"
-                        android:textColor="@color/btnColour"
-                        android:backgroundTint="@color/textColor"
+                        android:textColor="@color/textColor"
+                        android:backgroundTint="@color/btnColour"
                         app:shapeAppearanceOverlay="@style/Button5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

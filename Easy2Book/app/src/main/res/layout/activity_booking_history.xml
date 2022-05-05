@@ -23,7 +23,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026" />
 
+    <TextView
+        android:id="@+id/txtBHTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:fontFamily="@font/montserrat"
+        android:text="Booking History"
+        android:textColor="@color/btnColour"
+        android:textSize="30sp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143" />
+
+    <TextView
+        android:id="@+id/txtExtraText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fontFamily="@font/montserrat"
+        android:text="View and edit bookings that have been made."
+        android:textColor="@color/btnColour"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBHTitle" />
+
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -39,7 +72,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewList"
             android:layout_width="250dp"
-            android:layout_height="300dp"
+            android:layout_height="350dp"
             android:layout_row="0"
             android:layout_rowWeight="10"
             android:layout_column="0"
@@ -47,9 +80,9 @@
             android:layout_gravity="fill"
             android:layout_margin="8dp"
             android:backgroundTint="@color/textColor"
+            android:foregroundGravity="center"
             app:cardCornerRadius="10dp"
             app:cardElevation="8dp"
-            android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.831"
@@ -62,8 +95,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:foregroundGravity="center"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/montserrat"
+                android:foregroundGravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.061"
@@ -73,59 +107,6 @@
 
         </androidx.cardview.widget.CardView>
 
-<!--        <androidx.cardview.widget.CardView-->
-<!--            android:id="@+id/cardViewList2"-->
-<!--            android:layout_width="150dp"-->
-<!--            android:layout_height="300dp"-->
-<!--            android:layout_row="0"-->
-<!--            android:layout_rowWeight="10"-->
-<!--            android:layout_column="0"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="8dp"-->
-<!--            android:backgroundTint="@color/textColor"-->
-<!--            app:cardCornerRadius="10dp"-->
-<!--            app:cardElevation="8dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.007"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.498">-->
-
-<!--            <ListView-->
-<!--                android:id="@+id/listView2"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_margin="10dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.061"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.041" />-->
-
-<!--        </androidx.cardview.widget.CardView>-->
-
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtBHTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@color/white"
-        android:fontFamily="@font/montserrat"
-        android:text="Booking History"
-        android:textColor="@color/btnColour"
-        android:textSize="30sp"
-        android:textStyle="bold|normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

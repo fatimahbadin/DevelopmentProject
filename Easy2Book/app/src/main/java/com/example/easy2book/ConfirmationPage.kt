@@ -16,7 +16,6 @@ class ConfirmationPage : AppCompatActivity() {
 //      and retrieve all of the text views on the confirmation page
         val dbHelper = DataBaseHelper(this)
         val lastDetail = dbHelper.getAllConfirmDetails().last()
-
         var txtPrice = findViewById<TextView>(R.id.txtPriceC)
         var txtEmail = findViewById<TextView>(R.id.txtEmailC)
         var txtActOrTrans = findViewById<TextView>(R.id.txtActOrTrans)
