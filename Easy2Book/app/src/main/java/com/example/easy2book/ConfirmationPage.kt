@@ -51,7 +51,7 @@ class ConfirmationPage : AppCompatActivity() {
         }
     }
 
-    //  function for the back button, to take the user back to the Home page
+//  function for the back button, to take the user back to the Home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

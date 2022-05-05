@@ -18,6 +18,7 @@ import com.example.easy2book.R
 import java.util.*
 
 class Train : AppCompatActivity() {
+//  variables for date picker function
     var selectDate: TextView? = null
     private var mYear = 0
     private var mMonth = 0
@@ -190,7 +191,7 @@ class Train : AppCompatActivity() {
         datePickerDialog.show()
     }
 
-    //  Function for the back button to take the user back to the home page
+//  Function for the back button to take the user back to the home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

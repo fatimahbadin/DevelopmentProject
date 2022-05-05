@@ -18,6 +18,7 @@ import com.example.easy2book.R
 import java.util.*
 
 class Museum : AppCompatActivity() {
+//  variables for date picker function
     var selectDate: TextView? = null
     private var mYear = 0
     private var mMonth = 0
@@ -69,7 +70,7 @@ class Museum : AppCompatActivity() {
         }
     }
 
-    //  This function is for the confirm button.
+//  This function is for the confirm button.
 //  Depending on what the user has selected for each section, the details will be added
 //  to the booking details table accordingly
     fun confirmBtn (view: View) {
@@ -165,7 +166,7 @@ class Museum : AppCompatActivity() {
         datePickerDialog.show()
     }
 
-    //  Function for the back button to take the user back to the home page
+//  Function for the back button to take the user back to the home page
     fun backBtn (view: View) {
         startActivity(Intent(this, Home::class.java))
     }

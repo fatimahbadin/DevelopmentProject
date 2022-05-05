@@ -12,7 +12,7 @@ import com.example.easy2book.Model.DataBaseHelper
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class BookingHistory : AppCompatActivity() {
-
+//  Array list variables
     lateinit var bookingsList: ArrayList<String>
     lateinit var idList: ArrayList<Int>
     lateinit var randList: ArrayList<ConfirmDetails>
@@ -28,6 +28,7 @@ class BookingHistory : AppCompatActivity() {
         randList = ArrayList()
         bookingsList = ArrayList()
 
+//      loop to get all of the bookings for the specific user into their arrays
         for (i in bookings) {
             if (i.Username == user && i.Activity != "") {
                 idList.add(i.ID)
@@ -38,13 +39,18 @@ class BookingHistory : AppCompatActivity() {
             }
         }
 
+//      adapter to list all of the items within the bookingsList array
         val adapter: ArrayAdapter<String> =
             ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, bookingsList)
 
         var listView = findViewById<ListView>(R.id.listView)
 
+//      assigning adapter variable as the adapter for the listView
         listView.adapter = adapter
 
+//      setting an on click for when the user clicks on each of the items within the list
+//      a dialog box will appear displaying all of the details for the booking and also
+//      allowing the user to either edit or delete their booking
         listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             MaterialAlertDialogBuilder(this).apply {
                 setTitle("Booking Details")
@@ -75,6 +81,7 @@ class BookingHistory : AppCompatActivity() {
                     Time = "Depart Time: " + current.DepartTime
                 }
 
+//              displays the details of the booking that was selected
                 setMessage(
                     "\nTotal Price: £${current.Price}\n" +
                             "\nNumber of People: ${current.NoOfPeople}\n" +
@@ -86,7 +93,8 @@ class BookingHistory : AppCompatActivity() {
                             "\n$LocationTo\n" +
                             "\n\nClick 'Edit' to edit the number of people")
 
-
+//              displays a dialog box askinf if the user is sure they want to delete the booking
+//              if confirmed, the booking will be deleted
                 setPositiveButton("Delete") { _, _ ->
                     val builder: android.app.AlertDialog.Builder =
                         android.app.AlertDialog.Builder(context)
@@ -107,6 +115,8 @@ class BookingHistory : AppCompatActivity() {
                     builder.show()
                 }
 
+//              displays a dialog box asking the user to enter the new number of people for the booking
+//              when confirmed, the total price and the number of people will have been updated
                 setNegativeButton("Edit") { _, _ ->
                     val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(context)
                     builder.setTitle("Edit Number of People")
@@ -156,7 +166,7 @@ class BookingHistory : AppCompatActivity() {
         }
     }
 
-        //  Function for the back button to take the user back to the home page
+//    Function for the back button to take the user back to the home page
       fun backBtn(view: View) {
             startActivity(Intent(this, Home::class.java))
       }

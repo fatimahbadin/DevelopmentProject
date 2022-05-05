@@ -19,20 +19,20 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
 //      This code allows for the navigation drawer to function
-        //activity_home.xml page
+//      activity_home.xml page
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
-        //the hamburger toggle
+//      the hamburger toggle
         val imgMenuToggle = findViewById<ImageView>(R.id.imgMenuToggle)
-        //the nav drawer
+//      the nav drawer
         val navView = findViewById<NavigationView>(R.id.navDrawer)
 
-        //allows the nav to open
+//      allows the nav to open
         navView.itemIconTintList = null
         imgMenuToggle.setOnClickListener{
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
-        //changes the content within the fragment container
+//      changes the content within the fragment container
         val navController = Navigation.findNavController(this, R.id.fragment)
         NavigationUI.setupWithNavController(navView, navController)
 
