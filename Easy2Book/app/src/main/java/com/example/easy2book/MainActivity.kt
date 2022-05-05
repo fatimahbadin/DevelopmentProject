@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             } else if (pwInputS.text.toString().length < 8) {
                 Toast.makeText(this, "Password must be 8 or more characters long", Toast.LENGTH_SHORT).show()
             } else {
-                val newUser = User(0, usernameInputS.toString(), pwInputS.toString(), emailInputS.toString())
+                val newUser = User(0, usernameInputS.text.toString(), pwInputS.text.toString(), emailInputS.text.toString())
 
                 val result = dbHelper.signUpUser(newUser)
 
@@ -80,9 +80,6 @@ class MainActivity : AppCompatActivity() {
                         signUp.background = null
                         signUp.setTextColor(resources.getColor(R.color.btnColour,null))
                         login.background = resources.getDrawable(R.drawable.switch_trcks)
-                        usernameInputS.text = null
-                        emailInputS.text = null
-                        pwInputS.text = null
                         signUpLayout.visibility = View.GONE
                         loginLayout.visibility = View.VISIBLE
                         login.setTextColor(resources.getColor(R.color.textColor, null))

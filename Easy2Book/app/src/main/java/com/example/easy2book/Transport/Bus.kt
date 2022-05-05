@@ -15,6 +15,7 @@ import com.example.easy2book.Home
 import com.example.easy2book.Model.ConfirmDetails
 import com.example.easy2book.Model.DataBaseHelper
 import com.example.easy2book.R
+import java.text.SimpleDateFormat
 import java.util.*
 
 class Bus : AppCompatActivity() {
@@ -88,7 +89,7 @@ class Bus : AppCompatActivity() {
         }
     }
 
-    //  This function is for the confirm button.
+//  This function is for the confirm button.
 //  Depending on what the user has selected for each section, the details will be added
 //  to the booking details table accordingly
     fun confirmBtn (view: View) {
@@ -137,49 +138,74 @@ class Bus : AppCompatActivity() {
             Toast.makeText(this, "Please select a depart time", Toast.LENGTH_SHORT).show()
         }
 
-        val dateC = findViewById<TextView>(R.id.etxtDateBus).text.toString()
+        val dateC = findViewById<TextView>(R.id.etxtDateCinema).text.toString()
+        val lastUserL = dbHelper.getAllLoggedUsers().last()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
 
 //      If all sections have been filled then the details will be added to the booking details table
-        val lastUserL = dbHelper.getAllLoggedUsers().last()
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleBus).text.toString()
-        if  ((noOfpeople != "" && noOfpeople.toInt() > 0) && (dateC != "" && dateC.contains("/")) &&
-            (rdbtnTime1Bus.isChecked || rdbtnTime2Bus.isChecked || rdbtnTime3Bus.isChecked) &&
-            (rdbtnArr1.isChecked || rdbtnArr2.isChecked) &&
-            (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
-        ) {
+        if(dateC != "Click here to select a date"){
+            val format = SimpleDateFormat("dd/MM/yyyy")
+            val date: Date = format.parse(dateC)
+            if (date > Calendar.getInstance().time) {
+                if  ((noOfpeople != "" && noOfpeople.toInt() > 0) && (dateC != "" && dateC.contains("/")) &&
+                    (rdbtnTime1Bus.isChecked || rdbtnTime2Bus.isChecked || rdbtnTime3Bus.isChecked) &&
+                    (rdbtnArr1.isChecked || rdbtnArr2.isChecked) &&
+                    (rdbtnFrom1.isChecked || rdbtnFrom2.isChecked)
+                ) {
 
-            var txtPriceUpdated = txtPrice * noOfpeople.toInt()
+                    var txtPriceUpdated = txtPrice * noOfpeople.toInt()
 
-            var confirmDetails = ConfirmDetails(
-                0, txtPriceUpdated, lastUserL.Email, "", "",
-                "", "", "Bus", locationFrom,
-                arrivalLocation, departTime, noOfpeople.toInt(), dateC, lastUserL.Username
-            )
+                    val transport = dbHelper.getAllTransport().get(0).Transport
 
-            if (dbHelper.addConfirmDetails(confirmDetails)) {
-                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-                builder.setTitle("Total Price")
-                builder.setMessage("The total price is:  £$txtPriceUpdated" +
-                        "\nPayment will be made when you arrive. " +
-                        "\nPlease confirm you would like to book.")
+                    var confirmDetails = ConfirmDetails(
+                        0, txtPriceUpdated, lastUserL.Email,
+                        "", "", "", "", transport,
+                        locationFrom, arrivalLocation, departTime, noOfpeople.toInt(), dateC, lastUserL.Username
+                    )
 
-                builder.setPositiveButton("Confirm") { dialog, which ->
-                    Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, ConfirmationPage::class.java))
+                    if (dbHelper.addConfirmDetails(confirmDetails)) {
+                        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                        builder.setTitle("Total Price")
+                        builder.setMessage(
+                            "The total price is:  £$txtPriceUpdated\n" +
+                                    "\nPayment will be made when you arrive. " +
+                                    "\nPlease confirm you would like to book."
+                        )
+
+                        builder.setPositiveButton("Confirm") { dialog, which ->
+                            Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, ConfirmationPage::class.java))
+                        }
+                        builder.setNegativeButton("Cancel") { dialog, which ->
+                            dialog.cancel()
+                        }
+                        builder.show()
+                    } else {
+                        Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Make sure all fields have been filled in and you have more than 0 people booked",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
-                builder.setNegativeButton("Cancel") { dialog, which ->
-                    dialog.cancel()
-                }
-
-                builder.show()
-            } else {
-                Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
             }
-        } else {
-            Toast.makeText(this,
-                "Make sure all fields have been filled in and you have more than 0 people booked",
-                Toast.LENGTH_SHORT).show()
+            else{
+                Toast.makeText(
+                    this,
+                    "Please enter a valid date",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        else{
+            Toast.makeText(
+                this,
+                "Please enter a valid date and make sure all fields are filled in",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

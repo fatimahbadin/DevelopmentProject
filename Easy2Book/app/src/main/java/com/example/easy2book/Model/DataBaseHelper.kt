@@ -396,10 +396,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context,DataBaseName,n
 
 //  Functions for the booking details table
 //  This function gets all of the details within the booking details table based on the id of the booking
-    fun getAllConfirmDetailsForId(id : Int): ArrayList<ConfirmDetails> {
+    fun getAllConfirmDetailsForId(i : Int): ArrayList<ConfirmDetails> {
         val detailsList = ArrayList<ConfirmDetails>()
         val db: SQLiteDatabase = this.readableDatabase
-        val sqlStatement = "SELECT * FROM $BookingDetailsTableName WHERE $BookingDetailsColumn_ID == $id"
+        val sqlStatement = "SELECT * FROM $BookingDetailsTableName WHERE $BookingDetailsColumn_ID == $i"
 
         val cursor: Cursor = db.rawQuery(sqlStatement, null)
 

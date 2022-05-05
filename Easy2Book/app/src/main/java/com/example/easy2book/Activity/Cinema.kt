@@ -13,6 +13,7 @@ import com.example.easy2book.MainActivity
 import com.example.easy2book.Model.ConfirmDetails
 import com.example.easy2book.Model.DataBaseHelper
 import com.example.easy2book.R
+import java.text.SimpleDateFormat
 import java.util.*
 
 class Cinema : AppCompatActivity() {
@@ -81,7 +82,7 @@ class Cinema : AppCompatActivity() {
         var movieName = " "
         val rdbtnMovie1 = findViewById<RadioButton>(R.id.rdbtnMovie1)
         val rdbtnMovie2 = findViewById<RadioButton>(R.id.rdbtnMovie2)
-        if(rdbtnMovie1.isChecked) {
+        if (rdbtnMovie1.isChecked) {
             movieName = rdbtnMovie1.text.toString()
             txtPrice = price1
         } else if (rdbtnMovie2.isChecked) {
@@ -94,7 +95,7 @@ class Cinema : AppCompatActivity() {
         var showTime = " "
         val rdbtnSTime1 = findViewById<RadioButton>(R.id.rdbtnSTime1)
         val rdbtnSTime2 = findViewById<RadioButton>(R.id.rdbtnSTime2)
-        if(rdbtnSTime1.isChecked) {
+        if (rdbtnSTime1.isChecked) {
             showTime = rdbtnSTime1.text.toString()
         } else if (rdbtnSTime2.isChecked) {
             showTime = rdbtnSTime2.text.toString()
@@ -103,45 +104,72 @@ class Cinema : AppCompatActivity() {
         }
 
         val dateC = findViewById<TextView>(R.id.etxtDateCinema).text.toString()
-
-//      If all sections have been filled then the details will be added to the booking details table
         val lastUserL = dbHelper.getAllLoggedUsers().last()
         val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
-        if ((noOfpeople != "" && noOfpeople.toInt() > 0) && (dateC != "" && dateC.contains("/")) &&
-            (rdbtnSTime1.isChecked || rdbtnSTime2.isChecked) &&
-            (rdbtnMovie1.isChecked || rdbtnMovie2.isChecked)
-        ) {
 
-            var txtPriceUpdated = txtPrice * noOfpeople.toInt()
+//      If all sections have been filled then the details will be added to the booking details table
+        if(dateC != "Click here to select a date"){
+            val format = SimpleDateFormat("dd/MM/yyyy")
+            val date: Date = format.parse(dateC)
+            if (date > Calendar.getInstance().time) {
+                if ((noOfpeople != "" && noOfpeople.toInt() > 0) && (dateC != "Click here to select a date") &&
+                    (rdbtnSTime1.isChecked || rdbtnSTime2.isChecked) &&
+                    (rdbtnMovie1.isChecked || rdbtnMovie2.isChecked)
+                ) {
 
-            var confirmDetails = ConfirmDetails(
-                0, txtPriceUpdated, lastUserL.Email,
-                "Cinema", showTime, movieName, "", "",
-                "", "", "", noOfpeople.toInt(), dateC, lastUserL.Username
-            )
+                    var txtPriceUpdated = txtPrice * noOfpeople.toInt()
 
-            if(dbHelper.addConfirmDetails(confirmDetails)) {
-                val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-                builder.setTitle("Total Price")
-                builder.setMessage("The total price is:  £$txtPriceUpdated" +
-                        "\nPayment will be made when you arrive. " +
-                        "\nPlease confirm you would like to book.")
+                    val activity = dbHelper.getAllActivity().get(0).Activity
 
-                builder.setPositiveButton("Confirm") { dialog, which ->
-                    Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, ConfirmationPage::class.java))
+                    var confirmDetails = ConfirmDetails(
+                        0, txtPriceUpdated, lastUserL.Email,
+                        activity, showTime, movieName, "", "",
+                        "", "", "", noOfpeople.toInt(), dateC, lastUserL.Username
+                    )
+
+                    if (dbHelper.addConfirmDetails(confirmDetails)) {
+                        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+                        builder.setTitle("Total Price")
+                        builder.setMessage(
+                            "The total price is:  £$txtPriceUpdated\n" +
+                                    "\nPayment will be made when you arrive. " +
+                                    "\nPlease confirm you would like to book."
+                        )
+
+                        builder.setPositiveButton("Confirm") { dialog, which ->
+                            Toast.makeText(this, "Booking Confirmed", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, ConfirmationPage::class.java))
+                        }
+                        builder.setNegativeButton("Cancel") { dialog, which ->
+                            dialog.cancel()
+                        }
+                        builder.show()
+                    } else {
+                        Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Make sure all fields have been filled in and you have more than 0 people booked",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                builder.setNegativeButton("Cancel") { dialog, which ->
-                    dialog.cancel()
-                }
-                builder.show()
-            } else {
-                Toast.makeText(this, "Please Try Again", Toast.LENGTH_SHORT).show()
+
             }
-        } else {
-            Toast.makeText(this,
-                "Make sure all fields have been filled in and you have more than 0 people booked",
-                Toast.LENGTH_SHORT).show()
+            else{
+                Toast.makeText(
+                    this,
+                    "Please enter a valid date",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        else{
+            Toast.makeText(
+                this,
+                "Please enter a valid date and make sure all fields are filled in",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
