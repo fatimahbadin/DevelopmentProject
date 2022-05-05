@@ -56,7 +56,7 @@ class Museum : AppCompatActivity() {
 
         val txtPrice = findViewById<TextView>(R.id.txtPriceMuseum)
 
-//      When either of the radio  buttons for the movies is clicked a different time
+//      When either of the radio  buttons for the exhibits is clicked a different time
 //      will be set to the text of the time radio buttons
         rbtnExhibit1.setOnClickListener {
             rdbtnVTime1.text = time1v1
@@ -105,9 +105,9 @@ class Museum : AppCompatActivity() {
             Toast.makeText(this, "Please select a time", Toast.LENGTH_SHORT).show()
         }
 
-        val dateC = findViewById<TextView>(R.id.etxtDateCinema).text.toString()
+        val dateC = findViewById<TextView>(R.id.etxtDateMuseum).text.toString()
         val lastUserL = dbHelper.getAllLoggedUsers().last()
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMuseum).text.toString()
 
 //      If all sections have been filled then the details will be added to the booking details table
         if(dateC != "Click here to select a date"){

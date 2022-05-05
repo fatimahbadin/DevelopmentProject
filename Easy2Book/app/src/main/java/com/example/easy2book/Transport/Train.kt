@@ -63,7 +63,7 @@ class Train : AppCompatActivity() {
 
         val txtPrice = findViewById<TextView>(R.id.txtPriceTrain)
 
-//      When either of the radio  buttons for the movies is clicked a different time
+//      When either of the radio  buttons for the location from is clicked a different time
 //      and locationTo will be set to the text of the time and locationTo radio buttons
         rdbtnFrom1.setOnClickListener {
             rdbtnArr1.text = locationTo
@@ -129,9 +129,9 @@ class Train : AppCompatActivity() {
             Toast.makeText(this, "Please select a depart time", Toast.LENGTH_SHORT).show()
         }
 
-        val dateC = findViewById<TextView>(R.id.etxtDateCinema).text.toString()
+        val dateC = findViewById<TextView>(R.id.etxtDateTrain).text.toString()
         val lastUserL = dbHelper.getAllLoggedUsers().last()
-        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleMovie).text.toString()
+        val noOfpeople = findViewById<EditText>(R.id.etxtNoOfPeopleTrain).text.toString()
 
 //      If all sections have been filled then the details will be added to the booking details table
         if(dateC != "Click here to select a date"){
@@ -146,7 +146,7 @@ class Train : AppCompatActivity() {
 
                     var txtPriceUpdated = txtPrice * noOfpeople.toInt()
 
-                    val transport = dbHelper.getAllTransport().get(0).Transport
+                    val transport = dbHelper.getAllTransport().get(1).Transport
 
                     var confirmDetails = ConfirmDetails(
                         0, txtPriceUpdated, lastUserL.Email,

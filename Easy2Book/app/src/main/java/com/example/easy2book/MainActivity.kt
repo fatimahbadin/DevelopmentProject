@@ -80,6 +80,9 @@ class MainActivity : AppCompatActivity() {
                         signUp.background = null
                         signUp.setTextColor(resources.getColor(R.color.btnColour,null))
                         login.background = resources.getDrawable(R.drawable.switch_trcks)
+                        usernameInputS.text = null
+                        emailInputS.text = null
+                        pwInputS.text = null
                         signUpLayout.visibility = View.GONE
                         loginLayout.visibility = View.VISIBLE
                         login.setTextColor(resources.getColor(R.color.textColor, null))
